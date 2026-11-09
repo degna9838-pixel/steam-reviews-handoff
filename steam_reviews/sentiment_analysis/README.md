@@ -222,6 +222,42 @@ analysis/games/<app_id>/sentiment/<consumer>/calibration/calibration_report.json
 
 可以统计“文本情感 vs 作者是否推荐”的表面一致率，用来说明两者不同；但 handoff 明确禁止把 `steam_recommended` 当情感真值或直接映射标签，所以不要用它算 accuracy/F1。
 
+### 6. 本次人工盲标结果（CS2，120 条）
+
+已由用户完成 120 条 entity-review 盲标（negative 69 / positive 31 / neutral 20），同一批样本比较 VADER 与 CityU LLM：
+
+| 方法 | accuracy | macro-F1 | Cohen's kappa |
+|---|---:|---:|---:|
+| VADER + domain lexicon | 0.492 | 0.475 | 0.237 |
+| CityU `CS5351/DeepSeek-V4-Flash` | **0.700** | **0.621** | **0.474** |
+
+VADER 混淆矩阵（行=人工，列=VADER）：
+
+```text
+human\vader   positive negative neutral
+positive            18        4       9
+negative            19       30      20
+neutral              3        6      11
+```
+
+LLM 混淆矩阵（行=人工，列=LLM）：
+
+```text
+human\llm     positive negative neutral
+positive            19        3       9
+negative             5       57       7
+neutral              0       12       8
+```
+
+解读：
+- VADER 的主要问题是**漏判负面**：69 条人工 negative 中只有 30 条被判 negative，19 条被判 positive、20 条被判 neutral；正面 precision 只有 0.45，neutral 的 F1 只有 0.37。
+- LLM 明显更好，尤其 negative recall 0.826、positive precision 0.792；neutral 仍然难（F1 0.364），12 条 neutral 被判 negative。
+- 分实体：VADER 在 `weapon_balance`（0.667）、`skins_economy`（0.600）较好，`anticheat` 最差（0.267，kappa 为负）；LLM 在 `game`（0.867）、`servers`（0.800）、`performance`/`anticheat`（0.733）较好，但 `anticheat` 只有 1 条 neutral，kappa 受类别不平衡影响，不能只看 kappa。
+- 样本是按旧 VADER 标签分层的“压力测试集”（每个 entity×label 5 条），不是随机样本；随机线上样本的 accuracy 可能不同。单标注人、无标注者间 kappa，结论应写成“在这 120 条盲标样本上”。
+- 结果文件：`calibration/evaluation_vader.json`、`calibration/evaluation_llm.json`。原始盲标 CSV 与逐条文本留在本机（已被 `.gitignore` 排除），仓库只提交聚合指标。
+
+如果目标是报告里更强的情感准确率，**LLM 全量或 LLM 复核 top-change 实体**比继续调 VADER 词典更有效；如果坚持本地无密钥词典方案，应把 VADER 定位为可复现 baseline，并如实报告上述限制。
+
 ## LLM 抽样校准（可选，CityU 网关）
 
 1. 从分析库分层导出样本（不含平台推荐选择作为真值）：

@@ -1,8 +1,25 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 from pathlib import Path
+
+
+def read_labels(path: str) -> dict:
+    label_rows = {}
+    if Path(path).suffix.lower() == ".csv":
+        with open(path, "r", encoding="utf-8-sig", newline="") as stream:
+            for row in csv.DictReader(stream):
+                if row.get("sample_id"):
+                    label_rows[row["sample_id"]] = row
+        return label_rows
+    with open(path, "r", encoding="utf-8") as stream:
+        for line in stream:
+            if line.strip():
+                row = json.loads(line)
+                label_rows[row["sample_id"]] = row
+    return label_rows
 
 
 def main(argv=None) -> int:
@@ -12,12 +29,7 @@ def main(argv=None) -> int:
     parser.add_argument("--out", required=True)
     parser.add_argument("--keep-unlabeled", action="store_true")
     args = parser.parse_args(argv)
-    label_rows = {}
-    with open(args.labels, "r", encoding="utf-8") as stream:
-        for line in stream:
-            if line.strip():
-                row = json.loads(line)
-                label_rows[row["sample_id"]] = row
+    label_rows = read_labels(args.labels)
     merged = []
     with open(args.samples, "r", encoding="utf-8") as stream:
         for line in stream:

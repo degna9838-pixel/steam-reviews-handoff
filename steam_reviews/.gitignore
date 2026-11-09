@@ -15,6 +15,7 @@ analysis/**/*.sqlite3-shm
 analysis/**/logs/
 analysis/**/backups/
 analysis/**/calibration/*.jsonl
+analysis/**/calibration/*.csv
 analysis/**/calibration/*.manifest.json
 analysis/**/calibration/raw/
 analysis/**/reviews.jsonl
