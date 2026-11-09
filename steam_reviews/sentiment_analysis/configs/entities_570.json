@@ -1,0 +1,166 @@
+{
+  "config_version": "entities-v1",
+  "app_id": 570,
+  "game": "Dota 2",
+  "entities": [
+    {
+      "entity_id": "game",
+      "name": "Dota 2 overall",
+      "scope": "document",
+      "require_mention": false,
+      "aliases": [
+        "dota",
+        "dota 2",
+        "dota2",
+        "defense of the ancients"
+      ]
+    },
+    {
+      "entity_id": "matchmaking",
+      "name": "Matchmaking / ranks",
+      "scope": "clause",
+      "aliases": [
+        "matchmaking",
+        "match making",
+        "ranked",
+        "rank",
+        "ranks",
+        "mmr",
+        "queue",
+        "queues",
+        "teammate",
+        "teammates",
+        "team mate",
+        "team mates",
+        "smurf",
+        "smurfs",
+        "griefer",
+        "griefers",
+        "troll",
+        "trolls"
+      ]
+    },
+    {
+      "entity_id": "hero_balance",
+      "name": "Hero balance",
+      "scope": "clause",
+      "aliases": [
+        "hero",
+        "heroes",
+        "balance",
+        "balanced",
+        "unbalanced",
+        "nerf",
+        "nerfed",
+        "buff",
+        "buffed",
+        "overpowered"
+      ]
+    },
+    {
+      "entity_id": "patch_meta",
+      "name": "Patch / meta",
+      "scope": "clause",
+      "aliases": [
+        "patch",
+        "patches",
+        "update",
+        "updates",
+        "meta",
+        "new hero",
+        "new heroes",
+        "gameplay update",
+        "balance patch"
+      ]
+    },
+    {
+      "entity_id": "monetization",
+      "name": "Monetization / cosmetics",
+      "scope": "clause",
+      "aliases": [
+        "battle pass",
+        "battlepass",
+        "compendium",
+        "treasure",
+        "treasures",
+        "chest",
+        "chests",
+        "skin",
+        "skins",
+        "cosmetic",
+        "cosmetics",
+        "price",
+        "expensive",
+        "cheap",
+        "p2w",
+        "pay to win",
+        "pay-to-win",
+        "microtransaction",
+        "microtransactions",
+        "loot box",
+        "loot boxes",
+        "monetization"
+      ]
+    },
+    {
+      "entity_id": "servers_performance",
+      "name": "Servers / performance",
+      "scope": "clause",
+      "aliases": [
+        "server",
+        "servers",
+        "lag",
+        "laggy",
+        "ping",
+        "packet loss",
+        "disconnect",
+        "disconnects",
+        "crash",
+        "crashes",
+        "fps",
+        "stutter",
+        "performance",
+        "netcode"
+      ]
+    },
+    {
+      "entity_id": "report_system",
+      "name": "Reports / behavior",
+      "scope": "clause",
+      "aliases": [
+        "report",
+        "reports",
+        "reporting",
+        "behavior score",
+        "behavior",
+        "conduct",
+        "communication",
+        "muted",
+        "mute",
+        "low priority",
+        "overwatch",
+        "ban",
+        "bans",
+        "banned"
+      ]
+    },
+    {
+      "entity_id": "new_player_experience",
+      "name": "New player experience",
+      "scope": "clause",
+      "aliases": [
+        "new player",
+        "new players",
+        "beginner",
+        "beginners",
+        "tutorial",
+        "tutorials",
+        "learning curve",
+        "onboarding",
+        "difficulty",
+        "complex",
+        "complicated"
+      ]
+    }
+  ]
+}

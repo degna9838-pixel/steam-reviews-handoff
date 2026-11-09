@@ -1,0 +1,213 @@
+{
+  "schema_version": "sentiment-calibration-1.0",
+  "input": "analysis\\games\\570\\sentiment\\sentiment_algorithm_v1\\calibration\\samples.jsonl",
+  "predictions": "analysis\\games\\570\\sentiment\\sentiment_algorithm_v1\\calibration\\llm_predictions.jsonl",
+  "samples_read": 40,
+  "predictions_read": 40,
+  "errors": {
+    "api_error": 0,
+    "parse_error": 0,
+    "missing_sample": 0
+  },
+  "overall": {
+    "n": 40,
+    "agreement": 0.525,
+    "kappa": 0.2796208530805687,
+    "confusion": {
+      "positive": {
+        "positive": 4,
+        "negative": 4,
+        "neutral": 5
+      },
+      "negative": {
+        "positive": 1,
+        "negative": 13,
+        "neutral": 0
+      },
+      "neutral": {
+        "positive": 1,
+        "negative": 8,
+        "neutral": 4
+      }
+    }
+  },
+  "per_entity": {
+    "game": {
+      "n": 6,
+      "agreement": 0.5,
+      "kappa": 0.25,
+      "confusion": {
+        "positive": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 1
+        },
+        "negative": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 1
+        }
+      }
+    },
+    "hero_balance": {
+      "n": 6,
+      "agreement": 0.6666666666666666,
+      "kappa": 0.49999999999999994,
+      "confusion": {
+        "positive": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 2
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 2
+        }
+      }
+    },
+    "matchmaking": {
+      "n": 6,
+      "agreement": 0.3333333333333333,
+      "kappa": 0.0,
+      "confusion": {
+        "positive": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0
+        }
+      }
+    },
+    "monetization": {
+      "n": 6,
+      "agreement": 0.6666666666666666,
+      "kappa": 0.49999999999999994,
+      "confusion": {
+        "positive": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 1
+        }
+      }
+    },
+    "new_player_experience": {
+      "n": 6,
+      "agreement": 0.5,
+      "kappa": 0.25,
+      "confusion": {
+        "positive": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 1
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0
+        }
+      }
+    },
+    "patch_meta": {
+      "n": 4,
+      "agreement": 0.5,
+      "kappa": 0.2,
+      "confusion": {
+        "positive": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 1
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 0
+        }
+      }
+    },
+    "report_system": {
+      "n": 3,
+      "agreement": 0.3333333333333333,
+      "kappa": 0.0,
+      "confusion": {
+        "positive": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 0
+        }
+      }
+    },
+    "servers_performance": {
+      "n": 3,
+      "agreement": 0.6666666666666666,
+      "kappa": 0.49999999999999994,
+      "confusion": {
+        "positive": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 0
+        }
+      }
+    }
+  },
+  "note": "VADER is compared with an LLM's entity-specific label; this is sample agreement, not human ground truth."
+}

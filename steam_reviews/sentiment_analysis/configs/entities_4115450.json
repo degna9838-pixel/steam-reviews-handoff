@@ -1,0 +1,152 @@
+{
+  "config_version": "entities-v1",
+  "app_id": 4115450,
+  "game": "Phantom Blade Zero",
+  "entities": [
+    {
+      "entity_id": "game",
+      "name": "Phantom Blade Zero overall",
+      "scope": "document",
+      "require_mention": false,
+      "aliases": [
+        "phantom blade zero",
+        "phantom blade",
+        "pbz"
+      ]
+    },
+    {
+      "entity_id": "combat",
+      "name": "Combat",
+      "scope": "clause",
+      "aliases": [
+        "combat",
+        "fighting",
+        "fight",
+        "fights",
+        "swordplay",
+        "sword play",
+        "parry",
+        "parrying",
+        "dodge",
+        "dodging",
+        "attack",
+        "attacks",
+        "hitbox",
+        "hitboxes",
+        "combo",
+        "combos"
+      ]
+    },
+    {
+      "entity_id": "story",
+      "name": "Story / narrative",
+      "scope": "clause",
+      "aliases": [
+        "story",
+        "stories",
+        "narrative",
+        "plot",
+        "lore",
+        "characters",
+        "writing",
+        "dialogue"
+      ]
+    },
+    {
+      "entity_id": "graphics_art",
+      "name": "Graphics / art",
+      "scope": "clause",
+      "aliases": [
+        "graphics",
+        "visual",
+        "visuals",
+        "art",
+        "art style",
+        "artstyle",
+        "animation",
+        "animations",
+        "aesthetics",
+        "beautiful",
+        "ugly"
+      ]
+    },
+    {
+      "entity_id": "performance_pc",
+      "name": "PC performance",
+      "scope": "clause",
+      "aliases": [
+        "performance",
+        "fps",
+        "frame rate",
+        "framerate",
+        "stutter",
+        "stutters",
+        "crash",
+        "crashes",
+        "bug",
+        "bugs",
+        "buggy",
+        "optimization",
+        "optimized",
+        "loading",
+        "pc port",
+        "port",
+        "mouse",
+        "keyboard",
+        "controls",
+        "camera"
+      ]
+    },
+    {
+      "entity_id": "boss_design",
+      "name": "Boss / enemy design",
+      "scope": "clause",
+      "aliases": [
+        "boss",
+        "bosses",
+        "boss fight",
+        "boss fights",
+        "enemy",
+        "enemies",
+        "enemy design"
+      ]
+    },
+    {
+      "entity_id": "difficulty",
+      "name": "Difficulty",
+      "scope": "clause",
+      "aliases": [
+        "difficulty",
+        "difficult",
+        "hard",
+        "easy",
+        "challenging",
+        "punishing",
+        "soulslike",
+        "souls-like",
+        "unfair",
+        "balanced"
+      ]
+    },
+    {
+      "entity_id": "price_value",
+      "name": "Price / value",
+      "scope": "clause",
+      "aliases": [
+        "price",
+        "prices",
+        "expensive",
+        "cheap",
+        "worth",
+        "value",
+        "refund",
+        "refunded",
+        "game pass",
+        "demo",
+        "length",
+        "content",
+        "replayability"
+      ]
+    }
+  ]
+}

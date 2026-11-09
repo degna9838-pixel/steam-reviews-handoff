@@ -45,3 +45,23 @@
 a16d5670df9d7b1e1300059767c2f7951d99bb784d6d1129c8e92d6d3e857b88  steam_reviews_task1_trend.zip
 4465a130f9ba3a5677d4de4b97386e98c52736163d50cd6583be026b63d79db6  steam_reviews_task2_sentiment.zip
 ```
+
+## 工作2：情感分析交付（sentiment-analysis 分支）
+
+已解压并实现 `steam_reviews/` 下的独立下游模块，采集端 `cs2_reviews/`、`examples/`、依赖和启动脚本保持不变。
+
+- 方法、命令、结果契约与限制：`steam_reviews/sentiment_analysis/README.md`
+- 三游戏独立分析库与结果：`steam_reviews/analysis/games/<app_id>/sentiment/<consumer>/`
+- 最终 24h/7d 汇总：`summaries/24h_168h/latest.json`；1h/24h：`summaries/1h_24h/latest.json`；dashboard 时间序列：`summaries/dashboard.json`
+- LLM 抽样校准报告：`calibration/calibration_report.json`
+
+复现入口（在 `steam_reviews/` 下）：
+
+```powershell
+.\setup.bat
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe -m pip install -r sentiment_analysis\requirements-sentiment.txt
+.\.venv\Scripts\python.exe -m pytest tests sentiment_analysis/tests -q
+.\start.bat
+.\.venv\Scripts\python.exe -m sentiment_analysis run --all-games --once
+```

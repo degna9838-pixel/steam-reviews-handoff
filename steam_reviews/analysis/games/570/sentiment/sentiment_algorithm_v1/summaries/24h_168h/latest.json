@@ -1,0 +1,381 @@
+{
+  "schema_version": "sentiment-summary-1.0",
+  "app_id": 570,
+  "game": "Dota 2",
+  "consumer": "sentiment_algorithm_v1",
+  "generated_at": "2026-11-09T06:14:19Z",
+  "computed_at": "2026-11-09T06:14:19Z",
+  "mode": "live",
+  "source_mode": "live",
+  "dataset_type": null,
+  "algorithm": {
+    "name": "vader-domain",
+    "version": "sentiment-v1",
+    "entity_config_version": "entities-v1",
+    "entity_config_hash": "37b2b9f8a65c5e901f0b50ac0cd2d2c44cd72bbb0f512a3c58cdbc2c61fd5153",
+    "window_hours": 24.0,
+    "baseline_hours": 168.0,
+    "min_mentions": 5,
+    "change_threshold": 0.15,
+    "alpha": 0.05,
+    "label_thresholds": {
+      "positive": 0.05,
+      "negative": -0.05
+    },
+    "significance_test": "chi_square_independence_df2"
+  },
+  "window": {
+    "current_start": "2026-11-08T06:14:19Z",
+    "current_end": "2026-11-09T06:14:19Z",
+    "baseline_start": "2026-11-01T06:14:19Z",
+    "baseline_end": "2026-11-08T06:14:19Z"
+  },
+  "source_stream_id": "a6b03dc5-8536-4813-82e0-693a52f0edf6",
+  "processed_cursor": "2860",
+  "source_latest_cursor": "2860",
+  "cursor_lag": 0,
+  "health_fetched_at": "2026-11-09T06:14:19Z",
+  "backfill_status": "completed",
+  "backfill_target_days": 30,
+  "scope_start_unix": 1791612392,
+  "last_success_at": "2026-11-09T06:08:36Z",
+  "last_error": null,
+  "pipeline_versions": [
+    "clean-en-v3"
+  ],
+  "review_counts": {
+    "total": 2860,
+    "analyzed": 2154,
+    "excluded_unusable": 706,
+    "skipped_empty": 0
+  },
+  "data_status": "ok",
+  "data_status_reasons": [],
+  "provisional": false,
+  "entities": [
+    {
+      "entity_id": "game",
+      "name": "Dota 2 overall",
+      "scope": "document",
+      "mention_required": false,
+      "current": {
+        "positive_count": 37,
+        "negative_count": 19,
+        "neutral_count": 8,
+        "mention_count": 64,
+        "metric": 0.28125
+      },
+      "baseline": {
+        "positive_count": 241,
+        "negative_count": 121,
+        "neutral_count": 85,
+        "mention_count": 447,
+        "metric": 0.2684563758389262
+      },
+      "metric": "net_sentiment",
+      "change": 0.012794,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 1.602326,
+        "p_value": 0.4488066,
+        "conditions_met": true,
+        "expected_min": 11.6477,
+        "significant": false
+      },
+      "data_status": "ok",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "matchmaking",
+      "name": "Matchmaking / ranks",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 1,
+        "negative_count": 6,
+        "neutral_count": 0,
+        "mention_count": 7,
+        "metric": -0.7142857142857143
+      },
+      "baseline": {
+        "positive_count": 10,
+        "negative_count": 18,
+        "neutral_count": 6,
+        "mention_count": 34,
+        "metric": -0.23529411764705882
+      },
+      "metric": "net_sentiment",
+      "change": -0.478992,
+      "change_flag": true,
+      "alert_type": "threshold",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 2.795455,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 1.0244,
+        "significant": false
+      },
+      "data_status": "ok",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "hero_balance",
+      "name": "Hero balance",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 2,
+        "negative_count": 1,
+        "neutral_count": 0,
+        "mention_count": 3,
+        "metric": 0.3333333333333333
+      },
+      "baseline": {
+        "positive_count": 9,
+        "negative_count": 1,
+        "neutral_count": 1,
+        "mention_count": 11,
+        "metric": 0.7272727272727273
+      },
+      "metric": "net_sentiment",
+      "change": -0.393939,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 1.311295,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 0.2143,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "patch_meta",
+      "name": "Patch / meta",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 1,
+        "negative_count": 0,
+        "neutral_count": 1,
+        "mention_count": 2,
+        "metric": 0.5
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 1.0,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "monetization",
+      "name": "Monetization / cosmetics",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 2,
+        "negative_count": 2,
+        "neutral_count": 1,
+        "mention_count": 5,
+        "metric": 0.0
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 1.0,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "servers_performance",
+      "name": "Servers / performance",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 1,
+        "mention_count": 1,
+        "metric": 0.0
+      },
+      "baseline": {
+        "positive_count": 1,
+        "negative_count": 4,
+        "neutral_count": 1,
+        "mention_count": 6,
+        "metric": -0.5
+      },
+      "metric": "net_sentiment",
+      "change": 0.5,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 2.916667,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 0.1429,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "report_system",
+      "name": "Reports / behavior",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 3,
+        "neutral_count": 1,
+        "mention_count": 4,
+        "metric": -0.75
+      },
+      "baseline": {
+        "positive_count": 2,
+        "negative_count": 12,
+        "neutral_count": 3,
+        "mention_count": 17,
+        "metric": -0.5882352941176471
+      },
+      "metric": "net_sentiment",
+      "change": -0.161765,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.571324,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 0.381,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "new_player_experience",
+      "name": "New player experience",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 1,
+        "negative_count": 1,
+        "neutral_count": 0,
+        "mention_count": 2,
+        "metric": 0.0
+      },
+      "baseline": {
+        "positive_count": 5,
+        "negative_count": 1,
+        "neutral_count": 7,
+        "mention_count": 13,
+        "metric": 0.3076923076923077
+      },
+      "metric": "net_sentiment",
+      "change": -0.307692,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 3.461538,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 0.2667,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    }
+  ]
+}

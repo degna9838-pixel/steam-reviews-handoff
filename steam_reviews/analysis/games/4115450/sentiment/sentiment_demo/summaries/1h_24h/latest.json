@@ -1,0 +1,353 @@
+{
+  "schema_version": "sentiment-summary-1.0",
+  "app_id": 4115450,
+  "game": "Phantom Blade Zero",
+  "consumer": "sentiment_demo",
+  "generated_at": "2026-11-09T05:54:03Z",
+  "computed_at": "2026-11-09T05:54:03Z",
+  "mode": "sample",
+  "source_mode": "offline",
+  "dataset_type": "synthetic_examples_not_real_steam_reviews",
+  "algorithm": {
+    "name": "vader-domain",
+    "version": "sentiment-v1",
+    "entity_config_version": "entities-v1",
+    "entity_config_hash": "4f080a1ae98ef4ebc1f65a795b8ea25d94dc222f598a0763488ce4997da3c7e7",
+    "window_hours": 1,
+    "baseline_hours": 24,
+    "min_mentions": 5,
+    "change_threshold": 0.15,
+    "alpha": 0.05,
+    "label_thresholds": {
+      "positive": 0.05,
+      "negative": -0.05
+    },
+    "significance_test": "chi_square_independence_df2"
+  },
+  "window": {
+    "current_start": "2026-11-01T00:00:00Z",
+    "current_end": "2026-11-01T01:00:00Z",
+    "baseline_start": "2026-10-31T00:00:00Z",
+    "baseline_end": "2026-11-01T00:00:00Z"
+  },
+  "source_stream_id": "93061829-5d55-4349-96b4-df3d639fad3e",
+  "processed_cursor": "10",
+  "source_latest_cursor": "10",
+  "cursor_lag": 0,
+  "health_fetched_at": "2026-11-09T05:54:03Z",
+  "backfill_status": null,
+  "backfill_target_days": null,
+  "scope_start_unix": null,
+  "last_success_at": null,
+  "last_error": null,
+  "pipeline_versions": [
+    "clean-en-v3"
+  ],
+  "review_counts": {
+    "total": 9,
+    "analyzed": 7,
+    "excluded_unusable": 2,
+    "skipped_empty": 0
+  },
+  "data_status": "sample",
+  "data_status_reasons": [
+    "synthetic sample data"
+  ],
+  "provisional": true,
+  "entities": [
+    {
+      "entity_id": "game",
+      "name": "Phantom Blade Zero overall",
+      "scope": "document",
+      "mention_required": false,
+      "current": {
+        "positive_count": 3,
+        "negative_count": 4,
+        "neutral_count": 0,
+        "mention_count": 7,
+        "metric": -0.14285714285714285
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 3.0,
+        "significant": false
+      },
+      "data_status": "insufficient_baseline",
+      "provisional": true,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "combat",
+      "name": "Combat",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": null,
+        "p_value": null,
+        "conditions_met": false,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "story",
+      "name": "Story / narrative",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": null,
+        "p_value": null,
+        "conditions_met": false,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "graphics_art",
+      "name": "Graphics / art",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": null,
+        "p_value": null,
+        "conditions_met": false,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "performance_pc",
+      "name": "PC performance",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 2,
+        "neutral_count": 0,
+        "mention_count": 2,
+        "metric": -1.0
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 2.0,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "boss_design",
+      "name": "Boss / enemy design",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": null,
+        "p_value": null,
+        "conditions_met": false,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "difficulty",
+      "name": "Difficulty",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": null,
+        "p_value": null,
+        "conditions_met": false,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "price_value",
+      "name": "Price / value",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": null,
+        "p_value": null,
+        "conditions_met": false,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": []
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "schema_version": "sentiment-calibration-1.0",
+  "input": "analysis\\games\\4115450\\sentiment\\sentiment_algorithm_v1\\calibration\\samples.jsonl",
+  "predictions": "analysis\\games\\4115450\\sentiment\\sentiment_algorithm_v1\\calibration\\llm_predictions.jsonl",
+  "samples_read": 40,
+  "predictions_read": 40,
+  "errors": {
+    "api_error": 0,
+    "parse_error": 0,
+    "missing_sample": 0
+  },
+  "overall": {
+    "n": 40,
+    "agreement": 0.45,
+    "kappa": 0.1813953488372093,
+    "confusion": {
+      "positive": {
+        "positive": 12,
+        "negative": 0,
+        "neutral": 1
+      },
+      "negative": {
+        "positive": 9,
+        "negative": 4,
+        "neutral": 1
+      },
+      "neutral": {
+        "positive": 10,
+        "negative": 1,
+        "neutral": 2
+      }
+    }
+  },
+  "per_entity": {
+    "boss_design": {
+      "n": 6,
+      "agreement": 0.5,
+      "kappa": 0.25,
+      "confusion": {
+        "positive": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0
+        }
+      }
+    },
+    "combat": {
+      "n": 6,
+      "agreement": 0.5,
+      "kappa": 0.24999999999999994,
+      "confusion": {
+        "positive": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 1
+        }
+      }
+    },
+    "difficulty": {
+      "n": 6,
+      "agreement": 0.3333333333333333,
+      "kappa": 0.0,
+      "confusion": {
+        "positive": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0
+        }
+      }
+    },
+    "game": {
+      "n": 6,
+      "agreement": 0.3333333333333333,
+      "kappa": 0.0,
+      "confusion": {
+        "positive": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 1
+        },
+        "negative": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0
+        }
+      }
+    },
+    "graphics_art": {
+      "n": 6,
+      "agreement": 0.5,
+      "kappa": 0.24999999999999994,
+      "confusion": {
+        "positive": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 1
+        }
+      }
+    },
+    "performance_pc": {
+      "n": 4,
+      "agreement": 0.5,
+      "kappa": 0.2727272727272727,
+      "confusion": {
+        "positive": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 1
+        },
+        "neutral": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 0
+        }
+      }
+    },
+    "price_value": {
+      "n": 3,
+      "agreement": 0.6666666666666666,
+      "kappa": 0.49999999999999994,
+      "confusion": {
+        "positive": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 0
+        }
+      }
+    },
+    "story": {
+      "n": 3,
+      "agreement": 0.3333333333333333,
+      "kappa": 0.0,
+      "confusion": {
+        "positive": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 0
+        }
+      }
+    }
+  },
+  "note": "VADER is compared with an LLM's entity-specific label; this is sample agreement, not human ground truth."
+}

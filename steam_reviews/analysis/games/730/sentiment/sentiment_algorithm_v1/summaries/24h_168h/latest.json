@@ -1,0 +1,385 @@
+{
+  "schema_version": "sentiment-summary-1.0",
+  "app_id": 730,
+  "game": "CS2",
+  "consumer": "sentiment_algorithm_v1",
+  "generated_at": "2026-11-09T06:14:18Z",
+  "computed_at": "2026-11-09T06:14:18Z",
+  "mode": "live",
+  "source_mode": "live",
+  "dataset_type": null,
+  "algorithm": {
+    "name": "vader-domain",
+    "version": "sentiment-v1",
+    "entity_config_version": "entities-v1",
+    "entity_config_hash": "8a840b69d3915712e0b7715ad6462a8df74d784a43ac212df11e35025bc1eb98",
+    "window_hours": 24.0,
+    "baseline_hours": 168.0,
+    "min_mentions": 5,
+    "change_threshold": 0.15,
+    "alpha": 0.05,
+    "label_thresholds": {
+      "positive": 0.05,
+      "negative": -0.05
+    },
+    "significance_test": "chi_square_independence_df2"
+  },
+  "window": {
+    "current_start": "2026-11-08T06:14:18Z",
+    "current_end": "2026-11-09T06:14:18Z",
+    "baseline_start": "2026-11-01T06:14:18Z",
+    "baseline_end": "2026-11-08T06:14:18Z"
+  },
+  "source_stream_id": "ebdc6242-24af-44e7-b9f2-8b944dc121a0",
+  "processed_cursor": "18446",
+  "source_latest_cursor": "18446",
+  "cursor_lag": 0,
+  "health_fetched_at": "2026-11-09T06:14:18Z",
+  "backfill_status": "completed",
+  "backfill_target_days": 30,
+  "scope_start_unix": 1791611656,
+  "last_success_at": "2026-11-09T06:06:39Z",
+  "last_error": null,
+  "pipeline_versions": [
+    "clean-en-v3"
+  ],
+  "review_counts": {
+    "total": 18446,
+    "analyzed": 15411,
+    "excluded_unusable": 3035,
+    "skipped_empty": 0
+  },
+  "data_status": "ok",
+  "data_status_reasons": [],
+  "provisional": false,
+  "entities": [
+    {
+      "entity_id": "game",
+      "name": "CS2 overall",
+      "scope": "document",
+      "mention_required": false,
+      "current": {
+        "positive_count": 774,
+        "negative_count": 133,
+        "neutral_count": 148,
+        "mention_count": 1055,
+        "metric": 0.6075829383886255
+      },
+      "baseline": {
+        "positive_count": 1587,
+        "negative_count": 766,
+        "neutral_count": 481,
+        "mention_count": 2834,
+        "metric": 0.28969654199011996
+      },
+      "metric": "net_sentiment",
+      "change": 0.317886,
+      "change_flag": true,
+      "alert_type": "statistical",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 111.488956,
+        "p_value": 0.0,
+        "conditions_met": true,
+        "expected_min": 170.6338,
+        "significant": true
+      },
+      "data_status": "ok",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "anticheat",
+      "name": "Anti-cheat / VAC",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 6,
+        "negative_count": 46,
+        "neutral_count": 4,
+        "mention_count": 56,
+        "metric": -0.7142857142857143
+      },
+      "baseline": {
+        "positive_count": 85,
+        "negative_count": 354,
+        "neutral_count": 26,
+        "mention_count": 465,
+        "metric": -0.578494623655914
+      },
+      "metric": "net_sentiment",
+      "change": -0.135791,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 2.08213,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 3.2246,
+        "significant": false
+      },
+      "data_status": "ok",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "matchmaking",
+      "name": "Matchmaking / ranks",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 5,
+        "negative_count": 7,
+        "neutral_count": 1,
+        "mention_count": 13,
+        "metric": -0.15384615384615385
+      },
+      "baseline": {
+        "positive_count": 26,
+        "negative_count": 66,
+        "neutral_count": 18,
+        "mention_count": 110,
+        "metric": -0.36363636363636365
+      },
+      "metric": "net_sentiment",
+      "change": 0.20979,
+      "change_flag": true,
+      "alert_type": "threshold",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 1.653952,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 2.0081,
+        "significant": false
+      },
+      "data_status": "ok",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "servers",
+      "name": "Servers / network",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 3,
+        "neutral_count": 1,
+        "mention_count": 4,
+        "metric": -0.75
+      },
+      "baseline": {
+        "positive_count": 9,
+        "negative_count": 21,
+        "neutral_count": 6,
+        "mention_count": 36,
+        "metric": -0.3333333333333333
+      },
+      "metric": "net_sentiment",
+      "change": -0.416667,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 1.309524,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 0.7,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "skins_economy",
+      "name": "Skins / economy",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 5,
+        "negative_count": 1,
+        "neutral_count": 2,
+        "mention_count": 8,
+        "metric": 0.5
+      },
+      "baseline": {
+        "positive_count": 24,
+        "negative_count": 20,
+        "neutral_count": 19,
+        "mention_count": 63,
+        "metric": 0.06349206349206349
+      },
+      "metric": "net_sentiment",
+      "change": 0.436508,
+      "change_flag": true,
+      "alert_type": "threshold",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 1.987952,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 2.3662,
+        "significant": false
+      },
+      "data_status": "ok",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "performance",
+      "name": "Performance / stability",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 15,
+        "negative_count": 4,
+        "neutral_count": 0,
+        "mention_count": 19,
+        "metric": 0.5789473684210527
+      },
+      "baseline": {
+        "positive_count": 33,
+        "negative_count": 16,
+        "neutral_count": 7,
+        "mention_count": 56,
+        "metric": 0.30357142857142855
+      },
+      "metric": "net_sentiment",
+      "change": 0.275376,
+      "change_flag": true,
+      "alert_type": "threshold",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 3.564086,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 1.7733,
+        "significant": false
+      },
+      "data_status": "ok",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "weapon_balance",
+      "name": "Weapon balance / meta",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 5,
+        "negative_count": 3,
+        "neutral_count": 1,
+        "mention_count": 9,
+        "metric": 0.2222222222222222
+      },
+      "baseline": {
+        "positive_count": 21,
+        "negative_count": 16,
+        "neutral_count": 12,
+        "mention_count": 49,
+        "metric": 0.10204081632653061
+      },
+      "metric": "net_sentiment",
+      "change": 0.120181,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.881765,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 2.0172,
+        "significant": false
+      },
+      "data_status": "ok",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "monetization",
+      "name": "Monetization / price",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 1,
+        "negative_count": 3,
+        "neutral_count": 1,
+        "mention_count": 5,
+        "metric": -0.4
+      },
+      "baseline": {
+        "positive_count": 3,
+        "negative_count": 8,
+        "neutral_count": 3,
+        "mention_count": 14,
+        "metric": -0.35714285714285715
+      },
+      "metric": "net_sentiment",
+      "change": -0.042857,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.012338,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 1.0526,
+        "significant": false
+      },
+      "data_status": "ok",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    }
+  ]
+}

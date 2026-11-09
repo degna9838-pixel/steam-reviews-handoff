@@ -1,0 +1,373 @@
+{
+  "schema_version": "sentiment-summary-1.0",
+  "app_id": 730,
+  "game": "CS2",
+  "consumer": "sentiment_algorithm_v1",
+  "generated_at": "2026-11-09T06:14:10Z",
+  "computed_at": "2026-11-09T06:14:10Z",
+  "mode": "live",
+  "source_mode": "live",
+  "dataset_type": null,
+  "algorithm": {
+    "name": "vader-domain",
+    "version": "sentiment-v1",
+    "entity_config_version": "entities-v1",
+    "entity_config_hash": "8a840b69d3915712e0b7715ad6462a8df74d784a43ac212df11e35025bc1eb98",
+    "window_hours": 1,
+    "baseline_hours": 24,
+    "min_mentions": 5,
+    "change_threshold": 0.15,
+    "alpha": 0.05,
+    "label_thresholds": {
+      "positive": 0.05,
+      "negative": -0.05
+    },
+    "significance_test": "chi_square_independence_df2"
+  },
+  "window": {
+    "current_start": "2026-11-09T05:14:10Z",
+    "current_end": "2026-11-09T06:14:10Z",
+    "baseline_start": "2026-11-08T05:14:10Z",
+    "baseline_end": "2026-11-09T05:14:10Z"
+  },
+  "source_stream_id": "ebdc6242-24af-44e7-b9f2-8b944dc121a0",
+  "processed_cursor": "18446",
+  "source_latest_cursor": "18446",
+  "cursor_lag": 0,
+  "health_fetched_at": "2026-11-09T06:14:10Z",
+  "backfill_status": "completed",
+  "backfill_target_days": 30,
+  "scope_start_unix": 1791611656,
+  "last_success_at": "2026-11-09T06:06:39Z",
+  "last_error": null,
+  "pipeline_versions": [
+    "clean-en-v3"
+  ],
+  "review_counts": {
+    "total": 18446,
+    "analyzed": 15411,
+    "excluded_unusable": 3035,
+    "skipped_empty": 0
+  },
+  "data_status": "ok",
+  "data_status_reasons": [],
+  "provisional": false,
+  "entities": [
+    {
+      "entity_id": "game",
+      "name": "CS2 overall",
+      "scope": "document",
+      "mention_required": false,
+      "current": {
+        "positive_count": 2,
+        "negative_count": 2,
+        "neutral_count": 2,
+        "mention_count": 6,
+        "metric": 0.0
+      },
+      "baseline": {
+        "positive_count": 777,
+        "negative_count": 135,
+        "neutral_count": 148,
+        "mention_count": 1060,
+        "metric": 0.6056603773584905
+      },
+      "metric": "net_sentiment",
+      "change": -0.60566,
+      "change_flag": true,
+      "alert_type": "threshold",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 4.864788,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 0.7711,
+        "significant": false
+      },
+      "data_status": "ok",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "anticheat",
+      "name": "Anti-cheat / VAC",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 2,
+        "neutral_count": 0,
+        "mention_count": 2,
+        "metric": -1.0
+      },
+      "baseline": {
+        "positive_count": 8,
+        "negative_count": 45,
+        "neutral_count": 4,
+        "mention_count": 57,
+        "metric": -0.6491228070175439
+      },
+      "metric": "net_sentiment",
+      "change": -0.350877,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.528555,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 0.1356,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "matchmaking",
+      "name": "Matchmaking / ranks",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 5,
+        "negative_count": 7,
+        "neutral_count": 1,
+        "mention_count": 13,
+        "metric": -0.15384615384615385
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 1.0,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "servers",
+      "name": "Servers / network",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 3,
+        "neutral_count": 1,
+        "mention_count": 4,
+        "metric": -0.75
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 1.0,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "skins_economy",
+      "name": "Skins / economy",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 5,
+        "negative_count": 1,
+        "neutral_count": 2,
+        "mention_count": 8,
+        "metric": 0.5
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 1.0,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "performance",
+      "name": "Performance / stability",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 15,
+        "negative_count": 4,
+        "neutral_count": 0,
+        "mention_count": 19,
+        "metric": 0.5789473684210527
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 4.0,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "weapon_balance",
+      "name": "Weapon balance / meta",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 5,
+        "negative_count": 3,
+        "neutral_count": 1,
+        "mention_count": 9,
+        "metric": 0.2222222222222222
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 1.0,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    },
+    {
+      "entity_id": "monetization",
+      "name": "Monetization / price",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 1,
+        "negative_count": 3,
+        "neutral_count": 1,
+        "mention_count": 5,
+        "metric": -0.4
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 1.0,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": false,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": [
+        "clean-en-v3"
+      ]
+    }
+  ]
+}

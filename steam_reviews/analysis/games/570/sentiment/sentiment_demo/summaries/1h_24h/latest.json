@@ -1,0 +1,359 @@
+{
+  "schema_version": "sentiment-summary-1.0",
+  "app_id": 570,
+  "game": "Dota 2",
+  "consumer": "sentiment_demo",
+  "generated_at": "2026-11-09T05:54:03Z",
+  "computed_at": "2026-11-09T05:54:03Z",
+  "mode": "sample",
+  "source_mode": "offline",
+  "dataset_type": "synthetic_examples_not_real_steam_reviews",
+  "algorithm": {
+    "name": "vader-domain",
+    "version": "sentiment-v1",
+    "entity_config_version": "entities-v1",
+    "entity_config_hash": "37b2b9f8a65c5e901f0b50ac0cd2d2c44cd72bbb0f512a3c58cdbc2c61fd5153",
+    "window_hours": 1,
+    "baseline_hours": 24,
+    "min_mentions": 5,
+    "change_threshold": 0.15,
+    "alpha": 0.05,
+    "label_thresholds": {
+      "positive": 0.05,
+      "negative": -0.05
+    },
+    "significance_test": "chi_square_independence_df2"
+  },
+  "window": {
+    "current_start": "2026-11-01T00:00:00Z",
+    "current_end": "2026-11-01T01:00:00Z",
+    "baseline_start": "2026-10-31T00:00:00Z",
+    "baseline_end": "2026-11-01T00:00:00Z"
+  },
+  "source_stream_id": "9fc3724e-60f6-4265-8d07-3ce49708dd74",
+  "processed_cursor": "10",
+  "source_latest_cursor": "10",
+  "cursor_lag": 0,
+  "health_fetched_at": "2026-11-09T05:54:03Z",
+  "backfill_status": null,
+  "backfill_target_days": null,
+  "scope_start_unix": null,
+  "last_success_at": null,
+  "last_error": null,
+  "pipeline_versions": [
+    "clean-en-v3"
+  ],
+  "review_counts": {
+    "total": 9,
+    "analyzed": 7,
+    "excluded_unusable": 2,
+    "skipped_empty": 0
+  },
+  "data_status": "sample",
+  "data_status_reasons": [
+    "synthetic sample data"
+  ],
+  "provisional": true,
+  "entities": [
+    {
+      "entity_id": "game",
+      "name": "Dota 2 overall",
+      "scope": "document",
+      "mention_required": false,
+      "current": {
+        "positive_count": 3,
+        "negative_count": 4,
+        "neutral_count": 0,
+        "mention_count": 7,
+        "metric": -0.14285714285714285
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 3.0,
+        "significant": false
+      },
+      "data_status": "insufficient_baseline",
+      "provisional": true,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "matchmaking",
+      "name": "Matchmaking / ranks",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 2,
+        "neutral_count": 0,
+        "mention_count": 2,
+        "metric": -1.0
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 2.0,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "hero_balance",
+      "name": "Hero balance",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": null,
+        "p_value": null,
+        "conditions_met": false,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "patch_meta",
+      "name": "Patch / meta",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 1,
+        "negative_count": 2,
+        "neutral_count": 0,
+        "mention_count": 3,
+        "metric": -0.3333333333333333
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 1.0,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "monetization",
+      "name": "Monetization / cosmetics",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": null,
+        "p_value": null,
+        "conditions_met": false,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "servers_performance",
+      "name": "Servers / performance",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 2,
+        "neutral_count": 0,
+        "mention_count": 2,
+        "metric": -1.0
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": 0.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 2.0,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [
+        "clean-en-v3"
+      ],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "report_system",
+      "name": "Reports / behavior",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": null,
+        "p_value": null,
+        "conditions_met": false,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": []
+    },
+    {
+      "entity_id": "new_player_experience",
+      "name": "New player experience",
+      "scope": "clause",
+      "mention_required": true,
+      "current": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "baseline": {
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 0,
+        "mention_count": 0,
+        "metric": null
+      },
+      "metric": "net_sentiment",
+      "change": null,
+      "change_flag": false,
+      "alert_type": "none",
+      "significance": {
+        "test": "chi_square_independence",
+        "df": 2,
+        "chi2": null,
+        "p_value": null,
+        "conditions_met": false,
+        "significant": false
+      },
+      "data_status": "insufficient_window",
+      "provisional": true,
+      "current_pipeline_versions": [],
+      "baseline_pipeline_versions": []
+    }
+  ]
+}
