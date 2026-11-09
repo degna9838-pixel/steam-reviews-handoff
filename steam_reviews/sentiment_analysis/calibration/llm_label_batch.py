@@ -26,34 +26,94 @@ def clip_text(text: str, max_chars: int) -> str:
     return text[:half] + " ... " + text[-half:]
 
 
-def build_single_prompt(job: dict, max_text_chars: int = 0) -> str:
+def job_text(job: dict, style: str, max_text_chars: int) -> str:
+    if style == "context":
+        context = job.get("llm_input") or job.get("text_clean", "")
+        return clip_text(context, max_text_chars or 1200)
+    return clip_text(job.get("text_clean", ""), max_text_chars)
+
+
+def alias_text(job: dict) -> str:
+    aliases = (job.get("entity") or {}).get("aliases") or []
+    return ", ".join(aliases[:12]) if aliases else "none"
+
+
+CONTEXT_RULES = (
+    "You are a careful sentiment annotator for Steam reviews. "
+    "Classify the reviewer's attitude toward the specified entity using only the provided review context. "
+    "Judge intended meaning, including sarcasm/irony.\n"
+    "Rules: positive = praise/satisfaction/approval/improvement; "
+    "negative = criticism/complaint/disappointment/failure/request to fix something broken; "
+    "neutral = factual mention/question/no clear evaluative stance, or genuinely balanced mixed sentiment.\n"
+    "Examples: 'VAC is trash' -> negative; 'is VAC working?' -> neutral; "
+    "'game is fun but VAC is broken' for VAC -> negative; "
+    "'Best game ever, 10/10' after complaints -> negative (sarcasm); "
+    "'some good, some bad' -> neutral.\n"
+    "Return strict JSON only. Include a short reason and an evidence quote from the context. "
+    "No markdown, no code fences, no extra text."
+)
+
+
+def build_single_prompt(job: dict, max_text_chars: int = 0, style: str = "simple") -> str:
+    if style == "context":
+        return (
+            f"{CONTEXT_RULES}\n\n"
+            f"Entity: {entity_name(job)}\n"
+            f"Aliases: {alias_text(job)}\n"
+            f"Review context: {job_text(job, style, max_text_chars)}\n\n"
+            'Return exactly: {"label":"positive|negative|neutral","reason":"short reason","evidence":"quote"}'
+        )
+    overall = (
+        "If the entity is mentioned but its local stance is unclear, use the review's overall attitude toward the game.\n"
+        if style == "simple_overall" else ""
+    )
     return (
         "Classify the sentiment of this Steam review toward the specified entity. "
         "Use only the review text. Judge the reviewer's intended attitude, including sarcasm/irony.\n"
         "Rules: positive = praise/satisfaction/approval/improvement; "
         "negative = criticism/complaint/disappointment/failure/request to fix something broken; "
         "neutral = factual mention/question/no clear stance, or balanced mixed sentiment.\n"
+        f"{overall}"
         "Return strict JSON only, with exactly two keys: "
         '{"label":"positive|negative|neutral","reason":"short reason"}. '
         "No markdown, no code fences, no extra text.\n\n"
         f"Entity: {entity_name(job)}\n"
-        f"Review: {clip_text(job.get('text_clean', ''), max_text_chars)}"
+        f"Review: {job_text(job, style, max_text_chars)}"
     )
 
 
-def build_batch_prompt(batch: list[dict], max_text_chars: int = 0) -> str:
+def build_batch_prompt(batch: list[dict], max_text_chars: int = 0, style: str = "simple") -> str:
     items = []
     for index, job in enumerate(batch, 1):
-        items.append(
-            f"{index}. Entity: {entity_name(job)}\nReview: "
-            f"{clip_text(job.get('text_clean', ''), max_text_chars)}"
+        if style == "context":
+            items.append(
+                f"{index}. Entity: {entity_name(job)}\n"
+                f"Aliases: {alias_text(job)}\n"
+                f"Context: {job_text(job, style, max_text_chars)}"
+            )
+        else:
+            items.append(
+                f"{index}. Entity: {entity_name(job)}\nReview: "
+                f"{job_text(job, style, max_text_chars)}"
+            )
+    if style == "context":
+        return (
+            f"{CONTEXT_RULES}\n\nEach numbered item is independent; do not transfer sentiment between items.\n"
+            'Return strict JSON: {"results":[{"index":1,"label":"positive|negative|neutral",'
+            '"reason":"short","evidence":"quote"}]}. Include every index exactly once.\n\n'
+            + "\n\n".join(items)
         )
+    overall = (
+        "If an entity is mentioned but its local stance is unclear, use the review's overall attitude toward the game.\n"
+        if style == "simple_overall" else ""
+    )
     return (
         "Classify the sentiment of each Steam review toward its specified entity. "
         "Use only the review text. Judge intended attitude, including sarcasm/irony.\n"
         "Rules: positive = praise/satisfaction/approval/improvement; "
         "negative = criticism/complaint/disappointment/failure/request to fix something broken; "
         "neutral = factual mention/question/no clear stance, or balanced mixed sentiment.\n"
+        f"{overall}"
         "Return strict JSON only:\n"
         '{"results":[{"index":1,"label":"positive|negative|neutral","reason":"short reason"}]}\n'
         "Include every index exactly once. No markdown, no code fences, no extra text.\n\n"
@@ -115,7 +175,7 @@ def _content(body: dict):
         return None
 
 
-def _row(job, label, reason, status, error, raw_content=None):
+def _row(job, label, reason, status, error, raw_content=None, evidence=None):
     entity = job.get("entity") or {}
     return {
         "job_id": job.get("job_id"),
@@ -125,18 +185,19 @@ def _row(job, label, reason, status, error, raw_content=None):
         "entity_id": entity.get("entity_id"),
         "label": label,
         "reason": reason,
+        "evidence": evidence,
         "raw_content": raw_content,
         "http_status": status,
         "error": error,
     }
 
 
-def call_single(job, base_url, api_key, model, timeout, retries, max_text_chars=0):
+def call_single(job, base_url, api_key, model, timeout, retries, max_text_chars=0, style="simple"):
     payload = {
         "model": model,
         "messages": [
             {"role": "system", "content": "You are a careful sentiment annotator. Output strict JSON only."},
-            {"role": "user", "content": build_single_prompt(job, max_text_chars)},
+            {"role": "user", "content": build_single_prompt(job, max_text_chars, style)},
         ],
         "temperature": 0,
         "max_tokens": 250,
@@ -160,18 +221,20 @@ def call_single(job, base_url, api_key, model, timeout, retries, max_text_chars=
             return _row(job, None, None, status, "unparseable label", content)
         label = normalize_label(payload_json.get("label"))
         reason = payload_json.get("reason")
+        evidence = payload_json.get("evidence")
         if label is None:
             return _row(job, None, None, status, "unparseable label", content)
-        return _row(job, label, reason if isinstance(reason, str) else None, status, None, content)
+        return _row(job, label, reason if isinstance(reason, str) else None, status, None, content,
+                    evidence if isinstance(evidence, str) else None)
     return _row(job, None, None, 0, last_error or "request failed")
 
 
-def call_batch(batch, base_url, api_key, model, timeout, retries, max_text_chars=0):
+def call_batch(batch, base_url, api_key, model, timeout, retries, max_text_chars=0, style="simple"):
     payload = {
         "model": model,
         "messages": [
             {"role": "system", "content": "You are a careful sentiment annotator. Output strict JSON only."},
-            {"role": "user", "content": build_batch_prompt(batch, max_text_chars)},
+            {"role": "user", "content": build_batch_prompt(batch, max_text_chars, style)},
         ],
         "temperature": 0,
         "max_tokens": min(2400, 150 * len(batch) + 150),
@@ -203,12 +266,13 @@ def call_batch(batch, base_url, api_key, model, timeout, retries, max_text_chars
             label = normalize_label(item.get("label"))
             if label is None:
                 return None
-            indexed[index] = (label, item.get("reason"), content)
+            indexed[index] = (label, item.get("reason"), item.get("evidence"), content)
         if set(indexed) != set(range(1, len(batch) + 1)):
             return None
         return [
             _row(job, indexed[index][0], indexed[index][1] if isinstance(indexed[index][1], str) else None,
-                 status, None, indexed[index][2])
+                 status, None, indexed[index][3],
+                 indexed[index][2] if isinstance(indexed[index][2], str) else None)
             for index, job in enumerate(batch, 1)
         ]
     return None
@@ -240,6 +304,7 @@ def main(argv=None) -> int:
     parser.add_argument("--batch-size", type=int, default=1)
     parser.add_argument("--max-batch-chars", type=int, default=3000)
     parser.add_argument("--max-text-chars", type=int, default=0)
+    parser.add_argument("--prompt-style", choices=("simple", "simple_overall", "context"), default="simple")
     parser.add_argument("--retries", type=int, default=3)
     parser.add_argument("--timeout", type=float, default=90.0)
     parser.add_argument("--sleep", type=float, default=0.0)
@@ -283,9 +348,9 @@ def main(argv=None) -> int:
             return []
         if len(batch) == 1:
             return [call_single(batch[0], args.base_url, api_key, args.model, args.timeout,
-                                args.retries, max(0, args.max_text_chars))]
+                                args.retries, max(0, args.max_text_chars), args.prompt_style)]
         rows = call_batch(batch, args.base_url, api_key, args.model, args.timeout,
-                          args.retries, max(0, args.max_text_chars))
+                          args.retries, max(0, args.max_text_chars), args.prompt_style)
         if rows is not None:
             return rows
         middle = len(batch) // 2

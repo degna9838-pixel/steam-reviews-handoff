@@ -285,6 +285,31 @@ neutral              2        9       9
 
 如果目标是报告里更强的情感准确率，**LLM 全量或 LLM 复核 top-change 实体**比继续调 VADER 词典更有效；如果坚持本地无密钥词典方案，应把 VADER 定位为可复现 baseline，并如实报告上述限制。
 
+### 7. 预处理 / Prompt 优化实验（同一 120 条）
+
+在已经标注的 120 条上试了四种输入/提示，结论是**不要裁剪上下文**：
+
+| 版本 | accuracy | macro-F1 | kappa | 说明 |
+|---|---:|---:|---:|---|
+| 当前生产（全文截断 600、simple prompt） | 0.808 | 0.734 | 0.657 | 现有 `llm_analysis` 标签 |
+| 实体窗口上下文（±1 句，900 字符）+ 别名/证据/few-shot | 0.733 | 0.674 | 0.540 | 裁掉整体语境后 neutral 增多 |
+| 全文 600 + 别名/证据/few-shot | 0.725 | 0.667 | 0.535 | 额外指令反而降低正类 recall |
+| 全文 600 + simple + “局部不清时看整体态度” | **0.825** | **0.764** | **0.690** | 唯一稳定增益；neutral F1 0.556 |
+
+原因：这 120 条人工标签里很多是**按整条评论的总体态度**判的（例如整体差评里的 monetization、整体好评里的 matchmaking）。实体窗口只留下局部句子，会把“整体差评/好评”信号删掉，LLM 就偏向 neutral。别名、证据引用、few-shot 在这个样本上没有带来增益，可能还会让模型过度谨慎。
+
+可复用命令（实验版，不覆盖生产标签）：
+
+```powershell
+# 先在 120 条人工样本上跑 simple_overall；生产默认仍是 simple
+bash sentiment_analysis/calibration/run_cityu_llm.sh `
+  --input work/llm_val_jobs.jsonl --output work/llm_val_overall_pred.jsonl `
+  --workers 3 --batch-size 24 --max-batch-chars 30000 --max-text-chars 600 `
+  --prompt-style simple_overall --sleep 0.05
+```
+
+注意：120 条已经用于挑 prompt，0.825 偏乐观，需要用新的 100–150 条 holdout 复核；如果要把 `simple_overall` 用到全量，建议把 `prompt_version` 升为 `llm-entity-v2-overall` 并重新导入，避免和现有 `llm-entity-v1` 标签混在一起。
+
 ## LLM 抽样校准（可选，CityU 网关）
 
 1. 从分析库分层导出样本（不含平台推荐选择作为真值）：

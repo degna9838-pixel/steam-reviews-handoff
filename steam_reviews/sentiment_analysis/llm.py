@@ -5,6 +5,7 @@ import sqlite3
 from pathlib import Path
 
 from .entities import EntityConfig
+from .preprocess import entity_context, normalize_llm_text
 from .settings import (
     LLM_ALGORITHM_VERSION,
     LLM_MODEL_DEFAULT,
@@ -42,6 +43,21 @@ def build_job(
             "scope": entity.scope,
         },
     }
+
+
+def build_context_job(
+    app_id: int,
+    record: dict,
+    entity,
+    config: EntityConfig,
+    model: str = LLM_MODEL_DEFAULT,
+    max_chars: int = 900,
+) -> dict:
+    job = build_job(app_id, record, entity, config, model)
+    job["llm_input"] = entity_context(record.get("text_clean", ""), entity, max_chars)
+    job["normalized_text"] = normalize_llm_text(record.get("text_clean", ""))
+    job["entity"]["aliases"] = list(entity.aliases)
+    return job
 
 
 def export_jobs(
