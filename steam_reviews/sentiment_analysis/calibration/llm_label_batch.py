@@ -63,14 +63,32 @@ def build_single_prompt(job: dict, max_text_chars: int = 0, style: str = "simple
             f"Review context: {job_text(job, style, max_text_chars)}\n\n"
             'Return exactly: {"label":"positive|negative|neutral","reason":"short reason","evidence":"quote"}'
         )
+    if style == "judge":
+        return (
+            "Two independent annotators disagree about the sentiment toward the specified entity. "
+            "Choose the better label using only the review text and judge intended meaning, including sarcasm.\n"
+            f"Candidate A: {job.get('candidate_a')}\n"
+            f"Candidate B: {job.get('candidate_b')}\n"
+            "Return strict JSON only: "
+            '{"label":"positive|negative|neutral","reason":"short reason"}. '
+            "No markdown, no code fences, no extra text.\n\n"
+            f"Entity: {entity_name(job)}\n"
+            f"Review: {job_text(job, style, max_text_chars)}"
+        )
     overall = (
         "If the entity is mentioned but its local stance is unclear, use the review's overall attitude toward the game.\n"
-        if style in {"simple_overall", "simple_overall_strict"} else ""
+        if style in {"simple_overall", "simple_overall_strict", "neutral_recheck"} else ""
     )
     strict = (
         "Do not choose neutral when there is a clear complaint or praise about the entity; "
         "use neutral only for factual mentions/questions or genuinely balanced mixed sentiment.\n"
         if style == "simple_overall_strict" else ""
+    )
+    recheck = (
+        "This mention was first judged neutral. Re-check carefully: if there is a clear complaint or praise "
+        "about the entity, choose positive/negative; keep neutral only if there is no explicit evaluative stance "
+        "or the sentiment is genuinely balanced.\n"
+        if style == "neutral_recheck" else ""
     )
     return (
         "Classify the sentiment of this Steam review toward the specified entity. "
@@ -78,7 +96,7 @@ def build_single_prompt(job: dict, max_text_chars: int = 0, style: str = "simple
         "Rules: positive = praise/satisfaction/approval/improvement; "
         "negative = criticism/complaint/disappointment/failure/request to fix something broken; "
         "neutral = factual mention/question/no clear stance, or balanced mixed sentiment.\n"
-        f"{overall}{strict}"
+        f"{overall}{strict}{recheck}"
         "Return strict JSON only, with exactly two keys: "
         '{"label":"positive|negative|neutral","reason":"short reason"}. '
         "No markdown, no code fences, no extra text.\n\n"
@@ -96,6 +114,13 @@ def build_batch_prompt(batch: list[dict], max_text_chars: int = 0, style: str = 
                 f"Aliases: {alias_text(job)}\n"
                 f"Context: {job_text(job, style, max_text_chars)}"
             )
+        elif style == "judge":
+            items.append(
+                f"{index}. Entity: {entity_name(job)}\n"
+                f"Candidate A: {job.get('candidate_a')}\n"
+                f"Candidate B: {job.get('candidate_b')}\n"
+                f"Review: {job_text(job, style, max_text_chars)}"
+            )
         else:
             items.append(
                 f"{index}. Entity: {entity_name(job)}\nReview: "
@@ -108,14 +133,29 @@ def build_batch_prompt(batch: list[dict], max_text_chars: int = 0, style: str = 
             '"reason":"short","evidence":"quote"}]}. Include every index exactly once.\n\n'
             + "\n\n".join(items)
         )
+    if style == "judge":
+        return (
+            "Two independent annotators disagree for each item. Choose the better label using only the "
+            "review text and intended meaning, including sarcasm. Each item is independent.\n"
+            "Return strict JSON only:\n"
+            '{"results":[{"index":1,"label":"positive|negative|neutral","reason":"short reason"}]}\n'
+            "Include every index exactly once. No markdown, no code fences, no extra text.\n\n"
+            + "\n\n".join(items)
+        )
     overall = (
         "If an entity is mentioned but its local stance is unclear, use the review's overall attitude toward the game.\n"
-        if style in {"simple_overall", "simple_overall_strict"} else ""
+        if style in {"simple_overall", "simple_overall_strict", "neutral_recheck"} else ""
     )
     strict = (
         "Do not choose neutral when there is a clear complaint or praise about the entity; "
         "use neutral only for factual mentions/questions or genuinely balanced mixed sentiment.\n"
         if style == "simple_overall_strict" else ""
+    )
+    recheck = (
+        "Each item was first judged neutral. Re-check carefully: if there is a clear complaint or praise "
+        "about the entity, choose positive/negative; keep neutral only if there is no explicit evaluative "
+        "stance or the sentiment is genuinely balanced.\n"
+        if style == "neutral_recheck" else ""
     )
     return (
         "Classify the sentiment of each Steam review toward its specified entity. "
@@ -123,7 +163,7 @@ def build_batch_prompt(batch: list[dict], max_text_chars: int = 0, style: str = 
         "Rules: positive = praise/satisfaction/approval/improvement; "
         "negative = criticism/complaint/disappointment/failure/request to fix something broken; "
         "neutral = factual mention/question/no clear stance, or balanced mixed sentiment.\n"
-        f"{overall}{strict}"
+        f"{overall}{strict}{recheck}"
         "Return strict JSON only:\n"
         '{"results":[{"index":1,"label":"positive|negative|neutral","reason":"short reason"}]}\n'
         "Include every index exactly once. No markdown, no code fences, no extra text.\n\n"
@@ -185,7 +225,18 @@ def _content(body: dict):
         return None
 
 
-def _row(job, label, reason, status, error, raw_content=None, evidence=None):
+def _usage_share(usage, batch_size):
+    if not isinstance(usage, dict):
+        return None
+    return {
+        "prompt_tokens": float(usage.get("prompt_tokens", 0)) / batch_size,
+        "completion_tokens": float(usage.get("completion_tokens", 0)) / batch_size,
+        "total_tokens": float(usage.get("total_tokens", 0)) / batch_size,
+        "batch_size": batch_size,
+    }
+
+
+def _row(job, label, reason, status, error, raw_content=None, evidence=None, usage=None, batch_size=1):
     entity = job.get("entity") or {}
     return {
         "job_id": job.get("job_id"),
@@ -196,6 +247,7 @@ def _row(job, label, reason, status, error, raw_content=None, evidence=None):
         "label": label,
         "reason": reason,
         "evidence": evidence,
+        "usage": _usage_share(usage, batch_size),
         "raw_content": raw_content,
         "http_status": status,
         "error": error,
@@ -235,7 +287,8 @@ def call_single(job, base_url, api_key, model, timeout, retries, max_text_chars=
         if label is None:
             return _row(job, None, None, status, "unparseable label", content)
         return _row(job, label, reason if isinstance(reason, str) else None, status, None, content,
-                    evidence if isinstance(evidence, str) else None)
+                    evidence if isinstance(evidence, str) else None,
+                    body.get("usage"), 1)
     return _row(job, None, None, 0, last_error or "request failed")
 
 
@@ -279,10 +332,12 @@ def call_batch(batch, base_url, api_key, model, timeout, retries, max_text_chars
             indexed[index] = (label, item.get("reason"), item.get("evidence"), content)
         if set(indexed) != set(range(1, len(batch) + 1)):
             return None
+        usage = body.get("usage")
         return [
             _row(job, indexed[index][0], indexed[index][1] if isinstance(indexed[index][1], str) else None,
                  status, None, indexed[index][3],
-                 indexed[index][2] if isinstance(indexed[index][2], str) else None)
+                 indexed[index][2] if isinstance(indexed[index][2], str) else None,
+                 usage, len(batch))
             for index, job in enumerate(batch, 1)
         ]
     return None
@@ -314,7 +369,7 @@ def main(argv=None) -> int:
     parser.add_argument("--batch-size", type=int, default=1)
     parser.add_argument("--max-batch-chars", type=int, default=3000)
     parser.add_argument("--max-text-chars", type=int, default=0)
-    parser.add_argument("--prompt-style", choices=("simple", "simple_overall", "simple_overall_strict", "context"), default="simple")
+    parser.add_argument("--prompt-style", choices=("simple", "simple_overall", "simple_overall_strict", "neutral_recheck", "judge", "context"), default="simple")
     parser.add_argument("--retries", type=int, default=3)
     parser.add_argument("--timeout", type=float, default=90.0)
     parser.add_argument("--sleep", type=float, default=0.0)

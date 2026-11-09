@@ -308,6 +308,25 @@ bash sentiment_analysis/calibration/run_cityu_llm.sh `
   --prompt-style simple_overall --sleep 0.05
 ```
 
+### 8. 二次复核 / 投票与 token 性价比（同一 120 条）
+
+batch 输出现在记录每个请求的 `usage`（按 batch size 均摊到每条），可直接估 token。实验：
+
+| 方案 | accuracy | macro-F1 | kappa | 120 条总 token | 额外 token |
+|---|---:|---:|---:|---:|---:|
+| baseline `simple_overall` | 0.825 | 0.772 | 0.690 | 12,380 | — |
+| neutral 二次复核（只对 16 条 neutral） | 0.800 | 0.724 | 0.639 | 13,828 | +1,448 / +11.7% |
+| `simple` prompt | 0.833 | 0.775 | 0.704 | 12,324 | 持平 |
+| 两 prompt 投票 + judge | 0.833 | 0.772 | 0.703 | 26,371 | +13,991 / +113% |
+
+结论：
+
+- 单条约 103 token；即使 2 万条也只有约 2M token，**token 不是瓶颈，网关调用次数/时间才是**。
+- neutral 二次复核把 neutral F1 从 0.611 降到 0.485，反而变差；不采用。
+- 投票的 0.833 与单次 `simple` 相同，提升来自 prompt/随机波动，不是投票；多花一倍 token 不划算。
+- `simple` 在 120 条上略高，但 clean holdout 只有 0.667；再次说明不能用 120 条调参集选模型。
+- 结论：保持单次 `simple_overall`，不做二次复核/投票。结果文件 `calibration/experiment_secondary_passes.json`。
+
 注意：120 条已经用于挑 prompt，0.825 偏乐观。随后又做了 **100 条不重叠的 clean holdout**（随机按实体抽样，不是按 VADER 标签分层）：
 
 | 方法 | accuracy | macro-F1 | kappa | 95% accuracy CI |

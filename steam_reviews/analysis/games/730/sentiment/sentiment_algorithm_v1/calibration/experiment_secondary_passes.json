@@ -1,0 +1,193 @@
+{
+  "schema_version": "sentiment-secondary-pass-experiment-1.0",
+  "n": 120,
+  "methods": {
+    "baseline_simple_overall": {
+      "metrics": {
+        "n": 120,
+        "accuracy": 0.825,
+        "macro_f1": 0.77198,
+        "kappa": 0.6896551724137931,
+        "confusion": {
+          "positive": {
+            "positive": 26,
+            "negative": 3,
+            "neutral": 2
+          },
+          "negative": {
+            "positive": 4,
+            "negative": 62,
+            "neutral": 3
+          },
+          "neutral": {
+            "positive": 2,
+            "negative": 7,
+            "neutral": 11
+          }
+        },
+        "per_class": {
+          "positive": {
+            "support": 31,
+            "precision": 0.8125,
+            "recall": 0.83871,
+            "f1": 0.825397
+          },
+          "negative": {
+            "support": 69,
+            "precision": 0.861111,
+            "recall": 0.898551,
+            "f1": 0.879433
+          },
+          "neutral": {
+            "support": 20,
+            "precision": 0.6875,
+            "recall": 0.55,
+            "f1": 0.611111
+          }
+        }
+      },
+      "tokens": 12380.0
+    },
+    "neutral_recheck": {
+      "metrics": {
+        "n": 120,
+        "accuracy": 0.8,
+        "macro_f1": 0.723785,
+        "kappa": 0.638780885488524,
+        "confusion": {
+          "positive": {
+            "positive": 26,
+            "negative": 3,
+            "neutral": 2
+          },
+          "negative": {
+            "positive": 4,
+            "negative": 62,
+            "neutral": 3
+          },
+          "neutral": {
+            "positive": 2,
+            "negative": 10,
+            "neutral": 8
+          }
+        },
+        "per_class": {
+          "positive": {
+            "support": 31,
+            "precision": 0.8125,
+            "recall": 0.83871,
+            "f1": 0.825397
+          },
+          "negative": {
+            "support": 69,
+            "precision": 0.826667,
+            "recall": 0.898551,
+            "f1": 0.861111
+          },
+          "neutral": {
+            "support": 20,
+            "precision": 0.615385,
+            "recall": 0.4,
+            "f1": 0.484848
+          }
+        }
+      },
+      "tokens": 13828.0,
+      "extra_tokens": 1448.0
+    },
+    "simple_prompt": {
+      "metrics": {
+        "n": 120,
+        "accuracy": 0.833333,
+        "macro_f1": 0.775287,
+        "kappa": 0.704032556418794,
+        "confusion": {
+          "positive": {
+            "positive": 28,
+            "negative": 2,
+            "neutral": 1
+          },
+          "negative": {
+            "positive": 3,
+            "negative": 62,
+            "neutral": 4
+          },
+          "neutral": {
+            "positive": 2,
+            "negative": 8,
+            "neutral": 10
+          }
+        },
+        "per_class": {
+          "positive": {
+            "support": 31,
+            "precision": 0.848485,
+            "recall": 0.903226,
+            "f1": 0.875
+          },
+          "negative": {
+            "support": 69,
+            "precision": 0.861111,
+            "recall": 0.898551,
+            "f1": 0.879433
+          },
+          "neutral": {
+            "support": 20,
+            "precision": 0.666667,
+            "recall": 0.5,
+            "f1": 0.571429
+          }
+        }
+      },
+      "tokens": 12324.0
+    },
+    "two_prompt_vote": {
+      "metrics": {
+        "n": 120,
+        "accuracy": 0.833333,
+        "macro_f1": 0.771965,
+        "kappa": 0.7026390781811424,
+        "confusion": {
+          "positive": {
+            "positive": 27,
+            "negative": 2,
+            "neutral": 2
+          },
+          "negative": {
+            "positive": 3,
+            "negative": 63,
+            "neutral": 3
+          },
+          "neutral": {
+            "positive": 2,
+            "negative": 8,
+            "neutral": 10
+          }
+        },
+        "per_class": {
+          "positive": {
+            "support": 31,
+            "precision": 0.84375,
+            "recall": 0.870968,
+            "f1": 0.857143
+          },
+          "negative": {
+            "support": 69,
+            "precision": 0.863014,
+            "recall": 0.913043,
+            "f1": 0.887324
+          },
+          "neutral": {
+            "support": 20,
+            "precision": 0.666667,
+            "recall": 0.5,
+            "f1": 0.571429
+          }
+        }
+      },
+      "tokens": 26371.0,
+      "extra_tokens": 13991.0
+    }
+  },
+  "note": "Exploratory on the 120 prompt-selection set; token counts are sum of per-request usage shares. Extra passes did not improve meaningfully."
+}
