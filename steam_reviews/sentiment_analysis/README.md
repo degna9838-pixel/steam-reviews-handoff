@@ -255,7 +255,8 @@ analysis/games/<app_id>/sentiment/<consumer>/calibration/calibration_report.json
 |---|---:|---:|---:|
 | VADER + domain lexicon | 0.492 | 0.475 | 0.237 |
 | LLM 旧单实体校准 prompt | 0.700 | 0.621 | 0.474 |
-| LLM 主检测 prompt（当前） | **0.750** | **0.657** | **0.549** |
+| LLM 单条主检测 prompt | 0.750 | 0.657 | 0.549 |
+| LLM 生产配置（批 24、每条截断 600 字符） | **0.808** | **0.734** | **0.657** |
 
 VADER 混淆矩阵（行=人工，列=VADER）：
 
@@ -266,21 +267,21 @@ negative            19       30      20
 neutral              3        6      11
 ```
 
-LLM 主检测混淆矩阵（行=人工，列=LLM）：
+LLM 生产配置混淆矩阵（行=人工，列=LLM）：
 
 ```text
 human\llm     positive negative neutral
-positive            19        3       9
+positive            25        2       4
 negative             2       63       4
-neutral              1       11       8
+neutral              2        9       9
 ```
 
 解读：
 - VADER 的主要问题是**漏判负面**：69 条人工 negative 中只有 30 条被判 negative，19 条被判 positive、20 条被判 neutral；正面 precision 只有 0.45，neutral 的 F1 只有 0.37。
-- LLM 主检测明显更好：negative recall 0.913、positive precision 0.864；neutral 仍然难（F1 0.390），11 条 neutral 被判 negative。
-- 分实体：VADER 在 `weapon_balance`（0.667）、`skins_economy`（0.600）较好，`anticheat` 最差（0.267，kappa 为负）；LLM 在 `game`（0.800）、`servers`（0.867）、`skins_economy`（0.786）、`anticheat`（0.786）较好；`anticheat` 只有 1 条 neutral，kappa 受类别不平衡影响，不能只看 kappa。
+- LLM 生产配置明显更好：negative recall 0.913、positive precision 0.862、negative F1 0.881；neutral 仍然难（F1 0.486），9 条 neutral 被判 negative。
+- 分实体：VADER 在 `weapon_balance`（0.667）、`skins_economy`（0.600）较好，`anticheat` 最差（0.267，kappa 为负）；LLM 在 `game`、`servers`、`skins_economy`、`anticheat` 较好；`anticheat` 只有 1 条 neutral，kappa 受类别不平衡影响，不能只看 kappa。
 - 样本是按旧 VADER 标签分层的“压力测试集”（每个 entity×label 5 条），不是随机样本；随机线上样本的 accuracy 可能不同。单标注人、无标注者间 kappa，结论应写成“在这 120 条盲标样本上”。
-- 结果文件：`calibration/evaluation_vader.json`、`calibration/evaluation_llm_primary.json`。原始盲标 CSV 与逐条文本留在本机（已被 `.gitignore` 排除），仓库只提交聚合指标。
+- 结果文件：`calibration/evaluation_vader.json`、`calibration/evaluation_llm_primary.json`、`calibration/evaluation_llm_batched.json`。原始盲标 CSV 与逐条文本留在本机（已被 `.gitignore` 排除），仓库只提交聚合指标。
 
 如果目标是报告里更强的情感准确率，**LLM 全量或 LLM 复核 top-change 实体**比继续调 VADER 词典更有效；如果坚持本地无密钥词典方案，应把 VADER 定位为可复现 baseline，并如实报告上述限制。
 
@@ -315,32 +316,31 @@ python3 sentiment_analysis/calibration/compare_calibration.py \
 
 ## 当前三游戏结果（截至 2026-11-09）
 
-三游戏均已完成 30 天回填，`backfill_status=completed`、`data_status=ok`、`provisional=false`，`verify` 均通过。24h/7d 结果：
+三游戏均已完成 30 天回填，LLM 主标签导入完成，`llm_coverage=1.0`、`data_status=ok`、`provisional=false`，`verify` 均通过。24h/7d 结果（LLM 主检测）：
 
-| 游戏 | 总评论 | 已分析 | 排除不可用 | 当前提及 | 当前 metric | 基线提及 | 基线 metric | 变化 | 告警 | 状态 |
+| 游戏 | 总评论 | 已分析 | LLM 标注行 | 当前提及 | 当前 metric | 基线提及 | 基线 metric | 变化 | 告警 | 状态 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|---|
-| CS2 | 18,446 | 15,411 | 3,035 | 1,055 | 0.608 | 2,834 | 0.290 | +0.318 | statistical | ok |
-| Dota 2 | 2,860 | 2,154 | 706 | 64 | 0.281 | 447 | 0.268 | +0.013 | none | ok |
-| Phantom Blade Zero | 10,834 | 9,744 | 1,090 | 551 | 0.530 | 4,801 | 0.565 | -0.035 | none | ok |
+| CS2 | 18,518 | 15,478 | 19,367 | 1,052 | 0.704 | 2,877 | 0.237 | +0.467 | statistical | ok |
+| Dota 2 | 2,870 | 2,160 | 2,586 | 56 | 0.036 | 447 | 0.076 | -0.040 | none | ok |
+| Phantom Blade Zero | 10,895 | 9,799 | 22,075 | 526 | 0.789 | 4,780 | 0.802 | -0.013 | none | ok |
 
 分实体告警（24h/7d）：
 
-- CS2：`anticheat` 当前 57 次、metric -0.684（基线 464 次、-0.582）；`matchmaking` 当前 13 次、-0.154（基线 110 次、-0.364，阈值告警）；`skins_economy` 当前 8 次、+0.500（基线 63 次、+0.063，阈值告警）；`performance` 当前 19 次、+0.579（基线 56 次、+0.304，阈值告警）；`servers` 当前仅 4 次，`insufficient_window`。
-- Dota 2：整体稳定；`matchmaking` 当前 7 次、-0.714（基线 34 次、-0.235，阈值告警）；其他实体当前样本 0–4 条，`insufficient_window`。
-- Phantom Blade Zero：整体稳定；`difficulty` 当前 106 次、-0.104（基线 787 次、+0.116，变化 -0.219，卡方显著）；`combat` 当前 220 次、-0.055（基线 1,732 次、-0.047）；`boss_design` 当前 136 次、-0.243（基线 911 次、-0.236）；`story`/`graphics_art`/`price_value` 为正。
-- 1h/24h 窗口普遍稀疏（CS2 当前 7 条、Dota 2 当前 3 条、Phantom 当前 12 条），只用于演示实时告警链路；结论应以 24h/7d 为准，或等更多小时数据后重算。
+- CS2：整体 metric 从 0.237 升到 0.704（+0.467，卡方显著）；`anticheat` 当前 51 次、-0.902（基线 469 次、-0.913）；`matchmaking` 当前 11 次、-0.818（基线 110 次、-0.727）；`skins_economy` 当前 6 次、+0.167（基线 64 次、-0.344，阈值告警）；`performance` 当前 21 次、-0.048（基线 55 次、-0.255，阈值告警）；`weapon_balance` 当前 9 次、+0.111（基线 49 次、-0.224，阈值告警）；`servers`/`monetization` 当前 <5 次，`insufficient_window`。
+- Dota 2：整体稳定；`matchmaking` 当前 5 次、-1.000（基线 35 次、-0.800，阈值告警）；其他实体当前样本 0–3 条，`insufficient_window`。
+- Phantom Blade Zero：整体稳定；`performance_pc` 当前 62 次、+0.065（基线 434 次、-0.088，变化 +0.152，阈值告警）；`combat` 当前 206 次、+0.714（基线 1,725 次、+0.795）；`story` 当前 125 次、+0.312（基线 818 次、+0.256）；`graphics_art` +0.791；`boss_design` +0.484；`difficulty` +0.280；`price_value` +0.500。
+- 1h/24h 窗口仍稀疏（CS2 当前约 45 条、Dota 2 约 1 条、Phantom 约 12 条），只用于演示实时告警链路；结论以 24h/7d 为准。
 
-首次少量验证：CS2 cursor 0→500（5 页）后汇总，`data_status=backfill_incomplete`、`provisional=true`，用于验证“先少量再全量”流程，不作为最终结果。回填完成后 1h/24h 与 24h/7d 均重新计算。
+首次少量验证：CS2 cursor 0→500（5 页）后汇总，`data_status=backfill_incomplete`、`provisional=true`，用于验证“先少量再全量”流程，不作为最终结果。之后完成 30 天回填和 LLM 全量标注，再重算 1h/24h 与 24h/7d。
 
-LLM 抽样校准（VADER vs CityU `CS5351/DeepSeek-V4-Flash`，0 API/解析错误）：
+人工盲标验证（CS2，120 条 entity-review；VADER vs LLM 生产配置）：
 
-| 游戏 | 样本 | 一致率 | Cohen's kappa | 备注 |
-|---|---:|---:|---:|---|
-| CS2 | 120 | 0.508 | 0.262 | neutral 有 25 条被 LLM 判 negative |
-| Dota 2 | 40 | 0.525 | 0.280 | negative 一致率较高 |
-| Phantom Blade Zero | 40 | 0.450 | 0.181 | negative→positive 9 条，实体局部负面 vs 整体正面差异明显 |
+| 方法 | accuracy | macro-F1 | Cohen's kappa |
+|---|---:|---:|---:|
+| VADER + domain lexicon | 0.492 | 0.475 | 0.237 |
+| LLM 生产配置（批 24、截断 600 字符） | **0.808** | **0.734** | **0.657** |
 
-校准只说明“词典全量结果与 LLM 抽样判断的一致程度”，不是准确率或人工真值；VADER 的 neutral 边界、分句作用域和领域词典覆盖是主要差异来源。
+该结果说明 LLM 主检测明显优于词典 baseline，尤其在 negative recall（0.913）和整体一致率上；neutral 仍是最难类别（F1 0.486）。样本是按旧 VADER 标签分层的压力测试集、单标注人，结论仅限这 120 条盲标样本。
 
 ## 文件
 

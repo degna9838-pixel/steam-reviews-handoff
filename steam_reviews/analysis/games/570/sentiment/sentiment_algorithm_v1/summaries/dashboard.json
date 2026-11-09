@@ -2,49 +2,19 @@
   "schema_version": "sentiment-dashboard-1.0",
   "app_id": 570,
   "game": "Dota 2",
-  "generated_at": "2026-11-09T06:14:19Z",
+  "generated_at": "2026-11-09T09:30:19Z",
   "bucket_hours": 1,
   "min_mentions": 5,
   "range": {
-    "start": "2026-11-02T06:00:00Z",
-    "end": "2026-11-09T06:00:00Z"
+    "start": "2026-11-02T09:00:00Z",
+    "end": "2026-11-09T09:00:00Z"
   },
-  "algorithm_version": "sentiment-v1",
+  "algorithm_version": "sentiment-llm-v1",
   "entities": [
     {
       "entity_id": "game",
       "name": "Dota 2 overall",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T06:00:00Z",
-          "bucket_end": "2026-11-02T07:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
-          "mention_count": 1,
-          "net_metric": 0.0,
-          "data_status": "insufficient_sample"
-        },
-        {
-          "bucket_start": "2026-11-02T07:00:00Z",
-          "bucket_end": "2026-11-02T08:00:00Z",
-          "positive_count": 3,
-          "negative_count": 0,
-          "neutral_count": 1,
-          "mention_count": 4,
-          "net_metric": 0.75,
-          "data_status": "insufficient_sample"
-        },
-        {
-          "bucket_start": "2026-11-02T08:00:00Z",
-          "bucket_end": "2026-11-02T09:00:00Z",
-          "positive_count": 3,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 3,
-          "net_metric": 1.0,
-          "data_status": "insufficient_sample"
-        },
         {
           "bucket_start": "2026-11-02T09:00:00Z",
           "bucket_end": "2026-11-02T10:00:00Z",
@@ -79,20 +49,20 @@
           "bucket_start": "2026-11-02T12:00:00Z",
           "bucket_end": "2026-11-02T13:00:00Z",
           "positive_count": 2,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
           "mention_count": 3,
-          "net_metric": 0.3333333333333333,
+          "net_metric": 0.6666666666666666,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
-          "positive_count": 1,
+          "positive_count": 0,
           "negative_count": 1,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 2,
-          "net_metric": 0.0,
+          "net_metric": -0.5,
           "data_status": "insufficient_sample"
         },
         {
@@ -109,10 +79,10 @@
           "bucket_start": "2026-11-02T15:00:00Z",
           "bucket_end": "2026-11-02T16:00:00Z",
           "positive_count": 1,
-          "negative_count": 2,
-          "neutral_count": 0,
+          "negative_count": 1,
+          "neutral_count": 1,
           "mention_count": 3,
-          "net_metric": -0.3333333333333333,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -129,30 +99,30 @@
           "bucket_start": "2026-11-02T17:00:00Z",
           "bucket_end": "2026-11-02T18:00:00Z",
           "positive_count": 2,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": 0.6666666666666666,
+          "net_metric": 0.3333333333333333,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-02T18:00:00Z",
           "bucket_end": "2026-11-02T19:00:00Z",
-          "positive_count": 1,
-          "negative_count": 2,
+          "positive_count": 2,
+          "negative_count": 1,
           "neutral_count": 1,
           "mention_count": 4,
-          "net_metric": -0.25,
+          "net_metric": 0.25,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-02T19:00:00Z",
           "bucket_end": "2026-11-02T20:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 1,
+          "negative_count": 2,
+          "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": -0.5,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -168,31 +138,31 @@
         {
           "bucket_start": "2026-11-02T21:00:00Z",
           "bucket_end": "2026-11-02T22:00:00Z",
-          "positive_count": 3,
+          "positive_count": 2,
           "negative_count": 1,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 4,
-          "net_metric": 0.5,
+          "net_metric": 0.25,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-02T22:00:00Z",
           "bucket_end": "2026-11-02T23:00:00Z",
-          "positive_count": 2,
+          "positive_count": 1,
           "negative_count": 1,
-          "neutral_count": 2,
+          "neutral_count": 3,
           "mention_count": 5,
-          "net_metric": 0.2,
+          "net_metric": 0.0,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-02T23:00:00Z",
           "bucket_end": "2026-11-03T00:00:00Z",
           "positive_count": 1,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": 0.5,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -208,11 +178,11 @@
         {
           "bucket_start": "2026-11-03T01:00:00Z",
           "bucket_end": "2026-11-03T02:00:00Z",
-          "positive_count": 2,
-          "negative_count": 0,
+          "positive_count": 1,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": 1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -238,11 +208,11 @@
         {
           "bucket_start": "2026-11-03T04:00:00Z",
           "bucket_end": "2026-11-03T05:00:00Z",
-          "positive_count": 2,
+          "positive_count": 3,
           "negative_count": 1,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": 0.25,
+          "net_metric": 0.5,
           "data_status": "insufficient_sample"
         },
         {
@@ -259,10 +229,10 @@
           "bucket_start": "2026-11-03T06:00:00Z",
           "bucket_end": "2026-11-03T07:00:00Z",
           "positive_count": 2,
-          "negative_count": 1,
-          "neutral_count": 1,
+          "negative_count": 2,
+          "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": 0.25,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -279,10 +249,10 @@
           "bucket_start": "2026-11-03T08:00:00Z",
           "bucket_end": "2026-11-03T09:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -329,10 +299,10 @@
           "bucket_start": "2026-11-03T13:00:00Z",
           "bucket_end": "2026-11-03T14:00:00Z",
           "positive_count": 2,
-          "negative_count": 1,
-          "neutral_count": 1,
+          "negative_count": 2,
+          "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": 0.25,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -369,10 +339,10 @@
           "bucket_start": "2026-11-03T17:00:00Z",
           "bucket_end": "2026-11-03T18:00:00Z",
           "positive_count": 0,
-          "negative_count": 2,
-          "neutral_count": 1,
+          "negative_count": 3,
+          "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": -0.6666666666666666,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -398,11 +368,11 @@
         {
           "bucket_start": "2026-11-03T20:00:00Z",
           "bucket_end": "2026-11-03T21:00:00Z",
-          "positive_count": 3,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "positive_count": 1,
+          "negative_count": 2,
+          "neutral_count": 1,
           "mention_count": 4,
-          "net_metric": 0.5,
+          "net_metric": -0.25,
           "data_status": "insufficient_sample"
         },
         {
@@ -419,10 +389,10 @@
           "bucket_start": "2026-11-03T22:00:00Z",
           "bucket_end": "2026-11-03T23:00:00Z",
           "positive_count": 2,
-          "negative_count": 1,
-          "neutral_count": 1,
+          "negative_count": 2,
+          "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": 0.25,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -469,20 +439,20 @@
           "bucket_start": "2026-11-04T03:00:00Z",
           "bucket_end": "2026-11-04T04:00:00Z",
           "positive_count": 1,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": 0.5,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-04T04:00:00Z",
           "bucket_end": "2026-11-04T05:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -509,10 +479,10 @@
           "bucket_start": "2026-11-04T07:00:00Z",
           "bucket_end": "2026-11-04T08:00:00Z",
           "positive_count": 4,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 5,
-          "net_metric": 0.8,
+          "net_metric": 0.6,
           "data_status": "ok"
         },
         {
@@ -528,16 +498,6 @@
         {
           "bucket_start": "2026-11-04T09:00:00Z",
           "bucket_end": "2026-11-04T10:00:00Z",
-          "positive_count": 1,
-          "negative_count": 2,
-          "neutral_count": 1,
-          "mention_count": 4,
-          "net_metric": -0.25,
-          "data_status": "insufficient_sample"
-        },
-        {
-          "bucket_start": "2026-11-04T10:00:00Z",
-          "bucket_end": "2026-11-04T11:00:00Z",
           "positive_count": 2,
           "negative_count": 1,
           "neutral_count": 1,
@@ -546,23 +506,33 @@
           "data_status": "insufficient_sample"
         },
         {
-          "bucket_start": "2026-11-04T11:00:00Z",
-          "bucket_end": "2026-11-04T12:00:00Z",
-          "positive_count": 4,
+          "bucket_start": "2026-11-04T10:00:00Z",
+          "bucket_end": "2026-11-04T11:00:00Z",
+          "positive_count": 2,
           "negative_count": 2,
           "neutral_count": 0,
+          "mention_count": 4,
+          "net_metric": 0.0,
+          "data_status": "insufficient_sample"
+        },
+        {
+          "bucket_start": "2026-11-04T11:00:00Z",
+          "bucket_end": "2026-11-04T12:00:00Z",
+          "positive_count": 3,
+          "negative_count": 0,
+          "neutral_count": 3,
           "mention_count": 6,
-          "net_metric": 0.3333333333333333,
+          "net_metric": 0.5,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-04T12:00:00Z",
           "bucket_end": "2026-11-04T13:00:00Z",
-          "positive_count": 4,
-          "negative_count": 0,
+          "positive_count": 3,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": 1.0,
+          "net_metric": 0.5,
           "data_status": "insufficient_sample"
         },
         {
@@ -578,21 +548,21 @@
         {
           "bucket_start": "2026-11-04T14:00:00Z",
           "bucket_end": "2026-11-04T15:00:00Z",
-          "positive_count": 5,
-          "negative_count": 0,
-          "neutral_count": 0,
+          "positive_count": 3,
+          "negative_count": 1,
+          "neutral_count": 1,
           "mention_count": 5,
-          "net_metric": 1.0,
+          "net_metric": 0.4,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-04T15:00:00Z",
           "bucket_end": "2026-11-04T16:00:00Z",
-          "positive_count": 2,
-          "negative_count": 0,
-          "neutral_count": 2,
+          "positive_count": 1,
+          "negative_count": 2,
+          "neutral_count": 1,
           "mention_count": 4,
-          "net_metric": 0.5,
+          "net_metric": -0.25,
           "data_status": "insufficient_sample"
         },
         {
@@ -608,11 +578,11 @@
         {
           "bucket_start": "2026-11-04T17:00:00Z",
           "bucket_end": "2026-11-04T18:00:00Z",
-          "positive_count": 1,
+          "positive_count": 2,
           "negative_count": 1,
-          "neutral_count": 2,
+          "neutral_count": 1,
           "mention_count": 4,
-          "net_metric": 0.0,
+          "net_metric": 0.25,
           "data_status": "insufficient_sample"
         },
         {
@@ -628,11 +598,11 @@
         {
           "bucket_start": "2026-11-04T19:00:00Z",
           "bucket_end": "2026-11-04T20:00:00Z",
-          "positive_count": 2,
-          "negative_count": 0,
+          "positive_count": 1,
+          "negative_count": 1,
           "neutral_count": 2,
           "mention_count": 4,
-          "net_metric": 0.5,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -649,30 +619,30 @@
           "bucket_start": "2026-11-04T21:00:00Z",
           "bucket_end": "2026-11-04T22:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 1,
+          "negative_count": 2,
+          "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": -0.5,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-04T22:00:00Z",
           "bucket_end": "2026-11-04T23:00:00Z",
-          "positive_count": 2,
-          "negative_count": 1,
+          "positive_count": 1,
+          "negative_count": 2,
           "neutral_count": 2,
           "mention_count": 5,
-          "net_metric": 0.2,
+          "net_metric": -0.2,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-04T23:00:00Z",
           "bucket_end": "2026-11-05T00:00:00Z",
-          "positive_count": 0,
+          "positive_count": 1,
           "negative_count": 0,
-          "neutral_count": 3,
+          "neutral_count": 2,
           "mention_count": 3,
-          "net_metric": 0.0,
+          "net_metric": 0.3333333333333333,
           "data_status": "insufficient_sample"
         },
         {
@@ -688,21 +658,21 @@
         {
           "bucket_start": "2026-11-05T01:00:00Z",
           "bucket_end": "2026-11-05T02:00:00Z",
-          "positive_count": 1,
+          "positive_count": 2,
           "negative_count": 0,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": 0.5,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-05T02:00:00Z",
           "bucket_end": "2026-11-05T03:00:00Z",
-          "positive_count": 1,
+          "positive_count": 0,
           "negative_count": 1,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 2,
-          "net_metric": 0.0,
+          "net_metric": -0.5,
           "data_status": "insufficient_sample"
         },
         {
@@ -728,21 +698,21 @@
         {
           "bucket_start": "2026-11-05T05:00:00Z",
           "bucket_end": "2026-11-05T06:00:00Z",
-          "positive_count": 3,
+          "positive_count": 2,
           "negative_count": 2,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 5,
-          "net_metric": 0.2,
+          "net_metric": 0.0,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-05T06:00:00Z",
           "bucket_end": "2026-11-05T07:00:00Z",
-          "positive_count": 2,
+          "positive_count": 3,
           "negative_count": 0,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": 0.6666666666666666,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -769,50 +739,50 @@
           "bucket_start": "2026-11-05T09:00:00Z",
           "bucket_end": "2026-11-05T10:00:00Z",
           "positive_count": 1,
-          "negative_count": 2,
-          "neutral_count": 1,
+          "negative_count": 3,
+          "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": -0.25,
+          "net_metric": -0.5,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-05T10:00:00Z",
           "bucket_end": "2026-11-05T11:00:00Z",
-          "positive_count": 4,
-          "negative_count": 0,
+          "positive_count": 2,
+          "negative_count": 2,
           "neutral_count": 1,
           "mention_count": 5,
-          "net_metric": 0.8,
+          "net_metric": 0.0,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-05T11:00:00Z",
           "bucket_end": "2026-11-05T12:00:00Z",
           "positive_count": 1,
-          "negative_count": 0,
-          "neutral_count": 2,
+          "negative_count": 1,
+          "neutral_count": 1,
           "mention_count": 3,
-          "net_metric": 0.3333333333333333,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-05T12:00:00Z",
           "bucket_end": "2026-11-05T13:00:00Z",
-          "positive_count": 2,
-          "negative_count": 0,
-          "neutral_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
+          "neutral_count": 1,
           "mention_count": 2,
-          "net_metric": 1.0,
+          "net_metric": -0.5,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-05T13:00:00Z",
           "bucket_end": "2026-11-05T14:00:00Z",
-          "positive_count": 1,
-          "negative_count": 1,
+          "positive_count": 0,
+          "negative_count": 2,
           "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -848,11 +818,11 @@
         {
           "bucket_start": "2026-11-05T17:00:00Z",
           "bucket_end": "2026-11-05T18:00:00Z",
-          "positive_count": 3,
-          "negative_count": 0,
+          "positive_count": 2,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": 1.0,
+          "net_metric": 0.3333333333333333,
           "data_status": "insufficient_sample"
         },
         {
@@ -868,11 +838,11 @@
         {
           "bucket_start": "2026-11-05T19:00:00Z",
           "bucket_end": "2026-11-05T20:00:00Z",
-          "positive_count": 3,
-          "negative_count": 2,
+          "positive_count": 4,
+          "negative_count": 1,
           "neutral_count": 2,
           "mention_count": 7,
-          "net_metric": 0.14285714285714285,
+          "net_metric": 0.42857142857142855,
           "data_status": "ok"
         },
         {
@@ -898,11 +868,11 @@
         {
           "bucket_start": "2026-11-05T22:00:00Z",
           "bucket_end": "2026-11-05T23:00:00Z",
-          "positive_count": 2,
-          "negative_count": 1,
+          "positive_count": 1,
+          "negative_count": 2,
           "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": 0.3333333333333333,
+          "net_metric": -0.3333333333333333,
           "data_status": "insufficient_sample"
         },
         {
@@ -948,21 +918,21 @@
         {
           "bucket_start": "2026-11-06T03:00:00Z",
           "bucket_end": "2026-11-06T04:00:00Z",
-          "positive_count": 1,
+          "positive_count": 3,
           "negative_count": 0,
-          "neutral_count": 2,
+          "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": 0.3333333333333333,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-06T04:00:00Z",
           "bucket_end": "2026-11-06T05:00:00Z",
-          "positive_count": 1,
-          "negative_count": 3,
+          "positive_count": 2,
+          "negative_count": 2,
           "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": -0.5,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -988,11 +958,11 @@
         {
           "bucket_start": "2026-11-06T07:00:00Z",
           "bucket_end": "2026-11-06T08:00:00Z",
-          "positive_count": 3,
-          "negative_count": 0,
+          "positive_count": 2,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": 1.0,
+          "net_metric": 0.3333333333333333,
           "data_status": "insufficient_sample"
         },
         {
@@ -1008,19 +978,19 @@
         {
           "bucket_start": "2026-11-06T09:00:00Z",
           "bucket_end": "2026-11-06T10:00:00Z",
-          "positive_count": 3,
-          "negative_count": 0,
+          "positive_count": 2,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": 1.0,
+          "net_metric": 0.3333333333333333,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-06T10:00:00Z",
           "bucket_end": "2026-11-06T11:00:00Z",
-          "positive_count": 4,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "positive_count": 3,
+          "negative_count": 0,
+          "neutral_count": 2,
           "mention_count": 5,
           "net_metric": 0.6,
           "data_status": "ok"
@@ -1059,56 +1029,46 @@
           "bucket_start": "2026-11-06T14:00:00Z",
           "bucket_end": "2026-11-06T15:00:00Z",
           "positive_count": 1,
-          "negative_count": 2,
-          "neutral_count": 0,
+          "negative_count": 1,
+          "neutral_count": 1,
           "mention_count": 3,
-          "net_metric": -0.3333333333333333,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-06T15:00:00Z",
           "bucket_end": "2026-11-06T16:00:00Z",
-          "positive_count": 6,
-          "negative_count": 0,
-          "neutral_count": 0,
+          "positive_count": 3,
+          "negative_count": 1,
+          "neutral_count": 2,
           "mention_count": 6,
-          "net_metric": 1.0,
+          "net_metric": 0.3333333333333333,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T16:00:00Z",
           "bucket_end": "2026-11-06T17:00:00Z",
-          "positive_count": 3,
+          "positive_count": 1,
           "negative_count": 1,
-          "neutral_count": 0,
+          "neutral_count": 2,
           "mention_count": 4,
-          "net_metric": 0.5,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-06T17:00:00Z",
           "bucket_end": "2026-11-06T18:00:00Z",
-          "positive_count": 2,
-          "negative_count": 2,
+          "positive_count": 1,
+          "negative_count": 3,
           "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": 0.0,
+          "net_metric": -0.5,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-06T18:00:00Z",
           "bucket_end": "2026-11-06T19:00:00Z",
           "positive_count": 1,
-          "negative_count": 0,
-          "neutral_count": 1,
-          "mention_count": 2,
-          "net_metric": 0.5,
-          "data_status": "insufficient_sample"
-        },
-        {
-          "bucket_start": "2026-11-06T19:00:00Z",
-          "bucket_end": "2026-11-06T20:00:00Z",
-          "positive_count": 1,
           "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 2,
@@ -1116,33 +1076,43 @@
           "data_status": "insufficient_sample"
         },
         {
+          "bucket_start": "2026-11-06T19:00:00Z",
+          "bucket_end": "2026-11-06T20:00:00Z",
+          "positive_count": 0,
+          "negative_count": 2,
+          "neutral_count": 0,
+          "mention_count": 2,
+          "net_metric": -1.0,
+          "data_status": "insufficient_sample"
+        },
+        {
           "bucket_start": "2026-11-06T20:00:00Z",
           "bucket_end": "2026-11-06T21:00:00Z",
-          "positive_count": 2,
+          "positive_count": 3,
           "negative_count": 2,
-          "neutral_count": 3,
+          "neutral_count": 2,
           "mention_count": 7,
-          "net_metric": 0.0,
+          "net_metric": 0.14285714285714285,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T21:00:00Z",
           "bucket_end": "2026-11-06T22:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-06T22:00:00Z",
           "bucket_end": "2026-11-06T23:00:00Z",
           "positive_count": 1,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
           "mention_count": 2,
-          "net_metric": 0.0,
+          "net_metric": 0.5,
           "data_status": "insufficient_sample"
         },
         {
@@ -1158,11 +1128,11 @@
         {
           "bucket_start": "2026-11-07T00:00:00Z",
           "bucket_end": "2026-11-07T01:00:00Z",
-          "positive_count": 1,
+          "positive_count": 0,
           "negative_count": 1,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 2,
-          "net_metric": 0.0,
+          "net_metric": -0.5,
           "data_status": "insufficient_sample"
         },
         {
@@ -1239,50 +1209,50 @@
           "bucket_start": "2026-11-07T08:00:00Z",
           "bucket_end": "2026-11-07T09:00:00Z",
           "positive_count": 4,
-          "negative_count": 2,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 2,
           "mention_count": 7,
-          "net_metric": 0.2857142857142857,
+          "net_metric": 0.42857142857142855,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-07T09:00:00Z",
           "bucket_end": "2026-11-07T10:00:00Z",
-          "positive_count": 2,
+          "positive_count": 1,
           "negative_count": 1,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 3,
-          "net_metric": 0.3333333333333333,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-07T10:00:00Z",
           "bucket_end": "2026-11-07T11:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": -1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-07T11:00:00Z",
           "bucket_end": "2026-11-07T12:00:00Z",
-          "positive_count": 8,
-          "negative_count": 2,
-          "neutral_count": 1,
+          "positive_count": 6,
+          "negative_count": 3,
+          "neutral_count": 2,
           "mention_count": 11,
-          "net_metric": 0.5454545454545454,
+          "net_metric": 0.2727272727272727,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-07T12:00:00Z",
           "bucket_end": "2026-11-07T13:00:00Z",
-          "positive_count": 1,
-          "negative_count": 1,
+          "positive_count": 2,
+          "negative_count": 0,
           "neutral_count": 1,
           "mention_count": 3,
-          "net_metric": 0.0,
+          "net_metric": 0.6666666666666666,
           "data_status": "insufficient_sample"
         },
         {
@@ -1298,11 +1268,11 @@
         {
           "bucket_start": "2026-11-07T14:00:00Z",
           "bucket_end": "2026-11-07T15:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -1319,10 +1289,10 @@
           "bucket_start": "2026-11-07T16:00:00Z",
           "bucket_end": "2026-11-07T17:00:00Z",
           "positive_count": 2,
-          "negative_count": 1,
-          "neutral_count": 2,
+          "negative_count": 3,
+          "neutral_count": 0,
           "mention_count": 5,
-          "net_metric": 0.2,
+          "net_metric": -0.2,
           "data_status": "ok"
         },
         {
@@ -1338,11 +1308,11 @@
         {
           "bucket_start": "2026-11-07T18:00:00Z",
           "bucket_end": "2026-11-07T19:00:00Z",
-          "positive_count": 3,
-          "negative_count": 1,
+          "positive_count": 2,
+          "negative_count": 2,
           "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": 0.5,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -1359,38 +1329,38 @@
           "bucket_start": "2026-11-07T20:00:00Z",
           "bucket_end": "2026-11-07T21:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 1,
+          "negative_count": 2,
+          "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": -0.5,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-07T21:00:00Z",
           "bucket_end": "2026-11-07T22:00:00Z",
-          "positive_count": 2,
-          "negative_count": 1,
+          "positive_count": 1,
+          "negative_count": 2,
           "neutral_count": 1,
           "mention_count": 4,
-          "net_metric": 0.25,
+          "net_metric": -0.25,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-07T22:00:00Z",
           "bucket_end": "2026-11-07T23:00:00Z",
-          "positive_count": 5,
+          "positive_count": 4,
           "negative_count": 4,
-          "neutral_count": 1,
+          "neutral_count": 2,
           "mention_count": 10,
-          "net_metric": 0.1,
+          "net_metric": 0.0,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-07T23:00:00Z",
           "bucket_end": "2026-11-08T00:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
-          "neutral_count": 2,
+          "positive_count": 2,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 3,
           "net_metric": 0.3333333333333333,
           "data_status": "insufficient_sample"
@@ -1399,10 +1369,10 @@
           "bucket_start": "2026-11-08T00:00:00Z",
           "bucket_end": "2026-11-08T01:00:00Z",
           "positive_count": 1,
-          "negative_count": 1,
-          "neutral_count": 2,
+          "negative_count": 3,
+          "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": 0.0,
+          "net_metric": -0.5,
           "data_status": "insufficient_sample"
         },
         {
@@ -1418,11 +1388,11 @@
         {
           "bucket_start": "2026-11-08T02:00:00Z",
           "bucket_end": "2026-11-08T03:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 1,
           "mention_count": 2,
-          "net_metric": 0.5,
+          "net_metric": -0.5,
           "data_status": "insufficient_sample"
         },
         {
@@ -1438,11 +1408,11 @@
         {
           "bucket_start": "2026-11-08T04:00:00Z",
           "bucket_end": "2026-11-08T05:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 1,
           "mention_count": 2,
-          "net_metric": 0.5,
+          "net_metric": -0.5,
           "data_status": "insufficient_sample"
         },
         {
@@ -1458,19 +1428,19 @@
         {
           "bucket_start": "2026-11-08T06:00:00Z",
           "bucket_end": "2026-11-08T07:00:00Z",
-          "positive_count": 2,
-          "negative_count": 1,
+          "positive_count": 1,
+          "negative_count": 2,
           "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": 0.3333333333333333,
+          "net_metric": -0.3333333333333333,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-08T07:00:00Z",
           "bucket_end": "2026-11-08T08:00:00Z",
-          "positive_count": 3,
-          "negative_count": 2,
-          "neutral_count": 1,
+          "positive_count": 2,
+          "negative_count": 1,
+          "neutral_count": 3,
           "mention_count": 6,
           "net_metric": 0.16666666666666666,
           "data_status": "ok"
@@ -1478,71 +1448,71 @@
         {
           "bucket_start": "2026-11-08T08:00:00Z",
           "bucket_end": "2026-11-08T09:00:00Z",
-          "positive_count": 2,
-          "negative_count": 1,
+          "positive_count": 1,
+          "negative_count": 2,
           "neutral_count": 1,
           "mention_count": 4,
-          "net_metric": 0.25,
+          "net_metric": -0.25,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-08T09:00:00Z",
           "bucket_end": "2026-11-08T10:00:00Z",
-          "positive_count": 3,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "positive_count": 1,
+          "negative_count": 3,
+          "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": 0.75,
+          "net_metric": -0.5,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-08T10:00:00Z",
           "bucket_end": "2026-11-08T11:00:00Z",
-          "positive_count": 5,
-          "negative_count": 0,
-          "neutral_count": 0,
+          "positive_count": 1,
+          "negative_count": 2,
+          "neutral_count": 2,
           "mention_count": 5,
-          "net_metric": 1.0,
+          "net_metric": -0.2,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-08T11:00:00Z",
           "bucket_end": "2026-11-08T12:00:00Z",
-          "positive_count": 3,
+          "positive_count": 1,
           "negative_count": 1,
-          "neutral_count": 0,
+          "neutral_count": 2,
           "mention_count": 4,
-          "net_metric": 0.5,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-08T12:00:00Z",
           "bucket_end": "2026-11-08T13:00:00Z",
-          "positive_count": 1,
-          "negative_count": 1,
+          "positive_count": 2,
+          "negative_count": 0,
           "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": 0.0,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-08T13:00:00Z",
           "bucket_end": "2026-11-08T14:00:00Z",
-          "positive_count": 3,
+          "positive_count": 2,
           "negative_count": 0,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 3,
-          "net_metric": 1.0,
+          "net_metric": 0.6666666666666666,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-08T14:00:00Z",
           "bucket_end": "2026-11-08T15:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": -1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -1558,31 +1528,31 @@
         {
           "bucket_start": "2026-11-08T16:00:00Z",
           "bucket_end": "2026-11-08T17:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 2,
           "mention_count": 3,
-          "net_metric": 0.3333333333333333,
+          "net_metric": -0.3333333333333333,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-08T17:00:00Z",
           "bucket_end": "2026-11-08T18:00:00Z",
-          "positive_count": 2,
-          "negative_count": 1,
+          "positive_count": 1,
+          "negative_count": 2,
           "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": 0.3333333333333333,
+          "net_metric": -0.3333333333333333,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-08T18:00:00Z",
           "bucket_end": "2026-11-08T19:00:00Z",
           "positive_count": 1,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
           "mention_count": 2,
-          "net_metric": 0.0,
+          "net_metric": 0.5,
           "data_status": "insufficient_sample"
         },
         {
@@ -1618,11 +1588,11 @@
         {
           "bucket_start": "2026-11-08T22:00:00Z",
           "bucket_end": "2026-11-08T23:00:00Z",
-          "positive_count": 2,
-          "negative_count": 1,
+          "positive_count": 1,
+          "negative_count": 2,
           "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": 0.3333333333333333,
+          "net_metric": -0.3333333333333333,
           "data_status": "insufficient_sample"
         },
         {
@@ -1658,11 +1628,11 @@
         {
           "bucket_start": "2026-11-09T02:00:00Z",
           "bucket_end": "2026-11-09T03:00:00Z",
-          "positive_count": 0,
-          "negative_count": 3,
+          "positive_count": 1,
+          "negative_count": 2,
           "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": -1.0,
+          "net_metric": -0.3333333333333333,
           "data_status": "insufficient_sample"
         },
         {
@@ -1688,11 +1658,41 @@
         {
           "bucket_start": "2026-11-09T05:00:00Z",
           "bucket_end": "2026-11-09T06:00:00Z",
+          "positive_count": 2,
+          "negative_count": 1,
+          "neutral_count": 0,
+          "mention_count": 3,
+          "net_metric": 0.3333333333333333,
+          "data_status": "insufficient_sample"
+        },
+        {
+          "bucket_start": "2026-11-09T06:00:00Z",
+          "bucket_end": "2026-11-09T07:00:00Z",
+          "positive_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
+          "mention_count": 2,
+          "net_metric": 0.0,
+          "data_status": "insufficient_sample"
+        },
+        {
+          "bucket_start": "2026-11-09T07:00:00Z",
+          "bucket_end": "2026-11-09T08:00:00Z",
           "positive_count": 1,
           "negative_count": 1,
           "neutral_count": 1,
           "mention_count": 3,
           "net_metric": 0.0,
+          "data_status": "insufficient_sample"
+        },
+        {
+          "bucket_start": "2026-11-09T08:00:00Z",
+          "bucket_end": "2026-11-09T09:00:00Z",
+          "positive_count": 0,
+          "negative_count": 1,
+          "neutral_count": 0,
+          "mention_count": 1,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         }
       ]
@@ -1702,36 +1702,6 @@
       "name": "Matchmaking / ranks",
       "buckets": [
         {
-          "bucket_start": "2026-11-02T06:00:00Z",
-          "bucket_end": "2026-11-02T07:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T07:00:00Z",
-          "bucket_end": "2026-11-02T08:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T08:00:00Z",
-          "bucket_end": "2026-11-02T09:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
           "bucket_start": "2026-11-02T09:00:00Z",
           "bucket_end": "2026-11-02T10:00:00Z",
           "positive_count": 0,
@@ -1955,10 +1925,10 @@
           "bucket_start": "2026-11-03T07:00:00Z",
           "bucket_end": "2026-11-03T08:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -2155,10 +2125,10 @@
           "bucket_start": "2026-11-04T03:00:00Z",
           "bucket_end": "2026-11-04T04:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -2224,11 +2194,11 @@
         {
           "bucket_start": "2026-11-04T10:00:00Z",
           "bucket_end": "2026-11-04T11:00:00Z",
-          "positive_count": 2,
-          "negative_count": 0,
+          "positive_count": 1,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": 1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -2244,11 +2214,11 @@
         {
           "bucket_start": "2026-11-04T12:00:00Z",
           "bucket_end": "2026-11-04T13:00:00Z",
-          "positive_count": 1,
+          "positive_count": 0,
           "negative_count": 0,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -2264,11 +2234,11 @@
         {
           "bucket_start": "2026-11-04T14:00:00Z",
           "bucket_end": "2026-11-04T15:00:00Z",
-          "positive_count": 2,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 2,
           "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -2384,11 +2354,11 @@
         {
           "bucket_start": "2026-11-05T02:00:00Z",
           "bucket_end": "2026-11-05T03:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -2475,10 +2445,10 @@
           "bucket_start": "2026-11-05T11:00:00Z",
           "bucket_end": "2026-11-05T12:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -2695,10 +2665,10 @@
           "bucket_start": "2026-11-06T09:00:00Z",
           "bucket_end": "2026-11-06T10:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": -1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -2815,10 +2785,10 @@
           "bucket_start": "2026-11-06T21:00:00Z",
           "bucket_end": "2026-11-06T22:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -2865,10 +2835,10 @@
           "bucket_start": "2026-11-07T02:00:00Z",
           "bucket_end": "2026-11-07T03:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -3004,11 +2974,11 @@
         {
           "bucket_start": "2026-11-07T16:00:00Z",
           "bucket_end": "2026-11-07T17:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -3024,11 +2994,11 @@
         {
           "bucket_start": "2026-11-07T18:00:00Z",
           "bucket_end": "2026-11-07T19:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -3064,11 +3034,11 @@
         {
           "bucket_start": "2026-11-07T22:00:00Z",
           "bucket_end": "2026-11-07T23:00:00Z",
-          "positive_count": 1,
-          "negative_count": 1,
+          "positive_count": 0,
+          "negative_count": 2,
           "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -3144,11 +3114,11 @@
         {
           "bucket_start": "2026-11-08T06:00:00Z",
           "bucket_end": "2026-11-08T07:00:00Z",
-          "positive_count": 1,
-          "negative_count": 1,
+          "positive_count": 0,
+          "negative_count": 2,
           "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -3374,6 +3344,36 @@
         {
           "bucket_start": "2026-11-09T05:00:00Z",
           "bucket_end": "2026-11-09T06:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T06:00:00Z",
+          "bucket_end": "2026-11-09T07:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T07:00:00Z",
+          "bucket_end": "2026-11-09T08:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T08:00:00Z",
+          "bucket_end": "2026-11-09T09:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -3388,36 +3388,6 @@
       "name": "Hero balance",
       "buckets": [
         {
-          "bucket_start": "2026-11-02T06:00:00Z",
-          "bucket_end": "2026-11-02T07:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T07:00:00Z",
-          "bucket_end": "2026-11-02T08:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T08:00:00Z",
-          "bucket_end": "2026-11-02T09:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 1,
-          "net_metric": 1.0,
-          "data_status": "insufficient_sample"
-        },
-        {
           "bucket_start": "2026-11-02T09:00:00Z",
           "bucket_end": "2026-11-02T10:00:00Z",
           "positive_count": 0,
@@ -3630,11 +3600,11 @@
         {
           "bucket_start": "2026-11-03T06:00:00Z",
           "bucket_end": "2026-11-03T07:00:00Z",
-          "positive_count": 1,
+          "positive_count": 0,
           "negative_count": 0,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -4290,11 +4260,11 @@
         {
           "bucket_start": "2026-11-06T00:00:00Z",
           "bucket_end": "2026-11-06T01:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -4380,11 +4350,11 @@
         {
           "bucket_start": "2026-11-06T09:00:00Z",
           "bucket_end": "2026-11-06T10:00:00Z",
-          "positive_count": 1,
+          "positive_count": 0,
           "negative_count": 0,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -4830,11 +4800,11 @@
         {
           "bucket_start": "2026-11-08T06:00:00Z",
           "bucket_end": "2026-11-08T07:00:00Z",
-          "positive_count": 1,
+          "positive_count": 0,
           "negative_count": 0,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -4981,10 +4951,10 @@
           "bucket_start": "2026-11-08T21:00:00Z",
           "bucket_end": "2026-11-08T22:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": -1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -5060,6 +5030,36 @@
         {
           "bucket_start": "2026-11-09T05:00:00Z",
           "bucket_end": "2026-11-09T06:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T06:00:00Z",
+          "bucket_end": "2026-11-09T07:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T07:00:00Z",
+          "bucket_end": "2026-11-09T08:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T08:00:00Z",
+          "bucket_end": "2026-11-09T09:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -5074,36 +5074,6 @@
       "name": "Patch / meta",
       "buckets": [
         {
-          "bucket_start": "2026-11-02T06:00:00Z",
-          "bucket_end": "2026-11-02T07:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T07:00:00Z",
-          "bucket_end": "2026-11-02T08:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T08:00:00Z",
-          "bucket_end": "2026-11-02T09:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
           "bucket_start": "2026-11-02T09:00:00Z",
           "bucket_end": "2026-11-02T10:00:00Z",
           "positive_count": 0,
@@ -5976,11 +5946,11 @@
         {
           "bucket_start": "2026-11-06T00:00:00Z",
           "bucket_end": "2026-11-06T01:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -6746,6 +6716,36 @@
         {
           "bucket_start": "2026-11-09T05:00:00Z",
           "bucket_end": "2026-11-09T06:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T06:00:00Z",
+          "bucket_end": "2026-11-09T07:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T07:00:00Z",
+          "bucket_end": "2026-11-09T08:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T08:00:00Z",
+          "bucket_end": "2026-11-09T09:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -6760,36 +6760,6 @@
       "name": "Monetization / cosmetics",
       "buckets": [
         {
-          "bucket_start": "2026-11-02T06:00:00Z",
-          "bucket_end": "2026-11-02T07:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T07:00:00Z",
-          "bucket_end": "2026-11-02T08:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T08:00:00Z",
-          "bucket_end": "2026-11-02T09:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
           "bucket_start": "2026-11-02T09:00:00Z",
           "bucket_end": "2026-11-02T10:00:00Z",
           "positive_count": 0,
@@ -8432,6 +8402,36 @@
         {
           "bucket_start": "2026-11-09T05:00:00Z",
           "bucket_end": "2026-11-09T06:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T06:00:00Z",
+          "bucket_end": "2026-11-09T07:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T07:00:00Z",
+          "bucket_end": "2026-11-09T08:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T08:00:00Z",
+          "bucket_end": "2026-11-09T09:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -8446,36 +8446,6 @@
       "name": "Servers / performance",
       "buckets": [
         {
-          "bucket_start": "2026-11-02T06:00:00Z",
-          "bucket_end": "2026-11-02T07:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T07:00:00Z",
-          "bucket_end": "2026-11-02T08:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T08:00:00Z",
-          "bucket_end": "2026-11-02T09:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
           "bucket_start": "2026-11-02T09:00:00Z",
           "bucket_end": "2026-11-02T10:00:00Z",
           "positive_count": 0,
@@ -8959,10 +8929,10 @@
           "bucket_start": "2026-11-04T09:00:00Z",
           "bucket_end": "2026-11-04T10:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": -1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -9529,10 +9499,10 @@
           "bucket_start": "2026-11-06T18:00:00Z",
           "bucket_end": "2026-11-06T19:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -10049,10 +10019,10 @@
           "bucket_start": "2026-11-08T22:00:00Z",
           "bucket_end": "2026-11-08T23:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -10118,6 +10088,36 @@
         {
           "bucket_start": "2026-11-09T05:00:00Z",
           "bucket_end": "2026-11-09T06:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T06:00:00Z",
+          "bucket_end": "2026-11-09T07:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T07:00:00Z",
+          "bucket_end": "2026-11-09T08:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T08:00:00Z",
+          "bucket_end": "2026-11-09T09:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -10132,36 +10132,6 @@
       "name": "Reports / behavior",
       "buckets": [
         {
-          "bucket_start": "2026-11-02T06:00:00Z",
-          "bucket_end": "2026-11-02T07:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T07:00:00Z",
-          "bucket_end": "2026-11-02T08:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T08:00:00Z",
-          "bucket_end": "2026-11-02T09:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
           "bucket_start": "2026-11-02T09:00:00Z",
           "bucket_end": "2026-11-02T10:00:00Z",
           "positive_count": 0,
@@ -10705,10 +10675,10 @@
           "bucket_start": "2026-11-04T15:00:00Z",
           "bucket_end": "2026-11-04T16:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -11035,10 +11005,10 @@
           "bucket_start": "2026-11-06T00:00:00Z",
           "bucket_end": "2026-11-06T01:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -11184,11 +11154,11 @@
         {
           "bucket_start": "2026-11-06T15:00:00Z",
           "bucket_end": "2026-11-06T16:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -11434,11 +11404,11 @@
         {
           "bucket_start": "2026-11-07T16:00:00Z",
           "bucket_end": "2026-11-07T17:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -11605,10 +11575,10 @@
           "bucket_start": "2026-11-08T09:00:00Z",
           "bucket_end": "2026-11-08T10:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 1,
+          "negative_count": 2,
+          "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": -0.5,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -11804,6 +11774,36 @@
         {
           "bucket_start": "2026-11-09T05:00:00Z",
           "bucket_end": "2026-11-09T06:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T06:00:00Z",
+          "bucket_end": "2026-11-09T07:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T07:00:00Z",
+          "bucket_end": "2026-11-09T08:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T08:00:00Z",
+          "bucket_end": "2026-11-09T09:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -11818,36 +11818,6 @@
       "name": "New player experience",
       "buckets": [
         {
-          "bucket_start": "2026-11-02T06:00:00Z",
-          "bucket_end": "2026-11-02T07:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T07:00:00Z",
-          "bucket_end": "2026-11-02T08:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T08:00:00Z",
-          "bucket_end": "2026-11-02T09:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
-          "mention_count": 1,
-          "net_metric": 0.0,
-          "data_status": "insufficient_sample"
-        },
-        {
           "bucket_start": "2026-11-02T09:00:00Z",
           "bucket_end": "2026-11-02T10:00:00Z",
           "positive_count": 0,
@@ -11931,10 +11901,10 @@
           "bucket_start": "2026-11-02T17:00:00Z",
           "bucket_end": "2026-11-02T18:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -12310,11 +12280,11 @@
         {
           "bucket_start": "2026-11-04T07:00:00Z",
           "bucket_end": "2026-11-04T08:00:00Z",
-          "positive_count": 0,
+          "positive_count": 1,
           "negative_count": 0,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -12380,11 +12350,11 @@
         {
           "bucket_start": "2026-11-04T14:00:00Z",
           "bucket_end": "2026-11-04T15:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -12430,11 +12400,11 @@
         {
           "bucket_start": "2026-11-04T19:00:00Z",
           "bucket_end": "2026-11-04T20:00:00Z",
-          "positive_count": 1,
+          "positive_count": 0,
           "negative_count": 0,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -12550,11 +12520,11 @@
         {
           "bucket_start": "2026-11-05T07:00:00Z",
           "bucket_end": "2026-11-05T08:00:00Z",
-          "positive_count": 0,
+          "positive_count": 1,
           "negative_count": 0,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -12651,10 +12621,10 @@
           "bucket_start": "2026-11-05T17:00:00Z",
           "bucket_end": "2026-11-05T18:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -12810,11 +12780,11 @@
         {
           "bucket_start": "2026-11-06T09:00:00Z",
           "bucket_end": "2026-11-06T10:00:00Z",
-          "positive_count": 1,
+          "positive_count": 0,
           "negative_count": 0,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -13120,11 +13090,11 @@
         {
           "bucket_start": "2026-11-07T16:00:00Z",
           "bucket_end": "2026-11-07T17:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -13360,11 +13330,11 @@
         {
           "bucket_start": "2026-11-08T16:00:00Z",
           "bucket_end": "2026-11-08T17:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -13490,6 +13460,36 @@
         {
           "bucket_start": "2026-11-09T05:00:00Z",
           "bucket_end": "2026-11-09T06:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T06:00:00Z",
+          "bucket_end": "2026-11-09T07:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T07:00:00Z",
+          "bucket_end": "2026-11-09T08:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T08:00:00Z",
+          "bucket_end": "2026-11-09T09:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
