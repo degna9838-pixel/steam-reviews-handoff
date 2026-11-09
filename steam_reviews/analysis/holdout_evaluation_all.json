@@ -1,0 +1,2480 @@
+{
+  "schema_version": "sentiment-holdout-evaluation-all-1.0",
+  "games": {
+    "730": {
+      "app_id": 730,
+      "game": "CS2",
+      "n": 100,
+      "human_labels": {
+        "positive": 27,
+        "negative": 61,
+        "neutral": 12
+      },
+      "methods": {
+        "simple": {
+          "overall": {
+            "n": 100,
+            "accuracy": 0.68,
+            "macro_f1": 0.598065,
+            "kappa": 0.4407549807759526,
+            "confusion": {
+              "positive": {
+                "positive": 14,
+                "negative": 8,
+                "neutral": 5
+              },
+              "negative": {
+                "positive": 2,
+                "negative": 47,
+                "neutral": 12
+              },
+              "neutral": {
+                "positive": 3,
+                "negative": 2,
+                "neutral": 7
+              }
+            },
+            "per_class": {
+              "positive": {
+                "support": 27,
+                "precision": 0.736842,
+                "recall": 0.518519,
+                "f1": 0.608696
+              },
+              "negative": {
+                "support": 61,
+                "precision": 0.824561,
+                "recall": 0.770492,
+                "f1": 0.79661
+              },
+              "neutral": {
+                "support": 12,
+                "precision": 0.291667,
+                "recall": 0.583333,
+                "f1": 0.388889
+              }
+            }
+          },
+          "per_entity": {
+            "anticheat": {
+              "n": 13,
+              "accuracy": 0.769231,
+              "macro_f1": 0.452381,
+              "kappa": 0.30357142857142877,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 9,
+                  "neutral": 2
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 11,
+                  "precision": 0.9,
+                  "recall": 0.818182,
+                  "f1": 0.857143
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.333333,
+                  "recall": 1.0,
+                  "f1": 0.5
+                }
+              }
+            },
+            "game": {
+              "n": 13,
+              "accuracy": 0.769231,
+              "macro_f1": 0.691026,
+              "kappa": 0.6320754716981133,
+              "confusion": {
+                "positive": {
+                  "positive": 6,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 3,
+                  "neutral": 2
+                },
+                "neutral": {
+                  "positive": 1,
+                  "negative": 0,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 6,
+                  "precision": 0.857143,
+                  "recall": 1.0,
+                  "f1": 0.923077
+                },
+                "negative": {
+                  "support": 5,
+                  "precision": 1.0,
+                  "recall": 0.6,
+                  "f1": 0.75
+                },
+                "neutral": {
+                  "support": 2,
+                  "precision": 0.333333,
+                  "recall": 0.5,
+                  "f1": 0.4
+                }
+              }
+            },
+            "matchmaking": {
+              "n": 13,
+              "accuracy": 0.846154,
+              "macro_f1": 0.525253,
+              "kappa": 0.4468085106382978,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 10,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 10,
+                  "precision": 0.833333,
+                  "recall": 1.0,
+                  "f1": 0.909091
+                },
+                "neutral": {
+                  "support": 2,
+                  "precision": 1.0,
+                  "recall": 0.5,
+                  "f1": 0.666667
+                }
+              }
+            },
+            "monetization": {
+              "n": 13,
+              "accuracy": 0.461538,
+              "macro_f1": 0.235294,
+              "kappa": 0.01086956521739136,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 6,
+                  "neutral": 4
+                },
+                "neutral": {
+                  "positive": 1,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 2,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 10,
+                  "precision": 0.857143,
+                  "recall": 0.6,
+                  "f1": 0.705882
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "performance": {
+              "n": 12,
+              "accuracy": 0.416667,
+              "macro_f1": 0.348148,
+              "kappa": 0.13402061855670103,
+              "confusion": {
+                "positive": {
+                  "positive": 2,
+                  "negative": 1,
+                  "neutral": 3
+                },
+                "negative": {
+                  "positive": 1,
+                  "negative": 3,
+                  "neutral": 1
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 6,
+                  "precision": 0.666667,
+                  "recall": 0.333333,
+                  "f1": 0.444444
+                },
+                "negative": {
+                  "support": 5,
+                  "precision": 0.6,
+                  "recall": 0.6,
+                  "f1": 0.6
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "servers": {
+              "n": 12,
+              "accuracy": 0.833333,
+              "macro_f1": 0.466667,
+              "kappa": 0.4285714285714286,
+              "confusion": {
+                "positive": {
+                  "positive": 1,
+                  "negative": 2,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 9,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 3,
+                  "precision": 1.0,
+                  "recall": 0.333333,
+                  "f1": 0.5
+                },
+                "negative": {
+                  "support": 9,
+                  "precision": 0.818182,
+                  "recall": 1.0,
+                  "f1": 0.9
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "skins_economy": {
+              "n": 12,
+              "accuracy": 0.833333,
+              "macro_f1": 0.861111,
+              "kappa": 0.7333333333333334,
+              "confusion": {
+                "positive": {
+                  "positive": 3,
+                  "negative": 2,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 5,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 2
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 5,
+                  "precision": 1.0,
+                  "recall": 0.6,
+                  "f1": 0.75
+                },
+                "negative": {
+                  "support": 5,
+                  "precision": 0.714286,
+                  "recall": 1.0,
+                  "f1": 0.833333
+                },
+                "neutral": {
+                  "support": 2,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                }
+              }
+            },
+            "weapon_balance": {
+              "n": 12,
+              "accuracy": 0.5,
+              "macro_f1": 0.505291,
+              "kappa": 0.29411764705882354,
+              "confusion": {
+                "positive": {
+                  "positive": 2,
+                  "negative": 0,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 1,
+                  "negative": 2,
+                  "neutral": 3
+                },
+                "neutral": {
+                  "positive": 1,
+                  "negative": 0,
+                  "neutral": 2
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 3,
+                  "precision": 0.5,
+                  "recall": 0.666667,
+                  "f1": 0.571429
+                },
+                "negative": {
+                  "support": 6,
+                  "precision": 1.0,
+                  "recall": 0.333333,
+                  "f1": 0.5
+                },
+                "neutral": {
+                  "support": 3,
+                  "precision": 0.333333,
+                  "recall": 0.666667,
+                  "f1": 0.444444
+                }
+              }
+            }
+          }
+        },
+        "simple_overall": {
+          "overall": {
+            "n": 100,
+            "accuracy": 0.83,
+            "macro_f1": 0.747229,
+            "kappa": 0.6833084947839047,
+            "confusion": {
+              "positive": {
+                "positive": 20,
+                "negative": 4,
+                "neutral": 3
+              },
+              "negative": {
+                "positive": 1,
+                "negative": 56,
+                "neutral": 4
+              },
+              "neutral": {
+                "positive": 2,
+                "negative": 3,
+                "neutral": 7
+              }
+            },
+            "per_class": {
+              "positive": {
+                "support": 27,
+                "precision": 0.869565,
+                "recall": 0.740741,
+                "f1": 0.8
+              },
+              "negative": {
+                "support": 61,
+                "precision": 0.888889,
+                "recall": 0.918033,
+                "f1": 0.903226
+              },
+              "neutral": {
+                "support": 12,
+                "precision": 0.5,
+                "recall": 0.583333,
+                "f1": 0.538462
+              }
+            }
+          },
+          "per_entity": {
+            "anticheat": {
+              "n": 13,
+              "accuracy": 0.769231,
+              "macro_f1": 0.452381,
+              "kappa": 0.30357142857142877,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 9,
+                  "neutral": 2
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 11,
+                  "precision": 0.9,
+                  "recall": 0.818182,
+                  "f1": 0.857143
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.333333,
+                  "recall": 1.0,
+                  "f1": 0.5
+                }
+              }
+            },
+            "game": {
+              "n": 13,
+              "accuracy": 0.846154,
+              "macro_f1": 0.770655,
+              "kappa": 0.7475728155339806,
+              "confusion": {
+                "positive": {
+                  "positive": 6,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 4,
+                  "neutral": 1
+                },
+                "neutral": {
+                  "positive": 1,
+                  "negative": 0,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 6,
+                  "precision": 0.857143,
+                  "recall": 1.0,
+                  "f1": 0.923077
+                },
+                "negative": {
+                  "support": 5,
+                  "precision": 1.0,
+                  "recall": 0.8,
+                  "f1": 0.888889
+                },
+                "neutral": {
+                  "support": 2,
+                  "precision": 0.5,
+                  "recall": 0.5,
+                  "f1": 0.5
+                }
+              }
+            },
+            "matchmaking": {
+              "n": 13,
+              "accuracy": 0.846154,
+              "macro_f1": 0.484127,
+              "kappa": 0.5272727272727272,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 10,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 10,
+                  "precision": 0.909091,
+                  "recall": 1.0,
+                  "f1": 0.952381
+                },
+                "neutral": {
+                  "support": 2,
+                  "precision": 0.5,
+                  "recall": 0.5,
+                  "f1": 0.5
+                }
+              }
+            },
+            "monetization": {
+              "n": 13,
+              "accuracy": 0.846154,
+              "macro_f1": 0.704678,
+              "kappa": 0.6486486486486486,
+              "confusion": {
+                "positive": {
+                  "positive": 1,
+                  "negative": 0,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 9,
+                  "neutral": 1
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 2,
+                  "precision": 1.0,
+                  "recall": 0.5,
+                  "f1": 0.666667
+                },
+                "negative": {
+                  "support": 10,
+                  "precision": 1.0,
+                  "recall": 0.9,
+                  "f1": 0.947368
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.333333,
+                  "recall": 1.0,
+                  "f1": 0.5
+                }
+              }
+            },
+            "performance": {
+              "n": 12,
+              "accuracy": 0.833333,
+              "macro_f1": 0.606061,
+              "kappa": 0.7108433734939761,
+              "confusion": {
+                "positive": {
+                  "positive": 5,
+                  "negative": 0,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 5,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 6,
+                  "precision": 1.0,
+                  "recall": 0.833333,
+                  "f1": 0.909091
+                },
+                "negative": {
+                  "support": 5,
+                  "precision": 0.833333,
+                  "recall": 1.0,
+                  "f1": 0.909091
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "servers": {
+              "n": 12,
+              "accuracy": 0.833333,
+              "macro_f1": 0.466667,
+              "kappa": 0.4285714285714286,
+              "confusion": {
+                "positive": {
+                  "positive": 1,
+                  "negative": 2,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 9,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 3,
+                  "precision": 1.0,
+                  "recall": 0.333333,
+                  "f1": 0.5
+                },
+                "negative": {
+                  "support": 9,
+                  "precision": 0.818182,
+                  "recall": 1.0,
+                  "f1": 0.9
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "skins_economy": {
+              "n": 12,
+              "accuracy": 0.916667,
+              "macro_f1": 0.93266,
+              "kappa": 0.8666666666666666,
+              "confusion": {
+                "positive": {
+                  "positive": 4,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 5,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 2
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 5,
+                  "precision": 1.0,
+                  "recall": 0.8,
+                  "f1": 0.888889
+                },
+                "negative": {
+                  "support": 5,
+                  "precision": 0.833333,
+                  "recall": 1.0,
+                  "f1": 0.909091
+                },
+                "neutral": {
+                  "support": 2,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                }
+              }
+            },
+            "weapon_balance": {
+              "n": 12,
+              "accuracy": 0.75,
+              "macro_f1": 0.694444,
+              "kappa": 0.6,
+              "confusion": {
+                "positive": {
+                  "positive": 3,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 1,
+                  "negative": 5,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 1,
+                  "negative": 1,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 3,
+                  "precision": 0.6,
+                  "recall": 1.0,
+                  "f1": 0.75
+                },
+                "negative": {
+                  "support": 6,
+                  "precision": 0.833333,
+                  "recall": 0.833333,
+                  "f1": 0.833333
+                },
+                "neutral": {
+                  "support": 3,
+                  "precision": 1.0,
+                  "recall": 0.333333,
+                  "f1": 0.5
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "570": {
+      "app_id": 570,
+      "game": "Dota 2",
+      "n": 40,
+      "human_labels": {
+        "positive": 8,
+        "negative": 27,
+        "neutral": 5
+      },
+      "methods": {
+        "simple": {
+          "overall": {
+            "n": 40,
+            "accuracy": 0.725,
+            "macro_f1": 0.621052,
+            "kappa": 0.45679012345679004,
+            "confusion": {
+              "positive": {
+                "positive": 4,
+                "negative": 2,
+                "neutral": 2
+              },
+              "negative": {
+                "positive": 2,
+                "negative": 22,
+                "neutral": 3
+              },
+              "neutral": {
+                "positive": 0,
+                "negative": 2,
+                "neutral": 3
+              }
+            },
+            "per_class": {
+              "positive": {
+                "support": 8,
+                "precision": 0.666667,
+                "recall": 0.5,
+                "f1": 0.571429
+              },
+              "negative": {
+                "support": 27,
+                "precision": 0.846154,
+                "recall": 0.814815,
+                "f1": 0.830189
+              },
+              "neutral": {
+                "support": 5,
+                "precision": 0.375,
+                "recall": 0.6,
+                "f1": 0.461538
+              }
+            }
+          },
+          "per_entity": {
+            "game": {
+              "n": 5,
+              "accuracy": 0.8,
+              "macro_f1": 0.6,
+              "kappa": 0.6666666666666667,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 1,
+                  "negative": 2,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 2
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 3,
+                  "precision": 1.0,
+                  "recall": 0.666667,
+                  "f1": 0.8
+                },
+                "neutral": {
+                  "support": 2,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                }
+              }
+            },
+            "hero_balance": {
+              "n": 5,
+              "accuracy": 0.8,
+              "macro_f1": 0.6,
+              "kappa": 0.6666666666666667,
+              "confusion": {
+                "positive": {
+                  "positive": 2,
+                  "negative": 0,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 2,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 3,
+                  "precision": 1.0,
+                  "recall": 0.666667,
+                  "f1": 0.8
+                },
+                "negative": {
+                  "support": 2,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "matchmaking": {
+              "n": 5,
+              "accuracy": 0.4,
+              "macro_f1": 0.222222,
+              "kappa": 0.06250000000000006,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 2,
+                  "neutral": 1
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 2,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 3,
+                  "precision": 0.666667,
+                  "recall": 0.666667,
+                  "f1": 0.666667
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "monetization": {
+              "n": 5,
+              "accuracy": 0.4,
+              "macro_f1": 0.190476,
+              "kappa": -0.36363636363636376,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 2,
+                  "neutral": 2
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 4,
+                  "precision": 0.666667,
+                  "recall": 0.5,
+                  "f1": 0.571429
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "new_player_experience": {
+              "n": 5,
+              "accuracy": 0.6,
+              "macro_f1": 0.388889,
+              "kappa": 0.1666666666666666,
+              "confusion": {
+                "positive": {
+                  "positive": 1,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 1,
+                  "negative": 2,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 2,
+                  "precision": 0.5,
+                  "recall": 0.5,
+                  "f1": 0.5
+                },
+                "negative": {
+                  "support": 3,
+                  "precision": 0.666667,
+                  "recall": 0.666667,
+                  "f1": 0.666667
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "patch_meta": {
+              "n": 5,
+              "accuracy": 1.0,
+              "macro_f1": 1.0,
+              "kappa": 1.0,
+              "confusion": {
+                "positive": {
+                  "positive": 1,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 3,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 1,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "negative": {
+                  "support": 3,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                }
+              }
+            },
+            "report_system": {
+              "n": 5,
+              "accuracy": 0.8,
+              "macro_f1": 0.296296,
+              "kappa": 0.0,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 4,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 4,
+                  "precision": 0.8,
+                  "recall": 1.0,
+                  "f1": 0.888889
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "servers_performance": {
+              "n": 5,
+              "accuracy": 1.0,
+              "macro_f1": 0.333333,
+              "kappa": null,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 5,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 5,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            }
+          }
+        },
+        "simple_overall": {
+          "overall": {
+            "n": 40,
+            "accuracy": 0.825,
+            "macro_f1": 0.746296,
+            "kappa": 0.6419437340153451,
+            "confusion": {
+              "positive": {
+                "positive": 6,
+                "negative": 1,
+                "neutral": 1
+              },
+              "negative": {
+                "positive": 2,
+                "negative": 24,
+                "neutral": 1
+              },
+              "neutral": {
+                "positive": 0,
+                "negative": 2,
+                "neutral": 3
+              }
+            },
+            "per_class": {
+              "positive": {
+                "support": 8,
+                "precision": 0.75,
+                "recall": 0.75,
+                "f1": 0.75
+              },
+              "negative": {
+                "support": 27,
+                "precision": 0.888889,
+                "recall": 0.888889,
+                "f1": 0.888889
+              },
+              "neutral": {
+                "support": 5,
+                "precision": 0.6,
+                "recall": 0.6,
+                "f1": 0.6
+              }
+            }
+          },
+          "per_entity": {
+            "game": {
+              "n": 5,
+              "accuracy": 0.6,
+              "macro_f1": 0.444445,
+              "kappa": 0.28571428571428564,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 1,
+                  "negative": 2,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 3,
+                  "precision": 0.666667,
+                  "recall": 0.666667,
+                  "f1": 0.666667
+                },
+                "neutral": {
+                  "support": 2,
+                  "precision": 1.0,
+                  "recall": 0.5,
+                  "f1": 0.666667
+                }
+              }
+            },
+            "hero_balance": {
+              "n": 5,
+              "accuracy": 1.0,
+              "macro_f1": 0.666667,
+              "kappa": 1.0,
+              "confusion": {
+                "positive": {
+                  "positive": 3,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 2,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 3,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "negative": {
+                  "support": 2,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "matchmaking": {
+              "n": 5,
+              "accuracy": 0.6,
+              "macro_f1": 0.285714,
+              "kappa": 0.23076923076923075,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 3,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 2,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 3,
+                  "precision": 0.75,
+                  "recall": 1.0,
+                  "f1": 0.857143
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "monetization": {
+              "n": 5,
+              "accuracy": 0.8,
+              "macro_f1": 0.507937,
+              "kappa": 0.5454545454545455,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 3,
+                  "neutral": 1
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 4,
+                  "precision": 1.0,
+                  "recall": 0.75,
+                  "f1": 0.857143
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.5,
+                  "recall": 1.0,
+                  "f1": 0.666667
+                }
+              }
+            },
+            "new_player_experience": {
+              "n": 5,
+              "accuracy": 0.8,
+              "macro_f1": 0.533333,
+              "kappa": 0.6153846153846155,
+              "confusion": {
+                "positive": {
+                  "positive": 2,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 1,
+                  "negative": 2,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 2,
+                  "precision": 0.666667,
+                  "recall": 1.0,
+                  "f1": 0.8
+                },
+                "negative": {
+                  "support": 3,
+                  "precision": 1.0,
+                  "recall": 0.666667,
+                  "f1": 0.8
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "patch_meta": {
+              "n": 5,
+              "accuracy": 1.0,
+              "macro_f1": 1.0,
+              "kappa": 1.0,
+              "confusion": {
+                "positive": {
+                  "positive": 1,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 3,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 1,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "negative": {
+                  "support": 3,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                }
+              }
+            },
+            "report_system": {
+              "n": 5,
+              "accuracy": 0.8,
+              "macro_f1": 0.296296,
+              "kappa": 0.0,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 4,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 4,
+                  "precision": 0.8,
+                  "recall": 1.0,
+                  "f1": 0.888889
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "servers_performance": {
+              "n": 5,
+              "accuracy": 1.0,
+              "macro_f1": 0.333333,
+              "kappa": null,
+              "confusion": {
+                "positive": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 5,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "negative": {
+                  "support": 5,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "4115450": {
+      "app_id": 4115450,
+      "game": "Phantom Blade Zero",
+      "n": 40,
+      "human_labels": {
+        "positive": 29,
+        "negative": 5,
+        "neutral": 6
+      },
+      "methods": {
+        "simple": {
+          "overall": {
+            "n": 40,
+            "accuracy": 0.575,
+            "macro_f1": 0.443879,
+            "kappa": 0.211136890951276,
+            "confusion": {
+              "positive": {
+                "positive": 19,
+                "negative": 3,
+                "neutral": 7
+              },
+              "negative": {
+                "positive": 0,
+                "negative": 3,
+                "neutral": 2
+              },
+              "neutral": {
+                "positive": 3,
+                "negative": 2,
+                "neutral": 1
+              }
+            },
+            "per_class": {
+              "positive": {
+                "support": 29,
+                "precision": 0.863636,
+                "recall": 0.655172,
+                "f1": 0.745098
+              },
+              "negative": {
+                "support": 5,
+                "precision": 0.375,
+                "recall": 0.6,
+                "f1": 0.461538
+              },
+              "neutral": {
+                "support": 6,
+                "precision": 0.1,
+                "recall": 0.166667,
+                "f1": 0.125
+              }
+            }
+          },
+          "per_entity": {
+            "boss_design": {
+              "n": 5,
+              "accuracy": 0.8,
+              "macro_f1": 0.619048,
+              "kappa": 0.5833333333333334,
+              "confusion": {
+                "positive": {
+                  "positive": 3,
+                  "negative": 0,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 4,
+                  "precision": 1.0,
+                  "recall": 0.75,
+                  "f1": 0.857143
+                },
+                "negative": {
+                  "support": 1,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "combat": {
+              "n": 5,
+              "accuracy": 0.6,
+              "macro_f1": 0.555556,
+              "kappa": 0.3749999999999999,
+              "confusion": {
+                "positive": {
+                  "positive": 2,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 2,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 2,
+                  "precision": 0.5,
+                  "recall": 1.0,
+                  "f1": 0.666667
+                },
+                "negative": {
+                  "support": 1,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 2,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "difficulty": {
+              "n": 5,
+              "accuracy": 0.6,
+              "macro_f1": 0.285714,
+              "kappa": 0.1666666666666666,
+              "confusion": {
+                "positive": {
+                  "positive": 3,
+                  "negative": 0,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 4,
+                  "precision": 1.0,
+                  "recall": 0.75,
+                  "f1": 0.857143
+                },
+                "negative": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "game": {
+              "n": 5,
+              "accuracy": 1.0,
+              "macro_f1": 0.333333,
+              "kappa": null,
+              "confusion": {
+                "positive": {
+                  "positive": 5,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 5,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "negative": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "graphics_art": {
+              "n": 5,
+              "accuracy": 0.6,
+              "macro_f1": 0.555556,
+              "kappa": 0.28571428571428564,
+              "confusion": {
+                "positive": {
+                  "positive": 2,
+                  "negative": 0,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 1,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 3,
+                  "precision": 0.666667,
+                  "recall": 0.666667,
+                  "f1": 0.666667
+                },
+                "negative": {
+                  "support": 1,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "performance_pc": {
+              "n": 5,
+              "accuracy": 0.2,
+              "macro_f1": 0.133333,
+              "kappa": 0.047619047619047596,
+              "confusion": {
+                "positive": {
+                  "positive": 1,
+                  "negative": 3,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 4,
+                  "precision": 1.0,
+                  "recall": 0.25,
+                  "f1": 0.4
+                },
+                "negative": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "price_value": {
+              "n": 5,
+              "accuracy": 0.4,
+              "macro_f1": 0.3,
+              "kappa": 0.16666666666666666,
+              "confusion": {
+                "positive": {
+                  "positive": 1,
+                  "negative": 0,
+                  "neutral": 2
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 1
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 3,
+                  "precision": 1.0,
+                  "recall": 0.333333,
+                  "f1": 0.5
+                },
+                "negative": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.25,
+                  "recall": 1.0,
+                  "f1": 0.4
+                }
+              }
+            },
+            "story": {
+              "n": 5,
+              "accuracy": 0.4,
+              "macro_f1": 0.222222,
+              "kappa": 0.11764705882352937,
+              "confusion": {
+                "positive": {
+                  "positive": 2,
+                  "negative": 0,
+                  "neutral": 2
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 1
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 4,
+                  "precision": 1.0,
+                  "recall": 0.5,
+                  "f1": 0.666667
+                },
+                "negative": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            }
+          }
+        },
+        "simple_overall": {
+          "overall": {
+            "n": 40,
+            "accuracy": 0.725,
+            "macro_f1": 0.606275,
+            "kappa": 0.46275946275946267,
+            "confusion": {
+              "positive": {
+                "positive": 22,
+                "negative": 4,
+                "neutral": 3
+              },
+              "negative": {
+                "positive": 0,
+                "negative": 5,
+                "neutral": 0
+              },
+              "neutral": {
+                "positive": 2,
+                "negative": 2,
+                "neutral": 2
+              }
+            },
+            "per_class": {
+              "positive": {
+                "support": 29,
+                "precision": 0.916667,
+                "recall": 0.758621,
+                "f1": 0.830189
+              },
+              "negative": {
+                "support": 5,
+                "precision": 0.454545,
+                "recall": 1.0,
+                "f1": 0.625
+              },
+              "neutral": {
+                "support": 6,
+                "precision": 0.4,
+                "recall": 0.333333,
+                "f1": 0.363636
+              }
+            }
+          },
+          "per_entity": {
+            "boss_design": {
+              "n": 5,
+              "accuracy": 0.6,
+              "macro_f1": 0.444445,
+              "kappa": 0.33333333333333326,
+              "confusion": {
+                "positive": {
+                  "positive": 2,
+                  "negative": 1,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 4,
+                  "precision": 1.0,
+                  "recall": 0.5,
+                  "f1": 0.666667
+                },
+                "negative": {
+                  "support": 1,
+                  "precision": 0.5,
+                  "recall": 1.0,
+                  "f1": 0.666667
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "combat": {
+              "n": 5,
+              "accuracy": 0.8,
+              "macro_f1": 0.822222,
+              "kappa": 0.6875000000000001,
+              "confusion": {
+                "positive": {
+                  "positive": 2,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 1,
+                  "negative": 0,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 2,
+                  "precision": 0.666667,
+                  "recall": 1.0,
+                  "f1": 0.8
+                },
+                "negative": {
+                  "support": 1,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 2,
+                  "precision": 1.0,
+                  "recall": 0.5,
+                  "f1": 0.666667
+                }
+              }
+            },
+            "difficulty": {
+              "n": 5,
+              "accuracy": 0.8,
+              "macro_f1": 0.333333,
+              "kappa": 0.44444444444444436,
+              "confusion": {
+                "positive": {
+                  "positive": 4,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 4,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "negative": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "game": {
+              "n": 5,
+              "accuracy": 1.0,
+              "macro_f1": 0.333333,
+              "kappa": null,
+              "confusion": {
+                "positive": {
+                  "positive": 5,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 5,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "negative": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "graphics_art": {
+              "n": 5,
+              "accuracy": 0.6,
+              "macro_f1": 0.555556,
+              "kappa": 0.28571428571428564,
+              "confusion": {
+                "positive": {
+                  "positive": 2,
+                  "negative": 0,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 1,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 3,
+                  "precision": 0.666667,
+                  "recall": 0.666667,
+                  "f1": 0.666667
+                },
+                "negative": {
+                  "support": 1,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "performance_pc": {
+              "n": 5,
+              "accuracy": 0.2,
+              "macro_f1": 0.133333,
+              "kappa": 0.047619047619047596,
+              "confusion": {
+                "positive": {
+                  "positive": 1,
+                  "negative": 3,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 4,
+                  "precision": 1.0,
+                  "recall": 0.25,
+                  "f1": 0.4
+                },
+                "negative": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            },
+            "price_value": {
+              "n": 5,
+              "accuracy": 0.8,
+              "macro_f1": 0.822222,
+              "kappa": 0.6875000000000001,
+              "confusion": {
+                "positive": {
+                  "positive": 2,
+                  "negative": 0,
+                  "neutral": 1
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 1
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 3,
+                  "precision": 1.0,
+                  "recall": 0.666667,
+                  "f1": 0.8
+                },
+                "negative": {
+                  "support": 1,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 1,
+                  "precision": 0.5,
+                  "recall": 1.0,
+                  "f1": 0.666667
+                }
+              }
+            },
+            "story": {
+              "n": 5,
+              "accuracy": 1.0,
+              "macro_f1": 0.666667,
+              "kappa": 1.0,
+              "confusion": {
+                "positive": {
+                  "positive": 4,
+                  "negative": 0,
+                  "neutral": 0
+                },
+                "negative": {
+                  "positive": 0,
+                  "negative": 1,
+                  "neutral": 0
+                },
+                "neutral": {
+                  "positive": 0,
+                  "negative": 0,
+                  "neutral": 0
+                }
+              },
+              "per_class": {
+                "positive": {
+                  "support": 4,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "negative": {
+                  "support": 1,
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0
+                },
+                "neutral": {
+                  "support": 0,
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "combined": {
+    "simple": {
+      "overall": {
+        "n": 180,
+        "accuracy": 0.666667,
+        "macro_f1": 0.595913,
+        "kappa": 0.45899914842458545,
+        "confusion": {
+          "positive": {
+            "positive": 37,
+            "negative": 13,
+            "neutral": 14
+          },
+          "negative": {
+            "positive": 4,
+            "negative": 72,
+            "neutral": 17
+          },
+          "neutral": {
+            "positive": 6,
+            "negative": 6,
+            "neutral": 11
+          }
+        },
+        "per_class": {
+          "positive": {
+            "support": 64,
+            "precision": 0.787234,
+            "recall": 0.578125,
+            "f1": 0.666667
+          },
+          "negative": {
+            "support": 93,
+            "precision": 0.791209,
+            "recall": 0.774194,
+            "f1": 0.782609
+          },
+          "neutral": {
+            "support": 23,
+            "precision": 0.261905,
+            "recall": 0.478261,
+            "f1": 0.338462
+          }
+        }
+      }
+    },
+    "simple_overall": {
+      "overall": {
+        "n": 180,
+        "accuracy": 0.805556,
+        "macro_f1": 0.731217,
+        "kappa": 0.6672828096118301,
+        "confusion": {
+          "positive": {
+            "positive": 48,
+            "negative": 9,
+            "neutral": 7
+          },
+          "negative": {
+            "positive": 3,
+            "negative": 85,
+            "neutral": 5
+          },
+          "neutral": {
+            "positive": 4,
+            "negative": 7,
+            "neutral": 12
+          }
+        },
+        "per_class": {
+          "positive": {
+            "support": 64,
+            "precision": 0.872727,
+            "recall": 0.75,
+            "f1": 0.806723
+          },
+          "negative": {
+            "support": 93,
+            "precision": 0.841584,
+            "recall": 0.913978,
+            "f1": 0.876289
+          },
+          "neutral": {
+            "support": 23,
+            "precision": 0.5,
+            "recall": 0.521739,
+            "f1": 0.510638
+          }
+        }
+      }
+    }
+  },
+  "note": "Clean per-game holdouts, single annotator; Dota/Phantom n=40, CS2 n=100."
+}

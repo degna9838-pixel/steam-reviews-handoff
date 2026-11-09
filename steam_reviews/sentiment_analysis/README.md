@@ -317,7 +317,20 @@ bash sentiment_analysis/calibration/run_cityu_llm.sh `
 
 clean holdout 上 `simple_overall` 的 positive recall 0.741（simple 0.519）、negative recall 0.918（simple 0.770）、neutral F1 0.538（simple 0.389）。这确认了提升是真实的，全量已重标为 `prompt_version=llm-entity-v2-overall`。
 
-Phantom Blade Zero 的 40 条 holdout 也支持该结论：`simple` 0.575 / 0.444 / 0.211，`simple_overall` **0.725 / 0.606 / 0.463**（小样本、正类占比高，只看方向）。Dota 2 的 40 条 holdout 尚待填写。`llm-entity-v1` 的旧预测仍保留在 `llm/predictions.jsonl`，需要回滚时可重新导入。
+三游戏独立 holdout 都支持该结论：
+
+| 样本 | 方法 | accuracy | macro-F1 | kappa |
+|---|---|---:|---:|---:|
+| CS2 100 | simple | 0.680 | 0.598 | 0.441 |
+| CS2 100 | **simple_overall** | **0.830** | **0.747** | **0.683** |
+| Dota 2 40 | simple | 0.725 | 0.621 | 0.457 |
+| Dota 2 40 | **simple_overall** | **0.825** | **0.746** | **0.642** |
+| Phantom 40 | simple | 0.575 | 0.444 | 0.211 |
+| Phantom 40 | **simple_overall** | **0.725** | **0.606** | **0.463** |
+| **三游戏合计 180** | simple | 0.667 | 0.596 | 0.459 |
+| **三游戏合计 180** | **simple_overall** | **0.806** | **0.731** | **0.667** |
+
+Dota/Phantom 每游戏只有 40 条，单实体 n=5，分实体指标噪声大；合并 180 条的结果更适合作为跨游戏泛化结论。`llm-entity-v1` 的旧预测仍保留在 `llm/predictions.jsonl`，需要回滚时可重新导入。
 
 ## LLM 抽样校准（可选，CityU 网关）
 
