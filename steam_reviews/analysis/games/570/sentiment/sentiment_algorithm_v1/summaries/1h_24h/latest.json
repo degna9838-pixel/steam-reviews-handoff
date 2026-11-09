@@ -3,8 +3,8 @@
   "app_id": 570,
   "game": "Dota 2",
   "consumer": "sentiment_algorithm_v1",
-  "generated_at": "2026-11-09T11:57:35Z",
-  "computed_at": "2026-11-09T11:57:35Z",
+  "generated_at": "2026-11-09T13:16:46Z",
+  "computed_at": "2026-11-09T13:16:46Z",
   "mode": "live",
   "source_mode": "live",
   "dataset_type": null,
@@ -25,39 +25,40 @@
       "positive": 0.05,
       "negative": -0.05
     },
-    "significance_test": "chi_square_independence_df2"
+    "significance_test": "chi_square_independence_df2",
+    "scorer": "effective"
   },
   "window": {
-    "current_start": "2026-11-09T10:57:35Z",
-    "current_end": "2026-11-09T11:57:35Z",
-    "baseline_start": "2026-11-08T10:57:35Z",
-    "baseline_end": "2026-11-09T10:57:35Z"
+    "current_start": "2026-11-09T12:16:46Z",
+    "current_end": "2026-11-09T13:16:46Z",
+    "baseline_start": "2026-11-08T12:16:46Z",
+    "baseline_end": "2026-11-09T12:16:46Z"
   },
   "source_stream_id": "a6b03dc5-8536-4813-82e0-693a52f0edf6",
-  "processed_cursor": "2873",
-  "source_latest_cursor": "2873",
+  "processed_cursor": "2880",
+  "source_latest_cursor": "2880",
   "cursor_lag": 0,
-  "health_fetched_at": "2026-11-09T11:57:35Z",
+  "health_fetched_at": "2026-11-09T13:16:46Z",
   "backfill_status": "completed",
   "backfill_target_days": 30,
   "scope_start_unix": 1791612392,
-  "last_success_at": "2026-11-09T11:50:10Z",
+  "last_success_at": "2026-11-09T13:15:18Z",
   "last_error": null,
   "pipeline_versions": [
     "clean-en-v3"
   ],
   "review_counts": {
-    "total": 2873,
-    "analyzed": 2163,
-    "llm_labeled_reviews": 2163,
-    "llm_labeled_rows": 2589,
-    "vader_rows": 2589,
+    "total": 2879,
+    "analyzed": 2169,
+    "llm_labeled_reviews": 2169,
+    "llm_labeled_rows": 2596,
+    "vader_rows": 2596,
     "excluded_unusable": 710,
     "skipped_empty": 0
   },
   "llm_coverage": 1.0,
   "scorer_counts": {
-    "llm": 2589
+    "llm": 2596
   },
   "vader_fallback_rows": 0,
   "data_status": "ok",
@@ -70,30 +71,30 @@
       "scope": "document",
       "mention_required": false,
       "current": {
-        "positive_count": 1,
-        "negative_count": 2,
+        "positive_count": 2,
+        "negative_count": 1,
         "neutral_count": 0,
         "mention_count": 3,
-        "metric": -0.3333333333333333
+        "metric": 0.3333333333333333
       },
       "baseline": {
         "positive_count": 19,
-        "negative_count": 17,
+        "negative_count": 18,
         "neutral_count": 12,
-        "mention_count": 48,
-        "metric": 0.041666666666666664
+        "mention_count": 49,
+        "metric": 0.02040816326530612
       },
       "metric": "net_sentiment",
-      "change": -0.375,
+      "change": 0.312925,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 1.518257,
+        "chi2": 1.288186,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.7059,
+        "expected_min": 0.6923,
         "significant": false
       },
       "data_status": "insufficient_window",
@@ -119,9 +120,9 @@
       },
       "baseline": {
         "positive_count": 0,
-        "negative_count": 4,
+        "negative_count": 5,
         "neutral_count": 0,
-        "mention_count": 4,
+        "mention_count": 5,
         "metric": -1.0
       },
       "metric": "net_sentiment",
@@ -132,9 +133,9 @@
         "test": "chi_square_independence",
         "df": 2,
         "chi2": 0.0,
-        "p_value": null,
-        "conditions_met": false,
-        "expected_min": 4.0,
+        "p_value": 1.0,
+        "conditions_met": true,
+        "expected_min": 5.0,
         "significant": false
       },
       "data_status": "insufficient_window",

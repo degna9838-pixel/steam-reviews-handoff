@@ -157,6 +157,12 @@ def build_parser() -> argparse.ArgumentParser:
     labels.add_argument("--model", default=None)
     labels.add_argument("--prompt-version", default=None)
 
+    serve = sub.add_parser("serve", help="Serve read-only sentiment results to the dashboard")
+    serve.add_argument("--host", default="127.0.0.1")
+    serve.add_argument("--port", type=int, default=8100)
+    serve.add_argument("--consumer", default=LIVE_CONSUMER)
+    serve.add_argument("--collector-url", default="http://127.0.0.1:8000")
+
     return parser
 
 
@@ -259,6 +265,13 @@ def main(argv=None) -> int:
             if args.prompt_version:
                 kwargs["prompt_version"] = args.prompt_version
             import_llm_labels(args.app_id, args.consumer, args.predictions, **kwargs)
+            return 0
+        if args.command == "serve":
+            if not 1 <= args.port <= 65535:
+                parser.error("--port must be between 1 and 65535")
+            import uvicorn
+            from .api import create_app
+            uvicorn.run(create_app(args.consumer, args.collector_url), host=args.host, port=args.port)
             return 0
         parser.error("Unknown command")
     except KeyboardInterrupt:

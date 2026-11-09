@@ -60,17 +60,21 @@ def query_window(
     entity_id: str,
     start: datetime,
     end: datetime,
+    scorer: str | None = None,
 ) -> tuple[dict, list[str]]:
+    if scorer not in {None, "llm", "vader"}:
+        raise ValueError("scorer must be llm, vader or None")
     rows = db.execute(
         """
         SELECT a.sentiment_label,COUNT(*) AS n
         FROM effective_analysis a
         JOIN review_status s ON s.review_id=a.review_id AND s.revision=a.revision
         WHERE a.entity_id=? AND s.status='analyzed'
+          AND (? IS NULL OR a.scorer=?)
           AND a.created_at>=? AND a.created_at<?
         GROUP BY a.sentiment_label
         """,
-        (entity_id, iso_utc(start), iso_utc(end)),
+        (entity_id, scorer, scorer, iso_utc(start), iso_utc(end)),
     ).fetchall()
     counts = _counts_from_rows(rows)
     versions = [row[0] for row in db.execute(
@@ -79,10 +83,11 @@ def query_window(
         FROM effective_analysis a
         JOIN review_status s ON s.review_id=a.review_id AND s.revision=a.revision
         WHERE a.entity_id=? AND s.status='analyzed'
+          AND (? IS NULL OR a.scorer=?)
           AND a.created_at>=? AND a.created_at<?
         ORDER BY a.pipeline_version
         """,
-        (entity_id, iso_utc(start), iso_utc(end)),
+        (entity_id, scorer, scorer, iso_utc(start), iso_utc(end)),
     ).fetchall()]
     return counts, versions
 
@@ -187,6 +192,7 @@ def summarize_game(
     min_mentions: int = DEFAULT_MIN_MENTIONS,
     change_threshold: float = DEFAULT_CHANGE_THRESHOLD,
     alpha: float = DEFAULT_ALPHA,
+    scorer: str | None = None,
 ) -> dict:
     now = now or utc_now()
     current_start = now - timedelta(hours=window_hours)
@@ -196,8 +202,8 @@ def summarize_game(
     entities_out = []
     has_rows = False
     for entity in config.entities:
-        current, current_versions = query_window(db, entity.entity_id, current_start, now)
-        baseline, baseline_versions = query_window(db, entity.entity_id, baseline_start, current_start)
+        current, current_versions = query_window(db, entity.entity_id, current_start, now, scorer)
+        baseline, baseline_versions = query_window(db, entity.entity_id, baseline_start, current_start, scorer)
         window_versions.update(current_versions)
         window_versions.update(baseline_versions)
         if current["mention_count"] or baseline["mention_count"]:
@@ -286,6 +292,7 @@ def summarize_game(
             "alpha": alpha,
             "label_thresholds": {"positive": 0.05, "negative": -0.05},
             "significance_test": "chi_square_independence_df2",
+            "scorer": scorer or "effective",
         },
         "window": {
             "current_start": iso_utc(current_start),
@@ -341,8 +348,11 @@ def export_dashboard(
     days: int = 7,
     bucket_hours: int = 1,
     min_mentions: int = DEFAULT_MIN_MENTIONS,
+    scorer: str | None = None,
 ) -> dict:
     now = now or utc_now()
+    if scorer not in {None, "llm", "vader"}:
+        raise ValueError("scorer must be llm, vader or None")
     if days <= 0 or bucket_hours <= 0:
         raise ValueError("days and bucket_hours must be positive")
     end = now.replace(minute=0, second=0, microsecond=0)
@@ -363,9 +373,10 @@ def export_dashboard(
         FROM effective_analysis a
         JOIN review_status s ON s.review_id=a.review_id AND s.revision=a.revision
         WHERE s.status='analyzed'
+          AND (? IS NULL OR a.scorer=?)
           AND a.created_at>=? AND a.created_at<?
         """,
-        (iso_utc(start), iso_utc(end)),
+        (scorer, scorer, iso_utc(start), iso_utc(end)),
     ).fetchall()
     for row in rows:
         if row["entity_id"] not in grouped:
@@ -411,5 +422,6 @@ def export_dashboard(
         "min_mentions": min_mentions,
         "range": {"start": iso_utc(start), "end": iso_utc(end)},
         "algorithm_version": LLM_ALGORITHM_VERSION,
+        "scorer": scorer or "effective",
         "entities": entities_out,
     }

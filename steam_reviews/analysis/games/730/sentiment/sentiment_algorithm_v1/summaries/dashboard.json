@@ -2,39 +2,20 @@
   "schema_version": "sentiment-dashboard-1.0",
   "app_id": 730,
   "game": "CS2",
-  "generated_at": "2026-11-09T11:57:34Z",
+  "generated_at": "2026-11-09T13:16:45Z",
   "bucket_hours": 1,
   "min_mentions": 5,
   "range": {
-    "start": "2026-11-02T11:00:00Z",
-    "end": "2026-11-09T11:00:00Z"
+    "start": "2026-11-02T13:00:00Z",
+    "end": "2026-11-09T13:00:00Z"
   },
   "algorithm_version": "sentiment-llm-v1",
+  "scorer": "effective",
   "entities": [
     {
       "entity_id": "game",
       "name": "CS2 overall",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 11,
-          "negative_count": 3,
-          "neutral_count": 1,
-          "mention_count": 15,
-          "net_metric": 0.5333333333333333,
-          "data_status": "ok"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 5,
-          "negative_count": 5,
-          "neutral_count": 1,
-          "mention_count": 11,
-          "net_metric": 0.0,
-          "data_status": "ok"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -1694,6 +1675,26 @@
           "mention_count": 92,
           "net_metric": 0.9130434782608695,
           "data_status": "ok"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 92,
+          "negative_count": 3,
+          "neutral_count": 5,
+          "mention_count": 100,
+          "net_metric": 0.89,
+          "data_status": "ok"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 16,
+          "negative_count": 3,
+          "neutral_count": 4,
+          "mention_count": 23,
+          "net_metric": 0.5652173913043478,
+          "data_status": "ok"
         }
       ]
     },
@@ -1701,26 +1702,6 @@
       "entity_id": "anticheat",
       "name": "Anti-cheat / VAC",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 0,
-          "mention_count": 1,
-          "net_metric": -1.0,
-          "data_status": "insufficient_sample"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 0,
-          "negative_count": 2,
-          "neutral_count": 0,
-          "mention_count": 2,
-          "net_metric": -1.0,
-          "data_status": "insufficient_sample"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -3380,26 +3361,10 @@
           "mention_count": 1,
           "net_metric": -1.0,
           "data_status": "insufficient_sample"
-        }
-      ]
-    },
-    {
-      "entity_id": "matchmaking",
-      "name": "Matchmaking / ranks",
-      "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 1,
-          "mention_count": 2,
-          "net_metric": -0.5,
-          "data_status": "insufficient_sample"
         },
         {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -3407,6 +3372,22 @@
           "net_metric": null,
           "data_status": "no_data"
         },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 0,
+          "negative_count": 1,
+          "neutral_count": 0,
+          "mention_count": 1,
+          "net_metric": -1.0,
+          "data_status": "insufficient_sample"
+        }
+      ]
+    },
+    {
+      "entity_id": "matchmaking",
+      "name": "Matchmaking / ranks",
+      "buckets": [
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -5066,26 +5047,10 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
-        }
-      ]
-    },
-    {
-      "entity_id": "servers",
-      "name": "Servers / network",
-      "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
-          "mention_count": 1,
-          "net_metric": 0.0,
-          "data_status": "insufficient_sample"
         },
         {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -5093,6 +5058,22 @@
           "net_metric": null,
           "data_status": "no_data"
         },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 0,
+          "negative_count": 1,
+          "neutral_count": 0,
+          "mention_count": 1,
+          "net_metric": -1.0,
+          "data_status": "insufficient_sample"
+        }
+      ]
+    },
+    {
+      "entity_id": "servers",
+      "name": "Servers / network",
+      "buckets": [
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -6752,6 +6733,26 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 0,
+          "negative_count": 1,
+          "neutral_count": 0,
+          "mention_count": 1,
+          "net_metric": -1.0,
+          "data_status": "insufficient_sample"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 0,
+          "negative_count": 1,
+          "neutral_count": 0,
+          "mention_count": 1,
+          "net_metric": -1.0,
+          "data_status": "insufficient_sample"
         }
       ]
     },
@@ -6759,26 +6760,6 @@
       "entity_id": "skins_economy",
       "name": "Skins / economy",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -8438,6 +8419,26 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 0,
+          "negative_count": 1,
+          "neutral_count": 0,
+          "mention_count": 1,
+          "net_metric": -1.0,
+          "data_status": "insufficient_sample"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
         }
       ]
     },
@@ -8445,26 +8446,6 @@
       "entity_id": "performance",
       "name": "Performance / stability",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
-          "mention_count": 1,
-          "net_metric": 0.0,
-          "data_status": "insufficient_sample"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -10124,6 +10105,26 @@
           "mention_count": 5,
           "net_metric": 0.0,
           "data_status": "ok"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 5,
+          "mention_count": 5,
+          "net_metric": 0.0,
+          "data_status": "ok"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 2,
+          "mention_count": 2,
+          "net_metric": 0.0,
+          "data_status": "insufficient_sample"
         }
       ]
     },
@@ -10131,26 +10132,6 @@
       "entity_id": "weapon_balance",
       "name": "Weapon balance / meta",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
-          "mention_count": 1,
-          "net_metric": 0.0,
-          "data_status": "insufficient_sample"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
-          "mention_count": 1,
-          "net_metric": 0.0,
-          "data_status": "insufficient_sample"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -11810,6 +11791,26 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
+          "mention_count": 1,
+          "net_metric": 0.0,
+          "data_status": "insufficient_sample"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
         }
       ]
     },
@@ -11817,26 +11818,6 @@
       "entity_id": "monetization",
       "name": "Monetization / price",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -13490,6 +13471,26 @@
         {
           "bucket_start": "2026-11-09T10:00:00Z",
           "bucket_end": "2026-11-09T11:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,

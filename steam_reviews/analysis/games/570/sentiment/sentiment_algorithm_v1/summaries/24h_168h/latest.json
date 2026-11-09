@@ -3,8 +3,8 @@
   "app_id": 570,
   "game": "Dota 2",
   "consumer": "sentiment_algorithm_v1",
-  "generated_at": "2026-11-09T11:57:35Z",
-  "computed_at": "2026-11-09T11:57:35Z",
+  "generated_at": "2026-11-09T13:16:46Z",
+  "computed_at": "2026-11-09T13:16:46Z",
   "mode": "live",
   "source_mode": "live",
   "dataset_type": null,
@@ -25,39 +25,40 @@
       "positive": 0.05,
       "negative": -0.05
     },
-    "significance_test": "chi_square_independence_df2"
+    "significance_test": "chi_square_independence_df2",
+    "scorer": "effective"
   },
   "window": {
-    "current_start": "2026-11-08T11:57:35Z",
-    "current_end": "2026-11-09T11:57:35Z",
-    "baseline_start": "2026-11-01T11:57:35Z",
-    "baseline_end": "2026-11-08T11:57:35Z"
+    "current_start": "2026-11-08T13:16:46Z",
+    "current_end": "2026-11-09T13:16:46Z",
+    "baseline_start": "2026-11-01T13:16:46Z",
+    "baseline_end": "2026-11-08T13:16:46Z"
   },
   "source_stream_id": "a6b03dc5-8536-4813-82e0-693a52f0edf6",
-  "processed_cursor": "2873",
-  "source_latest_cursor": "2873",
+  "processed_cursor": "2880",
+  "source_latest_cursor": "2880",
   "cursor_lag": 0,
-  "health_fetched_at": "2026-11-09T11:57:35Z",
+  "health_fetched_at": "2026-11-09T13:16:46Z",
   "backfill_status": "completed",
   "backfill_target_days": 30,
   "scope_start_unix": 1791612392,
-  "last_success_at": "2026-11-09T11:50:10Z",
+  "last_success_at": "2026-11-09T13:15:18Z",
   "last_error": null,
   "pipeline_versions": [
     "clean-en-v3"
   ],
   "review_counts": {
-    "total": 2873,
-    "analyzed": 2163,
-    "llm_labeled_reviews": 2163,
-    "llm_labeled_rows": 2589,
-    "vader_rows": 2589,
+    "total": 2879,
+    "analyzed": 2169,
+    "llm_labeled_reviews": 2169,
+    "llm_labeled_rows": 2596,
+    "vader_rows": 2596,
     "excluded_unusable": 710,
     "skipped_empty": 0
   },
   "llm_coverage": 1.0,
   "scorer_counts": {
-    "llm": 2589
+    "llm": 2596
   },
   "vader_fallback_rows": 0,
   "data_status": "ok",
@@ -70,30 +71,30 @@
       "scope": "document",
       "mention_required": false,
       "current": {
-        "positive_count": 19,
-        "negative_count": 18,
-        "neutral_count": 10,
-        "mention_count": 47,
-        "metric": 0.02127659574468085
+        "positive_count": 20,
+        "negative_count": 19,
+        "neutral_count": 12,
+        "mention_count": 51,
+        "metric": 0.0196078431372549
       },
       "baseline": {
-        "positive_count": 200,
+        "positive_count": 202,
         "negative_count": 163,
         "neutral_count": 87,
-        "mention_count": 450,
-        "metric": 0.08222222222222222
+        "mention_count": 452,
+        "metric": 0.08628318584070796
       },
       "metric": "net_sentiment",
-      "change": -0.060946,
+      "change": -0.066675,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 0.288667,
-        "p_value": 0.86559922,
+        "chi2": 0.756103,
+        "p_value": 0.68519523,
         "conditions_met": true,
-        "expected_min": 9.173,
+        "expected_min": 10.0378,
         "significant": false
       },
       "data_status": "ok",
@@ -112,9 +113,9 @@
       "mention_required": true,
       "current": {
         "positive_count": 0,
-        "negative_count": 4,
+        "negative_count": 5,
         "neutral_count": 0,
-        "mention_count": 4,
+        "mention_count": 5,
         "metric": -1.0
       },
       "baseline": {
@@ -126,18 +127,18 @@
       },
       "metric": "net_sentiment",
       "change": -0.166667,
-      "change_flag": false,
-      "alert_type": "none",
+      "change_flag": true,
+      "alert_type": "threshold",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 0.493827,
+        "chi2": 0.615616,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.2,
+        "expected_min": 0.2439,
         "significant": false
       },
-      "data_status": "insufficient_window",
+      "data_status": "ok",
       "provisional": false,
       "current_pipeline_versions": [
         "clean-en-v3"

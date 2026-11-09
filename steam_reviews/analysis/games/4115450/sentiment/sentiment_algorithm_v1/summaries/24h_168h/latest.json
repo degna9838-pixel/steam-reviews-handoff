@@ -3,8 +3,8 @@
   "app_id": 4115450,
   "game": "Phantom Blade Zero",
   "consumer": "sentiment_algorithm_v1",
-  "generated_at": "2026-11-09T11:57:37Z",
-  "computed_at": "2026-11-09T11:57:37Z",
+  "generated_at": "2026-11-09T13:16:48Z",
+  "computed_at": "2026-11-09T13:16:48Z",
   "mode": "live",
   "source_mode": "live",
   "dataset_type": null,
@@ -25,39 +25,40 @@
       "positive": 0.05,
       "negative": -0.05
     },
-    "significance_test": "chi_square_independence_df2"
+    "significance_test": "chi_square_independence_df2",
+    "scorer": "effective"
   },
   "window": {
-    "current_start": "2026-11-08T11:57:37Z",
-    "current_end": "2026-11-09T11:57:37Z",
-    "baseline_start": "2026-11-01T11:57:37Z",
-    "baseline_end": "2026-11-08T11:57:37Z"
+    "current_start": "2026-11-08T13:16:48Z",
+    "current_end": "2026-11-09T13:16:48Z",
+    "baseline_start": "2026-11-01T13:16:48Z",
+    "baseline_end": "2026-11-08T13:16:48Z"
   },
   "source_stream_id": "96a08f8e-30a7-4cad-9174-af28a60f9589",
-  "processed_cursor": "10948",
-  "source_latest_cursor": "10948",
+  "processed_cursor": "10975",
+  "source_latest_cursor": "10975",
   "cursor_lag": 0,
-  "health_fetched_at": "2026-11-09T11:57:37Z",
+  "health_fetched_at": "2026-11-09T13:16:48Z",
   "backfill_status": "completed",
   "backfill_target_days": 30,
   "scope_start_unix": 1791612392,
-  "last_success_at": "2026-11-09T11:50:12Z",
+  "last_success_at": "2026-11-09T13:15:20Z",
   "last_error": null,
   "pipeline_versions": [
     "clean-en-v3"
   ],
   "review_counts": {
-    "total": 10927,
-    "analyzed": 9824,
-    "llm_labeled_reviews": 9824,
-    "llm_labeled_rows": 22154,
-    "vader_rows": 22154,
-    "excluded_unusable": 1103,
+    "total": 10949,
+    "analyzed": 9848,
+    "llm_labeled_reviews": 9848,
+    "llm_labeled_rows": 22212,
+    "vader_rows": 22212,
+    "excluded_unusable": 1101,
     "skipped_empty": 0
   },
   "llm_coverage": 1.0,
   "scorer_counts": {
-    "llm": 22154
+    "llm": 22212
   },
   "vader_fallback_rows": 0,
   "data_status": "ok",
@@ -70,30 +71,30 @@
       "scope": "document",
       "mention_required": false,
       "current": {
-        "positive_count": 434,
+        "positive_count": 427,
         "negative_count": 30,
-        "neutral_count": 40,
-        "mention_count": 504,
-        "metric": 0.8015873015873016
+        "neutral_count": 37,
+        "mention_count": 494,
+        "metric": 0.8036437246963563
       },
       "baseline": {
-        "positive_count": 4157,
-        "negative_count": 306,
+        "positive_count": 4140,
+        "negative_count": 302,
         "neutral_count": 292,
-        "mention_count": 4755,
-        "metric": 0.8098843322818087
+        "mention_count": 4734,
+        "metric": 0.810730882974229
       },
       "metric": "net_sentiment",
-      "change": -0.008297,
+      "change": -0.007087,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 2.583665,
-        "p_value": 0.27476676,
+        "chi2": 1.36074,
+        "p_value": 0.50642952,
         "conditions_met": true,
-        "expected_min": 31.8175,
+        "expected_min": 31.0876,
         "significant": false
       },
       "data_status": "ok",
@@ -111,30 +112,30 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 167,
-        "negative_count": 22,
-        "neutral_count": 13,
-        "mention_count": 202,
-        "metric": 0.7178217821782178
+        "positive_count": 163,
+        "negative_count": 21,
+        "neutral_count": 14,
+        "mention_count": 198,
+        "metric": 0.7171717171717171
       },
       "baseline": {
-        "positive_count": 1495,
-        "negative_count": 139,
-        "neutral_count": 77,
-        "mention_count": 1711,
-        "metric": 0.7925189947399182
+        "positive_count": 1490,
+        "negative_count": 140,
+        "neutral_count": 78,
+        "mention_count": 1708,
+        "metric": 0.7903981264637002
       },
       "metric": "net_sentiment",
-      "change": -0.074697,
+      "change": -0.073226,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 3.542077,
-        "p_value": 0.17015622,
+        "chi2": 4.017956,
+        "p_value": 0.13412571,
         "conditions_met": true,
-        "expected_min": 9.5034,
+        "expected_min": 9.5572,
         "significant": false
       },
       "data_status": "ok",
@@ -152,30 +153,30 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 57,
+        "positive_count": 55,
         "negative_count": 17,
-        "neutral_count": 48,
-        "mention_count": 122,
-        "metric": 0.32786885245901637
+        "neutral_count": 45,
+        "mention_count": 117,
+        "metric": 0.3247863247863248
       },
       "baseline": {
-        "positive_count": 388,
-        "negative_count": 163,
-        "neutral_count": 266,
-        "mention_count": 817,
-        "metric": 0.27539779681762544
+        "positive_count": 387,
+        "negative_count": 162,
+        "neutral_count": 263,
+        "mention_count": 812,
+        "metric": 0.2770935960591133
       },
       "metric": "net_sentiment",
-      "change": 0.052471,
+      "change": 0.047693,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 3.479624,
-        "p_value": 0.17555336,
+        "chi2": 2.706135,
+        "p_value": 0.25844628,
         "conditions_met": true,
-        "expected_min": 23.3866,
+        "expected_min": 22.5436,
         "significant": false
       },
       "data_status": "ok",
@@ -193,30 +194,30 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 84,
-        "negative_count": 1,
-        "neutral_count": 25,
-        "mention_count": 110,
-        "metric": 0.7545454545454545
+        "positive_count": 80,
+        "negative_count": 2,
+        "neutral_count": 24,
+        "mention_count": 106,
+        "metric": 0.7358490566037735
       },
       "baseline": {
-        "positive_count": 594,
+        "positive_count": 589,
         "negative_count": 20,
-        "neutral_count": 152,
-        "mention_count": 766,
-        "metric": 0.7493472584856397
+        "neutral_count": 153,
+        "mention_count": 762,
+        "metric": 0.7467191601049868
       },
       "metric": "net_sentiment",
-      "change": 0.005198,
+      "change": -0.01087,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 1.575432,
+        "chi2": 0.53982,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 2.637,
+        "expected_min": 2.6866,
         "significant": false
       },
       "data_status": "ok",
@@ -234,30 +235,30 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 21,
+        "positive_count": 19,
         "negative_count": 14,
-        "neutral_count": 26,
-        "mention_count": 61,
-        "metric": 0.11475409836065574
+        "neutral_count": 27,
+        "mention_count": 60,
+        "metric": 0.08333333333333333
       },
       "baseline": {
-        "positive_count": 128,
+        "positive_count": 126,
         "negative_count": 164,
-        "neutral_count": 139,
-        "mention_count": 431,
-        "metric": -0.08352668213457076
+        "neutral_count": 138,
+        "mention_count": 428,
+        "metric": -0.08878504672897196
       },
       "metric": "net_sentiment",
-      "change": 0.198281,
+      "change": 0.172118,
       "change_flag": true,
       "alert_type": "threshold",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 5.47654,
-        "p_value": 0.06468215,
+        "chi2": 5.860043,
+        "p_value": 0.05339588,
         "conditions_met": true,
-        "expected_min": 18.4736,
+        "expected_min": 17.8279,
         "significant": false
       },
       "data_status": "ok",
@@ -275,30 +276,30 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 87,
-        "negative_count": 30,
-        "neutral_count": 12,
-        "mention_count": 129,
-        "metric": 0.4418604651162791
+        "positive_count": 83,
+        "negative_count": 29,
+        "neutral_count": 11,
+        "mention_count": 123,
+        "metric": 0.43902439024390244
       },
       "baseline": {
-        "positive_count": 639,
-        "negative_count": 133,
-        "neutral_count": 126,
-        "mention_count": 898,
-        "metric": 0.5634743875278396
+        "positive_count": 640,
+        "negative_count": 134,
+        "neutral_count": 125,
+        "mention_count": 899,
+        "metric": 0.5628476084538376
       },
       "metric": "net_sentiment",
-      "change": -0.121614,
+      "change": -0.123823,
       "change_flag": false,
       "alert_type": "statistical",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 7.166144,
-        "p_value": 0.0277902,
+        "chi2": 7.313309,
+        "p_value": 0.02581875,
         "conditions_met": true,
-        "expected_min": 17.334,
+        "expected_min": 16.3679,
         "significant": true
       },
       "data_status": "ok",
@@ -316,30 +317,30 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 48,
-        "negative_count": 18,
-        "neutral_count": 40,
-        "mention_count": 106,
-        "metric": 0.2830188679245283
+        "positive_count": 44,
+        "negative_count": 19,
+        "neutral_count": 41,
+        "mention_count": 104,
+        "metric": 0.2403846153846154
       },
       "baseline": {
-        "positive_count": 380,
-        "negative_count": 102,
-        "neutral_count": 294,
-        "mention_count": 776,
-        "metric": 0.3582474226804124
+        "positive_count": 377,
+        "negative_count": 100,
+        "neutral_count": 292,
+        "mention_count": 769,
+        "metric": 0.3602080624187256
       },
       "metric": "net_sentiment",
-      "change": -0.075229,
+      "change": -0.119823,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 1.270763,
-        "p_value": 0.52973341,
+        "chi2": 2.770929,
+        "p_value": 0.25020754,
         "conditions_met": true,
-        "expected_min": 14.4218,
+        "expected_min": 14.1764,
         "significant": false
       },
       "data_status": "ok",
@@ -357,30 +358,30 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 29,
-        "negative_count": 0,
-        "neutral_count": 23,
-        "mention_count": 52,
-        "metric": 0.5576923076923077
+        "positive_count": 30,
+        "negative_count": 2,
+        "neutral_count": 21,
+        "mention_count": 53,
+        "metric": 0.5283018867924528
       },
       "baseline": {
-        "positive_count": 229,
+        "positive_count": 232,
         "negative_count": 28,
-        "neutral_count": 156,
-        "mention_count": 413,
-        "metric": 0.48668280871670705
+        "neutral_count": 155,
+        "mention_count": 415,
+        "metric": 0.491566265060241
       },
       "metric": "net_sentiment",
-      "change": 0.071009,
+      "change": 0.036736,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 4.026717,
+        "chi2": 0.716898,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 3.1312,
+        "expected_min": 3.3974,
         "significant": false
       },
       "data_status": "ok",

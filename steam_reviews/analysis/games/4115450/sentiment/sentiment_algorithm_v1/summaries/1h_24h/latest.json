@@ -3,8 +3,8 @@
   "app_id": 4115450,
   "game": "Phantom Blade Zero",
   "consumer": "sentiment_algorithm_v1",
-  "generated_at": "2026-11-09T11:57:36Z",
-  "computed_at": "2026-11-09T11:57:36Z",
+  "generated_at": "2026-11-09T13:16:47Z",
+  "computed_at": "2026-11-09T13:16:47Z",
   "mode": "live",
   "source_mode": "live",
   "dataset_type": null,
@@ -25,39 +25,40 @@
       "positive": 0.05,
       "negative": -0.05
     },
-    "significance_test": "chi_square_independence_df2"
+    "significance_test": "chi_square_independence_df2",
+    "scorer": "effective"
   },
   "window": {
-    "current_start": "2026-11-09T10:57:36Z",
-    "current_end": "2026-11-09T11:57:36Z",
-    "baseline_start": "2026-11-08T10:57:36Z",
-    "baseline_end": "2026-11-09T10:57:36Z"
+    "current_start": "2026-11-09T12:16:47Z",
+    "current_end": "2026-11-09T13:16:47Z",
+    "baseline_start": "2026-11-08T12:16:47Z",
+    "baseline_end": "2026-11-09T12:16:47Z"
   },
   "source_stream_id": "96a08f8e-30a7-4cad-9174-af28a60f9589",
-  "processed_cursor": "10948",
-  "source_latest_cursor": "10948",
+  "processed_cursor": "10975",
+  "source_latest_cursor": "10975",
   "cursor_lag": 0,
-  "health_fetched_at": "2026-11-09T11:57:36Z",
+  "health_fetched_at": "2026-11-09T13:16:47Z",
   "backfill_status": "completed",
   "backfill_target_days": 30,
   "scope_start_unix": 1791612392,
-  "last_success_at": "2026-11-09T11:50:12Z",
+  "last_success_at": "2026-11-09T13:15:20Z",
   "last_error": null,
   "pipeline_versions": [
     "clean-en-v3"
   ],
   "review_counts": {
-    "total": 10927,
-    "analyzed": 9824,
-    "llm_labeled_reviews": 9824,
-    "llm_labeled_rows": 22154,
-    "vader_rows": 22154,
-    "excluded_unusable": 1103,
+    "total": 10949,
+    "analyzed": 9848,
+    "llm_labeled_reviews": 9848,
+    "llm_labeled_rows": 22212,
+    "vader_rows": 22212,
+    "excluded_unusable": 1101,
     "skipped_empty": 0
   },
   "llm_coverage": 1.0,
   "scorer_counts": {
-    "llm": 22154
+    "llm": 22212
   },
   "vader_fallback_rows": 0,
   "data_status": "ok",
@@ -70,30 +71,30 @@
       "scope": "document",
       "mention_required": false,
       "current": {
-        "positive_count": 6,
-        "negative_count": 0,
-        "neutral_count": 3,
-        "mention_count": 9,
-        "metric": 0.6666666666666666
+        "positive_count": 8,
+        "negative_count": 1,
+        "neutral_count": 1,
+        "mention_count": 10,
+        "metric": 0.7
       },
       "baseline": {
-        "positive_count": 446,
-        "negative_count": 32,
-        "neutral_count": 37,
-        "mention_count": 515,
-        "metric": 0.8038834951456311
+        "positive_count": 435,
+        "negative_count": 29,
+        "neutral_count": 40,
+        "mention_count": 504,
+        "metric": 0.8055555555555556
       },
       "metric": "net_sentiment",
-      "change": -0.137217,
+      "change": -0.105556,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 8.889857,
+        "chi2": 0.400518,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.5496,
+        "expected_min": 0.5837,
         "significant": false
       },
       "data_status": "ok",
@@ -111,33 +112,33 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 3,
-        "negative_count": 0,
+        "positive_count": 1,
+        "negative_count": 1,
         "neutral_count": 2,
-        "mention_count": 5,
-        "metric": 0.6
+        "mention_count": 4,
+        "metric": 0.0
       },
       "baseline": {
-        "positive_count": 170,
-        "negative_count": 22,
-        "neutral_count": 11,
-        "mention_count": 203,
-        "metric": 0.729064039408867
+        "positive_count": 168,
+        "negative_count": 20,
+        "neutral_count": 13,
+        "mention_count": 201,
+        "metric": 0.736318407960199
       },
       "metric": "net_sentiment",
-      "change": -0.129064,
+      "change": -0.736318,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 10.209585,
+        "chi2": 12.65737,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.3125,
+        "expected_min": 0.2927,
         "significant": false
       },
-      "data_status": "ok",
+      "data_status": "insufficient_window",
       "provisional": false,
       "current_pipeline_versions": [
         "clean-en-v3"
@@ -152,30 +153,30 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 0,
-        "negative_count": 0,
-        "neutral_count": 2,
-        "mention_count": 2,
-        "metric": 0.0
+        "positive_count": 2,
+        "negative_count": 1,
+        "neutral_count": 0,
+        "mention_count": 3,
+        "metric": 0.3333333333333333
       },
       "baseline": {
-        "positive_count": 59,
-        "negative_count": 19,
-        "neutral_count": 49,
-        "mention_count": 127,
-        "metric": 0.31496062992125984
+        "positive_count": 55,
+        "negative_count": 17,
+        "neutral_count": 47,
+        "mention_count": 119,
+        "metric": 0.31932773109243695
       },
       "metric": "net_sentiment",
-      "change": -0.314961,
+      "change": 0.014006,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 3.106994,
+        "chi2": 2.166331,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.2946,
+        "expected_min": 0.4426,
         "significant": false
       },
       "data_status": "insufficient_window",
@@ -195,28 +196,28 @@
       "current": {
         "positive_count": 0,
         "negative_count": 0,
-        "neutral_count": 2,
-        "mention_count": 2,
+        "neutral_count": 1,
+        "mention_count": 1,
         "metric": 0.0
       },
       "baseline": {
-        "positive_count": 86,
-        "negative_count": 1,
-        "neutral_count": 23,
+        "positive_count": 84,
+        "negative_count": 2,
+        "neutral_count": 24,
         "mention_count": 110,
-        "metric": 0.7727272727272727
+        "metric": 0.7454545454545455
       },
       "metric": "net_sentiment",
-      "change": -0.772727,
+      "change": -0.745455,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 7.086545,
+        "chi2": 3.471273,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.0179,
+        "expected_min": 0.018,
         "significant": false
       },
       "data_status": "insufficient_window",
@@ -234,30 +235,30 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 1,
-        "negative_count": 0,
-        "neutral_count": 1,
-        "mention_count": 2,
-        "metric": 0.5
+        "positive_count": 0,
+        "negative_count": 1,
+        "neutral_count": 0,
+        "mention_count": 1,
+        "metric": -1.0
       },
       "baseline": {
         "positive_count": 20,
-        "negative_count": 15,
-        "neutral_count": 26,
+        "negative_count": 14,
+        "neutral_count": 27,
         "mention_count": 61,
-        "metric": 0.08196721311475409
+        "metric": 0.09836065573770492
       },
       "metric": "net_sentiment",
-      "change": 0.418033,
+      "change": -1.098361,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 0.688525,
+        "chi2": 3.184699,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.4762,
+        "expected_min": 0.2419,
         "significant": false
       },
       "data_status": "insufficient_window",
@@ -275,30 +276,30 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 3,
+        "positive_count": 1,
         "negative_count": 1,
-        "neutral_count": 0,
-        "mention_count": 4,
-        "metric": 0.5
+        "neutral_count": 1,
+        "mention_count": 3,
+        "metric": 0.0
       },
       "baseline": {
-        "positive_count": 85,
-        "negative_count": 29,
-        "neutral_count": 12,
-        "mention_count": 126,
-        "metric": 0.4444444444444444
+        "positive_count": 86,
+        "negative_count": 28,
+        "neutral_count": 11,
+        "mention_count": 125,
+        "metric": 0.464
       },
       "metric": "net_sentiment",
-      "change": 0.055556,
+      "change": -0.464,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 0.420124,
+        "chi2": 2.577655,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.3692,
+        "expected_min": 0.2812,
         "significant": false
       },
       "data_status": "insufficient_window",
@@ -316,30 +317,30 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 1,
-        "negative_count": 1,
-        "neutral_count": 2,
-        "mention_count": 4,
+        "positive_count": 0,
+        "negative_count": 0,
+        "neutral_count": 1,
+        "mention_count": 1,
         "metric": 0.0
       },
       "baseline": {
-        "positive_count": 49,
-        "negative_count": 17,
+        "positive_count": 46,
+        "negative_count": 19,
         "neutral_count": 41,
-        "mention_count": 107,
-        "metric": 0.29906542056074764
+        "mention_count": 106,
+        "metric": 0.25471698113207547
       },
       "metric": "net_sentiment",
-      "change": -0.299065,
+      "change": -0.254717,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 0.70341,
+        "chi2": 1.562219,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.6486,
+        "expected_min": 0.1776,
         "significant": false
       },
       "data_status": "insufficient_window",
@@ -357,30 +358,30 @@
       "scope": "clause",
       "mention_required": true,
       "current": {
-        "positive_count": 0,
-        "negative_count": 0,
-        "neutral_count": 2,
-        "mention_count": 2,
-        "metric": 0.0
+        "positive_count": 2,
+        "negative_count": 1,
+        "neutral_count": 0,
+        "mention_count": 3,
+        "metric": 0.3333333333333333
       },
       "baseline": {
         "positive_count": 29,
         "negative_count": 1,
-        "neutral_count": 23,
-        "mention_count": 53,
-        "metric": 0.5283018867924528
+        "neutral_count": 22,
+        "mention_count": 52,
+        "metric": 0.5384615384615384
       },
       "metric": "net_sentiment",
-      "change": -0.528302,
+      "change": -0.205128,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 2.490566,
+        "chi2": 9.024504,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.0364,
+        "expected_min": 0.1091,
         "significant": false
       },
       "data_status": "insufficient_window",

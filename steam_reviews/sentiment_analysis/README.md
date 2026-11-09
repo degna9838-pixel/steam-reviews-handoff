@@ -127,6 +127,44 @@ wsl.exe -d Ubuntu-24.04 -u otojf7 -- bash -lc "cd /mnt/d/CS_SEMA/5481_data/group
 
 成本/时间参考：CS2 约 1.93 万个 review×entity jobs；批大小 8、4 并发时约 40–60 分钟（受网关限流影响）。三游戏合计约 4.6 万个 jobs，建议按游戏分批跑，每批完成后导入并检查 `verify`。429 会自动重试；失败项用 `--resume` 补跑。
 
+## 实时结果 API（dashboard 组员入口）
+
+本模块提供一个只读 API，给后续做情绪曲线的组员轮询；不需要他们读 SQLite 或采集库。完整契约见 [`docs/SENTIMENT_API.md`](docs/SENTIMENT_API.md)。
+
+启动：
+
+```powershell
+# 1) 采集服务（handoff 提供，8000）
+.\start.bat
+
+# 2) 实时消费 changes（每游戏一个进程；持续运行）
+.\.venv\Scripts\python.exe -m sentiment_analysis run --app-id 730 --consumer sentiment_algorithm_v1
+.\.venv\Scripts\python.exe -m sentiment_analysis run --app-id 570 --consumer sentiment_algorithm_v1
+.\.venv\Scripts\python.exe -m sentiment_analysis run --app-id 4115450 --consumer sentiment_algorithm_v1
+
+# 3) LLM 增量补标（每 180 秒；--once 可测试一次）
+.\.venv\Scripts\python.exe -m sentiment_analysis.llm_refresh --interval 180
+
+# 4) 结果 API（8100）
+.\.venv\Scripts\python.exe -m sentiment_analysis serve --port 8100
+```
+
+dashboard 主要用：
+
+```http
+GET http://127.0.0.1:8100/v1/sentiment/games
+GET http://127.0.0.1:8100/v1/sentiment/entities?app_id=730
+GET http://127.0.0.1:8100/v1/sentiment/series?app_id=730&entity_id=game&days=7&bucket_hours=1&scorer=llm
+GET http://127.0.0.1:8100/v1/sentiment/alerts?app_id=730&window_hours=24&baseline_hours=168&scorer=llm
+```
+
+关键约定：
+
+- `scorer=llm` 默认只返回 LLM 标签，不把 VADER fallback 画进曲线；`scorer=effective` 才混用 fallback。
+- `pending_llm_rows > 0` 表示新评论还没补 LLM；dashboard 应显示“分析中”或暂时保留上一点。
+- 采集端是 600s 轮询，建议曲线用 1 小时或 10 分钟桶，不要做秒级。
+- `llm_coverage`、`data_status`、`processed_cursor`、`source_latest_cursor`、`cursor_lag` 每页都返回；`insufficient_window`/`insufficient_sample` 不能当 0。
+
 ## 结果契约
 
 分析库（每游戏 × 每 consumer 独立）：
@@ -414,7 +452,10 @@ python3 sentiment_analysis/calibration/compare_calibration.py \
 sentiment_analysis/
 ├─ settings.py, entities.py, sentiment.py, store.py, aggregate.py, client.py, cli.py
 ├─ llm.py                       # LLM job 导出、预测导入、effective_analysis 优先级
+├─ llm_refresh.py               # 持续增量补 LLM 标签的 worker
+├─ api.py                       # 只读结果 API（给 dashboard，默认 LLM-only）
 ├─ evaluate.py                  # 人工金标准评估
+├─ docs/SENTIMENT_API.md        # dashboard 组员接口契约
 ├─ configs/entities_730.json, entities_570.json, entities_4115450.json
 ├─ domain_lexicon.json
 ├─ requirements-sentiment.txt

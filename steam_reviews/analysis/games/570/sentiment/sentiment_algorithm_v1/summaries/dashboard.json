@@ -2,39 +2,20 @@
   "schema_version": "sentiment-dashboard-1.0",
   "app_id": 570,
   "game": "Dota 2",
-  "generated_at": "2026-11-09T11:57:35Z",
+  "generated_at": "2026-11-09T13:16:46Z",
   "bucket_hours": 1,
   "min_mentions": 5,
   "range": {
-    "start": "2026-11-02T11:00:00Z",
-    "end": "2026-11-09T11:00:00Z"
+    "start": "2026-11-02T13:00:00Z",
+    "end": "2026-11-09T13:00:00Z"
   },
   "algorithm_version": "sentiment-llm-v1",
+  "scorer": "effective",
   "entities": [
     {
       "entity_id": "game",
       "name": "Dota 2 overall",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 1,
-          "mention_count": 2,
-          "net_metric": -0.5,
-          "data_status": "insufficient_sample"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 2,
-          "negative_count": 0,
-          "neutral_count": 1,
-          "mention_count": 3,
-          "net_metric": 0.6666666666666666,
-          "data_status": "insufficient_sample"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -1694,6 +1675,26 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 2,
+          "negative_count": 2,
+          "neutral_count": 1,
+          "mention_count": 5,
+          "net_metric": 0.0,
+          "data_status": "ok"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 2,
+          "negative_count": 1,
+          "neutral_count": 1,
+          "mention_count": 4,
+          "net_metric": 0.25,
+          "data_status": "insufficient_sample"
         }
       ]
     },
@@ -1701,26 +1702,6 @@
       "entity_id": "matchmaking",
       "name": "Matchmaking / ranks",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -3380,6 +3361,26 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 0,
+          "negative_count": 1,
+          "neutral_count": 0,
+          "mention_count": 1,
+          "net_metric": -1.0,
+          "data_status": "insufficient_sample"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
         }
       ]
     },
@@ -3387,26 +3388,6 @@
       "entity_id": "hero_balance",
       "name": "Hero balance",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -5060,6 +5041,26 @@
         {
           "bucket_start": "2026-11-09T10:00:00Z",
           "bucket_end": "2026-11-09T11:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -5074,26 +5075,6 @@
       "name": "Patch / meta",
       "buckets": [
         {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
           "positive_count": 0,
@@ -6752,6 +6733,26 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
         }
       ]
     },
@@ -6759,26 +6760,6 @@
       "entity_id": "monetization",
       "name": "Monetization / cosmetics",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -8438,6 +8419,26 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
         }
       ]
     },
@@ -8445,26 +8446,6 @@
       "entity_id": "servers_performance",
       "name": "Servers / performance",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -10124,6 +10105,26 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
         }
       ]
     },
@@ -10131,26 +10132,6 @@
       "entity_id": "report_system",
       "name": "Reports / behavior",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -11810,6 +11791,26 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
         }
       ]
     },
@@ -11817,26 +11818,6 @@
       "entity_id": "new_player_experience",
       "name": "New player experience",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T11:00:00Z",
-          "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T12:00:00Z",
-          "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
@@ -13490,6 +13471,26 @@
         {
           "bucket_start": "2026-11-09T10:00:00Z",
           "bucket_end": "2026-11-09T11:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T11:00:00Z",
+          "bucket_end": "2026-11-09T12:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T12:00:00Z",
+          "bucket_end": "2026-11-09T13:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
