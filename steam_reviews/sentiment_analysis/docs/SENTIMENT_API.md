@@ -24,7 +24,7 @@ cd steam_reviews
 .\.venv\Scripts\python.exe -m sentiment_analysis serve --port 8100
 ```
 
-`llm_refresh` 只处理“还没有 LLM 标签”的 review×entity；没有新数据时不会调用 LLM。它内部调用 WSL 的 `run_cityu_llm.sh`，密钥只从 WSL `~/.env_secrets` 读取，不经过 API 或仓库。
+`llm_refresh` 只处理“还没有 LLM 标签”的 review×entity；没有新数据时不会调用 LLM。它内部调用 WSL 的 `run_cityu_llm.sh`，密钥只从 WSL `~/.env_secrets` 读取（`CITYUCS_LLM_*`，或回退到 `SENTIMENT_LLM_*`），不经过 API 或仓库。填 key 的步骤见仓库根目录 `QUICKSTART.md`。
 
 ## 数据语义
 

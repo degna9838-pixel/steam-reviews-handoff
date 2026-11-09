@@ -1,4 +1,9 @@
 .venv/
+.env
+.env.*
+*.key
+*.pem
+*.secret
 __pycache__/
 *.py[cod]
 .pytest_cache/

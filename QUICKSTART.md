@@ -28,6 +28,65 @@ cd steam_reviews
 
 `setup.bat` 安装采集端依赖；`setup_sentiment.bat` 额外安装 `vaderSentiment` 和 pytest。
 
+## 填入自己的 API key（LLM 主检测需要）
+
+密钥**只放在 WSL 用户目录的 `~/.env_secrets`**，不要放仓库、`config.json`、Windows 环境变量、代码或聊天里。
+
+### 方式 A：CityU 网关（推荐）
+
+在 Windows 终端执行（把 `<你的WSL用户>` 换成 `whoami` 看到的用户；仓库在 D: 时路径是 `/mnt/d/...`）：
+
+```powershell
+wsl.exe -d Ubuntu-24.04 -u <你的WSL用户> -- bash -c "nano ~/.env_secrets"
+```
+
+写入三行（`sk-...` 换成你的 key）：
+
+```bash
+export CITYUCS_LLM_BASE_URL="https://llm.cs.cityu.edu.hk/v1"
+export CITYUCS_LLM_API_KEY="sk-你的key"
+export CITYUCS_LLM_MODEL="CS5351/DeepSeek-V4-Flash"
+```
+
+保存后收紧权限并测试：
+
+```powershell
+wsl.exe -d Ubuntu-24.04 -u <你的WSL用户> -- bash -c "chmod 600 ~/.env_secrets"
+wsl.exe -d Ubuntu-24.04 -u <你的WSL用户> -- bash -c "cd /mnt/d/CS_SEMA/5481_data/group_project/steam-reviews-handoff/steam_reviews && bash sentiment_analysis/calibration/run_cityu_calibration.sh --probe"
+```
+
+预期输出类似：
+
+```json
+{"http_status": 200, "parsed": "neutral", "error": null}
+```
+
+### 方式 B：其他 OpenAI 兼容接口
+
+如果你的 key 不是 CityU 网关，可在同一个 `~/.env_secrets` 里改用通用变量：
+
+```bash
+export SENTIMENT_LLM_BASE_URL="https://api.deepseek.com/v1"
+export SENTIMENT_LLM_API_KEY="sk-你的key"
+export SENTIMENT_LLM_MODEL="deepseek-chat"
+```
+
+`run_cityu_llm.sh` / `run_cityu_calibration.sh` 会优先用 `CITYUCS_*`，没有时自动回退到 `SENTIMENT_LLM_*`。不同模型的输出风格不同，之前 180 条 holdout 的指标不能直接套用。
+
+### WSL 发行版/用户不同
+
+`llm_refresh` 默认 `Ubuntu-24.04`、默认 WSL 用户。若不是这个发行版/用户：
+
+```powershell
+.\sentiment_analysis\start_llm_refresh.bat --wsl-distro Debian --wsl-user alice
+```
+
+或者设置环境变量 `SENTIMENT_WSL_DISTRO` / `SENTIMENT_WSL_USER`。
+
+### 没有 key
+
+跳过 `start_llm_refresh`，仍然可以跑采集 + VADER + 结果 API；API 用 `scorer=effective`，`data_status` 会是 `vader_only` 或 `llm_partial`。不要伪造 LLM 标签，也不要把 VADER fallback 当成完整 LLM 结果。
+
 ## 启动顺序（建议开多个终端）
 
 ```powershell
@@ -76,9 +135,9 @@ dashboard 主要接口：
 
 完整字段见 `steam_reviews/sentiment_analysis/docs/SENTIMENT_API.md`。
 
-## 没有 CityU LLM 密钥怎么办
+## 没有 LLM 密钥怎么办
 
-LLM 补标 worker 需要 WSL 里的 `~/.env_secrets` 配好 `CITYUCS_LLM_*`（模型 `CS5351/DeepSeek-V4-Flash`）。没有密钥时：
+完整填 key 步骤见上面“填入自己的 API key”。没有 key 时：
 
 - 仍然可以跑采集 + VADER 入口 + 结果 API
 - API 用 `scorer=effective` 才使用 VADER fallback；`scorer=llm` 会只返回已补标的 LLM 行

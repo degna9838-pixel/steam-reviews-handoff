@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import shlex
 import subprocess
 import time
@@ -136,8 +137,8 @@ def main(argv=None) -> int:
     parser.add_argument("--prompt-style", default="simple_overall")
     parser.add_argument("--model", default=LLM_MODEL_DEFAULT)
     parser.add_argument("--prompt-version", default=LLM_ACTIVE_PROMPT_VERSION)
-    parser.add_argument("--wsl-distro", default="Ubuntu-24.04")
-    parser.add_argument("--wsl-user", default="otojf7")
+    parser.add_argument("--wsl-distro", default=os.environ.get("SENTIMENT_WSL_DISTRO", "Ubuntu-24.04"))
+    parser.add_argument("--wsl-user", default=os.environ.get("SENTIMENT_WSL_USER") or None)
     parser.add_argument("--timeout", type=float, default=3600.0)
     args = parser.parse_args(argv)
     if args.interval <= 0:

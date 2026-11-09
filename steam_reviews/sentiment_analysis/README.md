@@ -399,7 +399,7 @@ Dota/Phantom 每游戏只有 40 条，单实体 n=5，分实体指标噪声大�
 .\.venv\Scripts\python.exe -m sentiment_analysis export-samples --app-id 730 --consumer sentiment_algorithm_v1 --limit 120 --out analysis\games\730\sentiment\sentiment_algorithm_v1\calibration\samples.jsonl
 ```
 
-2. 在 WSL 内运行（只从 `~/.env_secrets` 读 `CITYUCS_LLM_*`，不把密钥写入项目）：
+2. 在 WSL 内运行（从 `~/.env_secrets` 读 `CITYUCS_LLM_*`，或回退到 `SENTIMENT_LLM_*`；填 key 的步骤见仓库根目录 `QUICKSTART.md`，不要把密钥写入项目）：
 
 ```bash
 cd /mnt/d/CS_SEMA/5481_data/group_project/steam-reviews-handoff/steam_reviews
