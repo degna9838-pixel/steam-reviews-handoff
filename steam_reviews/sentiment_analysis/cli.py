@@ -16,6 +16,7 @@ from .client import (
     summarize,
     verify,
 )
+from .evaluate import evaluate_file
 from .settings import (
     DEFAULT_ALPHA,
     DEFAULT_BASELINE_HOURS,
@@ -132,6 +133,13 @@ def build_parser() -> argparse.ArgumentParser:
     verify_parser.add_argument("--app-id", type=int, required=True)
     verify_parser.add_argument("--consumer", default=LIVE_CONSUMER)
 
+    evaluate_parser = sub.add_parser("evaluate", help="Evaluate labels against a human gold set")
+    evaluate_parser.add_argument("--input", type=Path, required=True)
+    evaluate_parser.add_argument("--gold-field", default="human_label")
+    evaluate_parser.add_argument("--pred-field", default="vader_label")
+    evaluate_parser.add_argument("--entity-field", default="entity_id")
+    evaluate_parser.add_argument("--out", type=Path, required=True)
+
     return parser
 
 
@@ -203,6 +211,22 @@ def main(argv=None) -> int:
         if args.command == "verify":
             validate_app_id(args.app_id)
             return verify(args.app_id, args.consumer)
+        if args.command == "evaluate":
+            report = evaluate_file(
+                args.input,
+                gold_field=args.gold_field,
+                pred_field=args.pred_field,
+                entity_field=args.entity_field,
+                out=args.out,
+            )
+            print(json.dumps({
+                "n": report["overall"]["n"],
+                "accuracy": report["overall"]["accuracy"],
+                "macro_f1": report["overall"]["macro_f1"],
+                "kappa": report["overall"]["kappa"],
+                "errors": report["errors"],
+            }, ensure_ascii=False, indent=2))
+            return 0
         parser.error("Unknown command")
     except KeyboardInterrupt:
         return 0

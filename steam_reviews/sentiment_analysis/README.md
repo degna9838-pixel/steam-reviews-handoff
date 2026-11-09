@@ -168,6 +168,60 @@ analysis/games/<app_id>/sentiment/<consumer>/calibration/calibration_report.json
 
 `verify` 检查：reviews 与 review_status 计数一致、无孤儿分析行、excluded/skipped 无分析行、analysis.revision 与 review_status.revision 一致、无其他算法版本、app_id/stream/cursor 绑定。任何问题返回非零。
 
+## 如何验证情感分析效果
+
+先分清两个层面：
+
+1. **标签层面**：单条评论 × 实体判成 positive/negative/neutral，是否与人工/独立判断一致。
+2. **变化层面**：窗口 metric 的变化是否真实，是否被样本不足、回填未完成、多重比较或数据偏差误导。
+
+### 1. 人工金标准集（最推荐，报告里最有说服力）
+
+从真实数据分层抽样，做**盲标**（标注时不显示 VADER 标签）：
+
+```powershell
+# 1) 分层抽样（每游戏可各做 60-120 条）
+.\.venv\Scripts\python.exe -m sentiment_analysis export-samples --app-id 730 --consumer sentiment_algorithm_v1 --limit 120 --out analysis\games\730\sentiment\sentiment_algorithm_v1\calibration\samples.jsonl
+
+# 2) 生成盲标表：不含 vader_label/vader_score，只留 sample_id/entity/text/human_label
+.\.venv\Scripts\python.exe sentiment_analysis\calibration\make_annotation_sheet.py --input analysis\games\730\sentiment\sentiment_algorithm_v1\calibration\samples.jsonl --out analysis\games\730\sentiment\sentiment_algorithm_v1\calibration\annotation_sheet.jsonl
+
+# 3) 人工填写 human_label（positive/negative/neutral）和 annotator；
+#    有两个人时，各自独立标一份，先算标注者间 kappa，再算与 VADER 的一致率。
+
+# 4) 合并回 VADER 样本（默认只输出已标注行）
+.\.venv\Scripts\python.exe sentiment_analysis\calibration\merge_annotation.py --samples analysis\games\730\sentiment\sentiment_algorithm_v1\calibration\samples.jsonl --labels analysis\games\730\sentiment\sentiment_algorithm_v1\calibration\annotation_sheet.jsonl --out analysis\games\730\sentiment\sentiment_algorithm_v1\calibration\labeled_samples.jsonl
+
+# 5) 评估：accuracy / macro-F1 / 每类 P-R-F1 / 3×3 混淆矩阵 / Cohen's kappa / 分实体
+.\.venv\Scripts\python.exe -m sentiment_analysis evaluate --input analysis\games\730\sentiment\sentiment_algorithm_v1\calibration\labeled_samples.jsonl --gold-field human_label --pred-field vader_label --out analysis\games\730\sentiment\sentiment_algorithm_v1\calibration\evaluation.json
+```
+
+报告至少写：抽样方法、样本量、标注人、标注者间 kappa（若有两人）、accuracy、macro-F1、混淆矩阵、分实体结果和典型错误类型。只有 30–50 条也能看出趋势，但置信区间会很宽，不要把它当成全量准确率。
+
+### 2. LLM 抽样校准（已完成，作为弱监督参考）
+
+已对三游戏各抽样比较 VADER 与 CityU `CS5351/DeepSeek-V4-Flash`：CS2 120 条一致率 0.508/kappa 0.262，Dota 2 40 条 0.525/0.280，Phantom 40 条 0.450/0.181。它说明“词典结果与独立 LLM 判断的中等一致”，不是准确率，也不是人工真值；`neutral` 边界和实体作用域是主要分歧来源。命令见下一节。
+
+### 3. 构造用例与回归测试
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest tests sentiment_analysis/tests -q
+```
+
+当前 211 passed，覆盖否定（`not good`）、转折（`fun but VAC bad`）、多实体相反态度、短评（`gg`）、不可用/空文本、修改/实体消失、重复批次、错流/未知版本、跨游戏同 review_id 隔离、窗口边界、卡方条件、标注/合并/评估指标。VADER 是确定性规则，没有训练集/测试集划分；这些测试验证的是规则和管道，不是统计准确率。
+
+### 4. 变化检测效果
+
+- **已知事件对照**：选一个有明确事件的窗口（如反作弊更新、版本平衡补丁、差评潮），看对应实体 metric 是否同向变化；再看 `evidence` 里的评论是否真的在谈该实体。
+- **窗口稳定性**：用不同 `--now`（如每小时滚动）重算 1h/24h 和 24h/7d，结论方向是否稳定；1h 稀疏时只报 `insufficient_*`，不硬下结论。
+- **误报检查**：对 `change_flag=true` 的实体，抽 10–20 条 `evidence` 人工看是否被整体好评/差评带偏；多实体同句是已知限制。
+- **回填/样本状态**：确认 `backfill_status=completed`、`data_status=ok`、`provisional=false`，且 `mention_count >= min_mentions`；否则只能叫 provisional 告警。
+- **统计条件**：卡方只在不同标签的期望频数都 >=5 时给 `p_value`；不显著不等于没变化，显著也不等于因果。
+
+### 5. 与 `steam_recommended` 的对照（只作描述，不作真值）
+
+可以统计“文本情感 vs 作者是否推荐”的表面一致率，用来说明两者不同；但 handoff 明确禁止把 `steam_recommended` 当情感真值或直接映射标签，所以不要用它算 accuracy/F1。
+
 ## LLM 抽样校准（可选，CityU 网关）
 
 1. 从分析库分层导出样本（不含平台推荐选择作为真值）：
