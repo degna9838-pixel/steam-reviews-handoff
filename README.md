@@ -48,6 +48,8 @@ a16d5670df9d7b1e1300059767c2f7951d99bb784d6d1129c8e92d6d3e857b88  steam_reviews_
 
 ## 工作2：情感分析交付（sentiment-analysis 分支）
 
+**组员请先看 [QUICKSTART.md](QUICKSTART.md)**；完整方法/指标见 `steam_reviews/sentiment_analysis/README.md`，dashboard 接口见 `steam_reviews/sentiment_analysis/docs/SENTIMENT_API.md`。
+
 已解压并实现 `steam_reviews/` 下的独立下游模块，采集端 `cs2_reviews/`、`examples/`、依赖和启动脚本保持不变。
 
 - 方法、命令、结果契约与限制：`steam_reviews/sentiment_analysis/README.md`

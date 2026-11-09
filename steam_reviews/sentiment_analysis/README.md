@@ -1,5 +1,7 @@
 # 实体情感与显著变化检测（CS5481 Topic 4 / handoff 工作2）
 
+> 组员从 GitHub 拉取后，先看仓库根目录的 `QUICKSTART.md`；dashboard 接口见 `docs/SENTIMENT_API.md`。
+
 本模块是 Steam 评论采集清洗端（v1.3.0）的独立下游消费者。它只通过本机 HTTP API 读取 `/v1/reviews/changes`，不修改 `cs2_reviews/`、`examples/consume_api.py`、`requirements.txt` 或启动脚本。三款游戏（CS2=730、Dota 2=570、影之刃零=4115450）各自使用独立的分析库、stream、cursor、实体配置和结果文件。
 
 ## 快速开始
