@@ -45,3 +45,33 @@
 a16d5670df9d7b1e1300059767c2f7951d99bb784d6d1129c8e92d6d3e857b88  steam_reviews_task1_trend.zip
 4465a130f9ba3a5677d4de4b97386e98c52736163d50cd6583be026b63d79db6  steam_reviews_task2_sentiment.zip
 ```
+
+## 趋势词检测（Person 1）：数据集成与关键词频率分析
+
+本模块基于上游 Steam 英文评论采集与清洗接口，实现三款游戏的独立增量同步、按 UTC 时间窗口查询，以及关键词频率统计，为后续 Trending Keywords 检测提供数据支持。
+
+**交付文件：**
+- [完整使用说明](person1_frequency/README_trend_01.md)
+- [下载交接 ZIP](steam_reviews_person1_frequency_handoff.zip?raw=true)
+- Python 源代码：`person1_frequency/trend_analysis/`
+- 自动化测试：`person1_frequency/tests/`
+
+**已实现功能：**
+- 支持 CS2（730）、Dota 2（570）、影之刃零（4115450）。
+- 复用上游 Consumer，实现增量同步及最新评论版本读取。
+- 支持按游戏和 UTC 时间范围查询。
+- 计算 TF（词频）、DF（评论提及数）、Document Rate（关键词提及率）及 Top-N 高频词。
+- 提供同步状态检查，包括 Cursor、Stream ID、Backfill 和数据就绪状态。
+- 已通过 24 个自动化测试，并使用真实 Steam 评论完成端到端验证。
+
+**使用方法（Windows PowerShell）：**
+
+先下载并解压上游 `steam_reviews_task1_trend.zip`，再将本模块 ZIP 的内容合并到其中的 `steam_reviews/` 目录。按照上游 README 安装依赖后，在该目录执行：
+
+1. 启动上游 API：`.\start.bat`
+2. 同步三款游戏：`.\.venv\Scripts\python.exe -m trend_analysis.consumer --consumer trend_live`
+3. 运行测试：`.\.venv\Scripts\python.exe -m unittest discover -s tests -p "test_trend_*.py" -v`
+4. 运行双窗口验收：`.\.venv\Scripts\python.exe .\trend_handoff_check.py`
+
+**下游交接：** Person 2 可通过 `get_top_keywords(..., top_n=None)` 获取指定游戏、指定时间窗口的完整 TF/DF 数据，用于最近 1 小时与此前 24 小时的趋势比较。
+
