@@ -3,8 +3,8 @@
   "app_id": 730,
   "game": "CS2",
   "consumer": "sentiment_algorithm_v1",
-  "generated_at": "2026-11-09T09:30:17Z",
-  "computed_at": "2026-11-09T09:30:17Z",
+  "generated_at": "2026-11-09T11:57:33Z",
+  "computed_at": "2026-11-09T11:57:33Z",
   "mode": "live",
   "source_mode": "live",
   "dataset_type": null,
@@ -13,7 +13,7 @@
     "version": "sentiment-llm-v1",
     "vader_fallback_version": "sentiment-v1",
     "llm_model": "CS5351/DeepSeek-V4-Flash",
-    "llm_prompt_version": "llm-entity-v1",
+    "llm_prompt_version": "llm-entity-v2-overall",
     "entity_config_version": "entities-v1",
     "entity_config_hash": "8a840b69d3915712e0b7715ad6462a8df74d784a43ac212df11e35025bc1eb98",
     "window_hours": 1.0,
@@ -28,36 +28,36 @@
     "significance_test": "chi_square_independence_df2"
   },
   "window": {
-    "current_start": "2026-11-09T08:30:17Z",
-    "current_end": "2026-11-09T09:30:17Z",
-    "baseline_start": "2026-11-08T08:30:17Z",
-    "baseline_end": "2026-11-09T08:30:17Z"
+    "current_start": "2026-11-09T10:57:32Z",
+    "current_end": "2026-11-09T11:57:32Z",
+    "baseline_start": "2026-11-08T10:57:32Z",
+    "baseline_end": "2026-11-09T10:57:32Z"
   },
   "source_stream_id": "ebdc6242-24af-44e7-b9f2-8b944dc121a0",
-  "processed_cursor": "18519",
-  "source_latest_cursor": "18519",
+  "processed_cursor": "18750",
+  "source_latest_cursor": "18750",
   "cursor_lag": 0,
-  "health_fetched_at": "2026-11-09T09:30:17Z",
+  "health_fetched_at": "2026-11-09T11:57:32Z",
   "backfill_status": "completed",
   "backfill_target_days": 30,
   "scope_start_unix": 1791611656,
-  "last_success_at": "2026-11-09T09:21:05Z",
+  "last_success_at": "2026-11-09T11:50:21Z",
   "last_error": null,
   "pipeline_versions": [
     "clean-en-v3"
   ],
   "review_counts": {
-    "total": 18518,
-    "analyzed": 15478,
-    "llm_labeled_reviews": 15478,
-    "llm_labeled_rows": 19367,
-    "vader_rows": 19367,
-    "excluded_unusable": 3040,
+    "total": 18748,
+    "analyzed": 15699,
+    "llm_labeled_reviews": 15699,
+    "llm_labeled_rows": 19601,
+    "vader_rows": 19601,
+    "excluded_unusable": 3049,
     "skipped_empty": 0
   },
   "llm_coverage": 1.0,
   "scorer_counts": {
-    "llm": 19367
+    "llm": 19601
   },
   "vader_fallback_rows": 0,
   "data_status": "ok",
@@ -70,31 +70,31 @@
       "scope": "document",
       "mention_required": false,
       "current": {
-        "positive_count": 38,
-        "negative_count": 2,
-        "neutral_count": 3,
-        "mention_count": 43,
-        "metric": 0.8372093023255814
+        "positive_count": 69,
+        "negative_count": 0,
+        "neutral_count": 5,
+        "mention_count": 74,
+        "metric": 0.9324324324324325
       },
       "baseline": {
-        "positive_count": 849,
-        "negative_count": 114,
-        "neutral_count": 85,
-        "mention_count": 1048,
-        "metric": 0.7013358778625954
+        "positive_count": 980,
+        "negative_count": 107,
+        "neutral_count": 80,
+        "mention_count": 1167,
+        "metric": 0.7480719794344473
       },
       "metric": "net_sentiment",
-      "change": 0.135873,
-      "change_flag": false,
-      "alert_type": "none",
+      "change": 0.18436,
+      "change_flag": true,
+      "alert_type": "statistical",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 1.84732,
-        "p_value": null,
-        "conditions_met": false,
-        "expected_min": 3.4684,
-        "significant": false
+        "chi2": 7.492916,
+        "p_value": 0.02360119,
+        "conditions_met": true,
+        "expected_min": 5.0685,
+        "significant": true
       },
       "data_status": "ok",
       "provisional": false,
@@ -112,36 +112,34 @@
       "mention_required": true,
       "current": {
         "positive_count": 0,
-        "negative_count": 1,
+        "negative_count": 0,
         "neutral_count": 0,
-        "mention_count": 1,
-        "metric": -1.0
+        "mention_count": 0,
+        "metric": null
       },
       "baseline": {
-        "positive_count": 2,
-        "negative_count": 51,
-        "neutral_count": 1,
-        "mention_count": 54,
-        "metric": -0.9074074074074074
+        "positive_count": 1,
+        "negative_count": 47,
+        "neutral_count": 2,
+        "mention_count": 50,
+        "metric": -0.92
       },
       "metric": "net_sentiment",
-      "change": -0.092593,
+      "change": null,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 0.058761,
+        "chi2": 0.0,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.0182,
+        "expected_min": 1.0,
         "significant": false
       },
       "data_status": "insufficient_window",
       "provisional": false,
-      "current_pipeline_versions": [
-        "clean-en-v3"
-      ],
+      "current_pipeline_versions": [],
       "baseline_pipeline_versions": [
         "clean-en-v3"
       ]
@@ -161,9 +159,9 @@
       "baseline": {
         "positive_count": 0,
         "negative_count": 9,
-        "neutral_count": 2,
-        "mention_count": 11,
-        "metric": -0.8181818181818182
+        "neutral_count": 1,
+        "mention_count": 10,
+        "metric": -0.9
       },
       "metric": "net_sentiment",
       "change": null,
@@ -175,7 +173,7 @@
         "chi2": 0.0,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 2.0,
+        "expected_min": 1.0,
         "significant": false
       },
       "data_status": "insufficient_window",
@@ -237,11 +235,11 @@
         "metric": null
       },
       "baseline": {
-        "positive_count": 3,
+        "positive_count": 2,
         "negative_count": 2,
         "neutral_count": 1,
-        "mention_count": 6,
-        "metric": 0.16666666666666666
+        "mention_count": 5,
+        "metric": 0.0
       },
       "metric": "net_sentiment",
       "change": null,
@@ -271,31 +269,31 @@
       "current": {
         "positive_count": 0,
         "negative_count": 0,
-        "neutral_count": 3,
-        "mention_count": 3,
+        "neutral_count": 5,
+        "mention_count": 5,
         "metric": 0.0
       },
       "baseline": {
         "positive_count": 3,
         "negative_count": 4,
-        "neutral_count": 11,
-        "mention_count": 18,
-        "metric": -0.05555555555555555
+        "neutral_count": 19,
+        "mention_count": 26,
+        "metric": -0.038461538461538464
       },
       "metric": "net_sentiment",
-      "change": 0.055556,
+      "change": 0.038462,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 1.75,
+        "chi2": 1.738782,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.4286,
+        "expected_min": 0.4839,
         "significant": false
       },
-      "data_status": "insufficient_window",
+      "data_status": "ok",
       "provisional": false,
       "current_pipeline_versions": [
         "clean-en-v3"
@@ -358,9 +356,9 @@
       "baseline": {
         "positive_count": 0,
         "negative_count": 2,
-        "neutral_count": 2,
-        "mention_count": 4,
-        "metric": -0.5
+        "neutral_count": 1,
+        "mention_count": 3,
+        "metric": -0.6666666666666666
       },
       "metric": "net_sentiment",
       "change": null,
@@ -372,7 +370,7 @@
         "chi2": 0.0,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 2.0,
+        "expected_min": 1.0,
         "significant": false
       },
       "data_status": "insufficient_window",

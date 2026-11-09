@@ -2,12 +2,12 @@
   "schema_version": "sentiment-dashboard-1.0",
   "app_id": 730,
   "game": "CS2",
-  "generated_at": "2026-11-09T09:30:18Z",
+  "generated_at": "2026-11-09T11:57:34Z",
   "bucket_hours": 1,
   "min_mentions": 5,
   "range": {
-    "start": "2026-11-02T09:00:00Z",
-    "end": "2026-11-09T09:00:00Z"
+    "start": "2026-11-02T11:00:00Z",
+    "end": "2026-11-09T11:00:00Z"
   },
   "algorithm_version": "sentiment-llm-v1",
   "entities": [
@@ -16,103 +16,83 @@
       "name": "CS2 overall",
       "buckets": [
         {
-          "bucket_start": "2026-11-02T09:00:00Z",
-          "bucket_end": "2026-11-02T10:00:00Z",
-          "positive_count": 3,
-          "negative_count": 3,
-          "neutral_count": 4,
-          "mention_count": 10,
-          "net_metric": 0.0,
-          "data_status": "ok"
-        },
-        {
-          "bucket_start": "2026-11-02T10:00:00Z",
-          "bucket_end": "2026-11-02T11:00:00Z",
-          "positive_count": 2,
-          "negative_count": 2,
-          "neutral_count": 3,
-          "mention_count": 7,
-          "net_metric": 0.0,
-          "data_status": "ok"
-        },
-        {
           "bucket_start": "2026-11-02T11:00:00Z",
           "bucket_end": "2026-11-02T12:00:00Z",
-          "positive_count": 10,
+          "positive_count": 11,
           "negative_count": 3,
-          "neutral_count": 2,
+          "neutral_count": 1,
           "mention_count": 15,
-          "net_metric": 0.4666666666666667,
+          "net_metric": 0.5333333333333333,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-02T12:00:00Z",
           "bucket_end": "2026-11-02T13:00:00Z",
-          "positive_count": 4,
+          "positive_count": 5,
           "negative_count": 5,
-          "neutral_count": 2,
+          "neutral_count": 1,
           "mention_count": 11,
-          "net_metric": -0.09090909090909091,
+          "net_metric": 0.0,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-02T13:00:00Z",
           "bucket_end": "2026-11-02T14:00:00Z",
-          "positive_count": 9,
-          "negative_count": 5,
-          "neutral_count": 6,
+          "positive_count": 11,
+          "negative_count": 6,
+          "neutral_count": 3,
           "mention_count": 20,
-          "net_metric": 0.2,
+          "net_metric": 0.25,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-02T14:00:00Z",
           "bucket_end": "2026-11-02T15:00:00Z",
-          "positive_count": 12,
+          "positive_count": 14,
           "negative_count": 5,
-          "neutral_count": 3,
+          "neutral_count": 1,
           "mention_count": 20,
-          "net_metric": 0.35,
+          "net_metric": 0.45,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-02T15:00:00Z",
           "bucket_end": "2026-11-02T16:00:00Z",
           "positive_count": 10,
-          "negative_count": 6,
-          "neutral_count": 2,
+          "negative_count": 5,
+          "neutral_count": 3,
           "mention_count": 18,
-          "net_metric": 0.2222222222222222,
+          "net_metric": 0.2777777777777778,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-02T16:00:00Z",
           "bucket_end": "2026-11-02T17:00:00Z",
           "positive_count": 7,
-          "negative_count": 7,
-          "neutral_count": 3,
+          "negative_count": 8,
+          "neutral_count": 2,
           "mention_count": 17,
-          "net_metric": 0.0,
+          "net_metric": -0.058823529411764705,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-02T17:00:00Z",
           "bucket_end": "2026-11-02T18:00:00Z",
-          "positive_count": 13,
-          "negative_count": 4,
+          "positive_count": 12,
+          "negative_count": 5,
           "neutral_count": 4,
           "mention_count": 21,
-          "net_metric": 0.42857142857142855,
+          "net_metric": 0.3333333333333333,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-02T18:00:00Z",
           "bucket_end": "2026-11-02T19:00:00Z",
           "positive_count": 14,
-          "negative_count": 6,
-          "neutral_count": 3,
+          "negative_count": 5,
+          "neutral_count": 4,
           "mention_count": 23,
-          "net_metric": 0.34782608695652173,
+          "net_metric": 0.391304347826087,
           "data_status": "ok"
         },
         {
@@ -138,11 +118,11 @@
         {
           "bucket_start": "2026-11-02T21:00:00Z",
           "bucket_end": "2026-11-02T22:00:00Z",
-          "positive_count": 15,
-          "negative_count": 7,
-          "neutral_count": 2,
+          "positive_count": 16,
+          "negative_count": 5,
+          "neutral_count": 3,
           "mention_count": 24,
-          "net_metric": 0.3333333333333333,
+          "net_metric": 0.4583333333333333,
           "data_status": "ok"
         },
         {
@@ -158,11 +138,11 @@
         {
           "bucket_start": "2026-11-02T23:00:00Z",
           "bucket_end": "2026-11-03T00:00:00Z",
-          "positive_count": 8,
+          "positive_count": 7,
           "negative_count": 5,
-          "neutral_count": 2,
+          "neutral_count": 3,
           "mention_count": 15,
-          "net_metric": 0.2,
+          "net_metric": 0.13333333333333333,
           "data_status": "ok"
         },
         {
@@ -178,11 +158,11 @@
         {
           "bucket_start": "2026-11-03T01:00:00Z",
           "bucket_end": "2026-11-03T02:00:00Z",
-          "positive_count": 8,
+          "positive_count": 9,
           "negative_count": 9,
-          "neutral_count": 4,
+          "neutral_count": 3,
           "mention_count": 21,
-          "net_metric": -0.047619047619047616,
+          "net_metric": 0.0,
           "data_status": "ok"
         },
         {
@@ -198,11 +178,11 @@
         {
           "bucket_start": "2026-11-03T03:00:00Z",
           "bucket_end": "2026-11-03T04:00:00Z",
-          "positive_count": 10,
-          "negative_count": 4,
-          "neutral_count": 2,
+          "positive_count": 8,
+          "negative_count": 5,
+          "neutral_count": 3,
           "mention_count": 16,
-          "net_metric": 0.375,
+          "net_metric": 0.1875,
           "data_status": "ok"
         },
         {
@@ -219,10 +199,10 @@
           "bucket_start": "2026-11-03T05:00:00Z",
           "bucket_end": "2026-11-03T06:00:00Z",
           "positive_count": 10,
-          "negative_count": 7,
-          "neutral_count": 3,
+          "negative_count": 6,
+          "neutral_count": 4,
           "mention_count": 20,
-          "net_metric": 0.15,
+          "net_metric": 0.2,
           "data_status": "ok"
         },
         {
@@ -239,30 +219,30 @@
           "bucket_start": "2026-11-03T07:00:00Z",
           "bucket_end": "2026-11-03T08:00:00Z",
           "positive_count": 4,
-          "negative_count": 9,
-          "neutral_count": 3,
+          "negative_count": 10,
+          "neutral_count": 2,
           "mention_count": 16,
-          "net_metric": -0.3125,
+          "net_metric": -0.375,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-03T08:00:00Z",
           "bucket_end": "2026-11-03T09:00:00Z",
           "positive_count": 4,
-          "negative_count": 2,
-          "neutral_count": 3,
+          "negative_count": 1,
+          "neutral_count": 4,
           "mention_count": 9,
-          "net_metric": 0.2222222222222222,
+          "net_metric": 0.3333333333333333,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-03T09:00:00Z",
           "bucket_end": "2026-11-03T10:00:00Z",
-          "positive_count": 5,
+          "positive_count": 4,
           "negative_count": 7,
-          "neutral_count": 3,
+          "neutral_count": 4,
           "mention_count": 15,
-          "net_metric": -0.13333333333333333,
+          "net_metric": -0.2,
           "data_status": "ok"
         },
         {
@@ -288,31 +268,31 @@
         {
           "bucket_start": "2026-11-03T12:00:00Z",
           "bucket_end": "2026-11-03T13:00:00Z",
-          "positive_count": 5,
+          "positive_count": 6,
           "negative_count": 8,
-          "neutral_count": 8,
+          "neutral_count": 7,
           "mention_count": 21,
-          "net_metric": -0.14285714285714285,
+          "net_metric": -0.09523809523809523,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-03T13:00:00Z",
           "bucket_end": "2026-11-03T14:00:00Z",
-          "positive_count": 7,
+          "positive_count": 8,
           "negative_count": 2,
-          "neutral_count": 7,
+          "neutral_count": 6,
           "mention_count": 16,
-          "net_metric": 0.3125,
+          "net_metric": 0.375,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-03T14:00:00Z",
           "bucket_end": "2026-11-03T15:00:00Z",
-          "positive_count": 8,
-          "negative_count": 8,
+          "positive_count": 9,
+          "negative_count": 7,
           "neutral_count": 2,
           "mention_count": 18,
-          "net_metric": 0.0,
+          "net_metric": 0.1111111111111111,
           "data_status": "ok"
         },
         {
@@ -328,61 +308,61 @@
         {
           "bucket_start": "2026-11-03T16:00:00Z",
           "bucket_end": "2026-11-03T17:00:00Z",
-          "positive_count": 9,
+          "positive_count": 14,
           "negative_count": 7,
-          "neutral_count": 8,
+          "neutral_count": 3,
           "mention_count": 24,
-          "net_metric": 0.08333333333333333,
+          "net_metric": 0.2916666666666667,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-03T17:00:00Z",
           "bucket_end": "2026-11-03T18:00:00Z",
           "positive_count": 21,
-          "negative_count": 6,
-          "neutral_count": 4,
+          "negative_count": 5,
+          "neutral_count": 5,
           "mention_count": 31,
-          "net_metric": 0.4838709677419355,
+          "net_metric": 0.5161290322580645,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-03T18:00:00Z",
           "bucket_end": "2026-11-03T19:00:00Z",
-          "positive_count": 14,
-          "negative_count": 10,
+          "positive_count": 13,
+          "negative_count": 11,
           "neutral_count": 8,
           "mention_count": 32,
-          "net_metric": 0.125,
+          "net_metric": 0.0625,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-03T19:00:00Z",
           "bucket_end": "2026-11-03T20:00:00Z",
           "positive_count": 11,
-          "negative_count": 13,
-          "neutral_count": 3,
+          "negative_count": 12,
+          "neutral_count": 4,
           "mention_count": 27,
-          "net_metric": -0.07407407407407407,
+          "net_metric": -0.037037037037037035,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-03T20:00:00Z",
           "bucket_end": "2026-11-03T21:00:00Z",
-          "positive_count": 9,
-          "negative_count": 5,
+          "positive_count": 10,
+          "negative_count": 4,
           "neutral_count": 6,
           "mention_count": 20,
-          "net_metric": 0.2,
+          "net_metric": 0.3,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-03T21:00:00Z",
           "bucket_end": "2026-11-03T22:00:00Z",
           "positive_count": 10,
-          "negative_count": 10,
-          "neutral_count": 4,
+          "negative_count": 8,
+          "neutral_count": 6,
           "mention_count": 24,
-          "net_metric": 0.0,
+          "net_metric": 0.08333333333333333,
           "data_status": "ok"
         },
         {
@@ -399,10 +379,10 @@
           "bucket_start": "2026-11-03T23:00:00Z",
           "bucket_end": "2026-11-04T00:00:00Z",
           "positive_count": 12,
-          "negative_count": 4,
-          "neutral_count": 3,
+          "negative_count": 5,
+          "neutral_count": 2,
           "mention_count": 19,
-          "net_metric": 0.42105263157894735,
+          "net_metric": 0.3684210526315789,
           "data_status": "ok"
         },
         {
@@ -438,21 +418,21 @@
         {
           "bucket_start": "2026-11-04T03:00:00Z",
           "bucket_end": "2026-11-04T04:00:00Z",
-          "positive_count": 7,
-          "negative_count": 4,
+          "positive_count": 6,
+          "negative_count": 5,
           "neutral_count": 4,
           "mention_count": 15,
-          "net_metric": 0.2,
+          "net_metric": 0.06666666666666667,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-04T04:00:00Z",
           "bucket_end": "2026-11-04T05:00:00Z",
           "positive_count": 3,
-          "negative_count": 4,
-          "neutral_count": 2,
+          "negative_count": 3,
+          "neutral_count": 3,
           "mention_count": 9,
-          "net_metric": -0.1111111111111111,
+          "net_metric": 0.0,
           "data_status": "ok"
         },
         {
@@ -478,11 +458,11 @@
         {
           "bucket_start": "2026-11-04T07:00:00Z",
           "bucket_end": "2026-11-04T08:00:00Z",
-          "positive_count": 4,
-          "negative_count": 4,
+          "positive_count": 5,
+          "negative_count": 3,
           "neutral_count": 2,
           "mention_count": 10,
-          "net_metric": 0.0,
+          "net_metric": 0.2,
           "data_status": "ok"
         },
         {
@@ -519,18 +499,18 @@
           "bucket_start": "2026-11-04T11:00:00Z",
           "bucket_end": "2026-11-04T12:00:00Z",
           "positive_count": 5,
-          "negative_count": 5,
-          "neutral_count": 4,
+          "negative_count": 2,
+          "neutral_count": 7,
           "mention_count": 14,
-          "net_metric": 0.0,
+          "net_metric": 0.21428571428571427,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-04T12:00:00Z",
           "bucket_end": "2026-11-04T13:00:00Z",
-          "positive_count": 12,
-          "negative_count": 2,
-          "neutral_count": 2,
+          "positive_count": 11,
+          "negative_count": 1,
+          "neutral_count": 4,
           "mention_count": 16,
           "net_metric": 0.625,
           "data_status": "ok"
@@ -548,11 +528,11 @@
         {
           "bucket_start": "2026-11-04T14:00:00Z",
           "bucket_end": "2026-11-04T15:00:00Z",
-          "positive_count": 13,
+          "positive_count": 15,
           "negative_count": 7,
-          "neutral_count": 7,
+          "neutral_count": 5,
           "mention_count": 27,
-          "net_metric": 0.2222222222222222,
+          "net_metric": 0.2962962962962963,
           "data_status": "ok"
         },
         {
@@ -568,41 +548,41 @@
         {
           "bucket_start": "2026-11-04T16:00:00Z",
           "bucket_end": "2026-11-04T17:00:00Z",
-          "positive_count": 9,
-          "negative_count": 4,
+          "positive_count": 8,
+          "negative_count": 5,
           "neutral_count": 3,
           "mention_count": 16,
-          "net_metric": 0.3125,
+          "net_metric": 0.1875,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-04T17:00:00Z",
           "bucket_end": "2026-11-04T18:00:00Z",
-          "positive_count": 13,
+          "positive_count": 14,
           "negative_count": 7,
-          "neutral_count": 3,
+          "neutral_count": 2,
           "mention_count": 23,
-          "net_metric": 0.2608695652173913,
+          "net_metric": 0.30434782608695654,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-04T18:00:00Z",
           "bucket_end": "2026-11-04T19:00:00Z",
-          "positive_count": 12,
+          "positive_count": 13,
           "negative_count": 3,
-          "neutral_count": 5,
+          "neutral_count": 4,
           "mention_count": 20,
-          "net_metric": 0.45,
+          "net_metric": 0.5,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-04T19:00:00Z",
           "bucket_end": "2026-11-04T20:00:00Z",
           "positive_count": 15,
-          "negative_count": 6,
-          "neutral_count": 4,
+          "negative_count": 5,
+          "neutral_count": 5,
           "mention_count": 25,
-          "net_metric": 0.36,
+          "net_metric": 0.4,
           "data_status": "ok"
         },
         {
@@ -628,11 +608,11 @@
         {
           "bucket_start": "2026-11-04T22:00:00Z",
           "bucket_end": "2026-11-04T23:00:00Z",
-          "positive_count": 6,
+          "positive_count": 7,
           "negative_count": 5,
-          "neutral_count": 4,
+          "neutral_count": 3,
           "mention_count": 15,
-          "net_metric": 0.06666666666666667,
+          "net_metric": 0.13333333333333333,
           "data_status": "ok"
         },
         {
@@ -658,11 +638,11 @@
         {
           "bucket_start": "2026-11-05T01:00:00Z",
           "bucket_end": "2026-11-05T02:00:00Z",
-          "positive_count": 8,
+          "positive_count": 7,
           "negative_count": 6,
-          "neutral_count": 2,
+          "neutral_count": 3,
           "mention_count": 16,
-          "net_metric": 0.125,
+          "net_metric": 0.0625,
           "data_status": "ok"
         },
         {
@@ -688,9 +668,9 @@
         {
           "bucket_start": "2026-11-05T04:00:00Z",
           "bucket_end": "2026-11-05T05:00:00Z",
-          "positive_count": 4,
-          "negative_count": 8,
-          "neutral_count": 2,
+          "positive_count": 3,
+          "negative_count": 7,
+          "neutral_count": 4,
           "mention_count": 14,
           "net_metric": -0.2857142857142857,
           "data_status": "ok"
@@ -698,11 +678,11 @@
         {
           "bucket_start": "2026-11-05T05:00:00Z",
           "bucket_end": "2026-11-05T06:00:00Z",
-          "positive_count": 5,
-          "negative_count": 8,
-          "neutral_count": 5,
+          "positive_count": 7,
+          "negative_count": 5,
+          "neutral_count": 6,
           "mention_count": 18,
-          "net_metric": -0.16666666666666666,
+          "net_metric": 0.1111111111111111,
           "data_status": "ok"
         },
         {
@@ -738,11 +718,11 @@
         {
           "bucket_start": "2026-11-05T09:00:00Z",
           "bucket_end": "2026-11-05T10:00:00Z",
-          "positive_count": 11,
-          "negative_count": 4,
+          "positive_count": 9,
+          "negative_count": 6,
           "neutral_count": 2,
           "mention_count": 17,
-          "net_metric": 0.4117647058823529,
+          "net_metric": 0.17647058823529413,
           "data_status": "ok"
         },
         {
@@ -768,61 +748,61 @@
         {
           "bucket_start": "2026-11-05T12:00:00Z",
           "bucket_end": "2026-11-05T13:00:00Z",
-          "positive_count": 8,
+          "positive_count": 9,
           "negative_count": 4,
-          "neutral_count": 2,
+          "neutral_count": 1,
           "mention_count": 14,
-          "net_metric": 0.2857142857142857,
+          "net_metric": 0.35714285714285715,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-05T13:00:00Z",
           "bucket_end": "2026-11-05T14:00:00Z",
-          "positive_count": 13,
-          "negative_count": 4,
+          "positive_count": 14,
+          "negative_count": 3,
           "neutral_count": 1,
           "mention_count": 18,
-          "net_metric": 0.5,
+          "net_metric": 0.6111111111111112,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-05T14:00:00Z",
           "bucket_end": "2026-11-05T15:00:00Z",
           "positive_count": 17,
-          "negative_count": 2,
-          "neutral_count": 6,
+          "negative_count": 1,
+          "neutral_count": 7,
           "mention_count": 25,
-          "net_metric": 0.6,
+          "net_metric": 0.64,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-05T15:00:00Z",
           "bucket_end": "2026-11-05T16:00:00Z",
-          "positive_count": 15,
-          "negative_count": 3,
+          "positive_count": 16,
+          "negative_count": 2,
           "neutral_count": 2,
           "mention_count": 20,
-          "net_metric": 0.6,
+          "net_metric": 0.7,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-05T16:00:00Z",
           "bucket_end": "2026-11-05T17:00:00Z",
           "positive_count": 22,
-          "negative_count": 5,
-          "neutral_count": 4,
+          "negative_count": 4,
+          "neutral_count": 5,
           "mention_count": 31,
-          "net_metric": 0.5483870967741935,
+          "net_metric": 0.5806451612903226,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-05T17:00:00Z",
           "bucket_end": "2026-11-05T18:00:00Z",
-          "positive_count": 26,
+          "positive_count": 28,
           "negative_count": 5,
-          "neutral_count": 5,
+          "neutral_count": 3,
           "mention_count": 36,
-          "net_metric": 0.5833333333333334,
+          "net_metric": 0.6388888888888888,
           "data_status": "ok"
         },
         {
@@ -838,11 +818,11 @@
         {
           "bucket_start": "2026-11-05T19:00:00Z",
           "bucket_end": "2026-11-05T20:00:00Z",
-          "positive_count": 18,
+          "positive_count": 19,
           "negative_count": 5,
-          "neutral_count": 4,
+          "neutral_count": 3,
           "mention_count": 27,
-          "net_metric": 0.48148148148148145,
+          "net_metric": 0.5185185185185185,
           "data_status": "ok"
         },
         {
@@ -888,21 +868,21 @@
         {
           "bucket_start": "2026-11-06T00:00:00Z",
           "bucket_end": "2026-11-06T01:00:00Z",
-          "positive_count": 8,
-          "negative_count": 3,
+          "positive_count": 7,
+          "negative_count": 4,
           "neutral_count": 0,
           "mention_count": 11,
-          "net_metric": 0.45454545454545453,
+          "net_metric": 0.2727272727272727,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T01:00:00Z",
           "bucket_end": "2026-11-06T02:00:00Z",
-          "positive_count": 3,
+          "positive_count": 4,
           "negative_count": 5,
-          "neutral_count": 4,
+          "neutral_count": 3,
           "mention_count": 12,
-          "net_metric": -0.16666666666666666,
+          "net_metric": -0.08333333333333333,
           "data_status": "ok"
         },
         {
@@ -948,21 +928,21 @@
         {
           "bucket_start": "2026-11-06T06:00:00Z",
           "bucket_end": "2026-11-06T07:00:00Z",
-          "positive_count": 3,
+          "positive_count": 5,
           "negative_count": 0,
-          "neutral_count": 2,
+          "neutral_count": 0,
           "mention_count": 5,
-          "net_metric": 0.6,
+          "net_metric": 1.0,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T07:00:00Z",
           "bucket_end": "2026-11-06T08:00:00Z",
-          "positive_count": 7,
+          "positive_count": 9,
           "negative_count": 4,
-          "neutral_count": 2,
+          "neutral_count": 0,
           "mention_count": 13,
-          "net_metric": 0.23076923076923078,
+          "net_metric": 0.38461538461538464,
           "data_status": "ok"
         },
         {
@@ -978,81 +958,81 @@
         {
           "bucket_start": "2026-11-06T09:00:00Z",
           "bucket_end": "2026-11-06T10:00:00Z",
-          "positive_count": 9,
+          "positive_count": 10,
           "negative_count": 2,
-          "neutral_count": 2,
+          "neutral_count": 1,
           "mention_count": 13,
-          "net_metric": 0.5384615384615384,
+          "net_metric": 0.6153846153846154,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T10:00:00Z",
           "bucket_end": "2026-11-06T11:00:00Z",
-          "positive_count": 9,
+          "positive_count": 8,
           "negative_count": 2,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 11,
-          "net_metric": 0.6363636363636364,
+          "net_metric": 0.5454545454545454,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T11:00:00Z",
           "bucket_end": "2026-11-06T12:00:00Z",
-          "positive_count": 12,
+          "positive_count": 13,
           "negative_count": 2,
-          "neutral_count": 2,
+          "neutral_count": 1,
           "mention_count": 16,
-          "net_metric": 0.625,
+          "net_metric": 0.6875,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T12:00:00Z",
           "bucket_end": "2026-11-06T13:00:00Z",
           "positive_count": 9,
-          "negative_count": 4,
-          "neutral_count": 4,
+          "negative_count": 3,
+          "neutral_count": 5,
           "mention_count": 17,
-          "net_metric": 0.29411764705882354,
+          "net_metric": 0.35294117647058826,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T13:00:00Z",
           "bucket_end": "2026-11-06T14:00:00Z",
-          "positive_count": 11,
+          "positive_count": 13,
           "negative_count": 5,
-          "neutral_count": 8,
+          "neutral_count": 6,
           "mention_count": 24,
-          "net_metric": 0.25,
+          "net_metric": 0.3333333333333333,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T14:00:00Z",
           "bucket_end": "2026-11-06T15:00:00Z",
-          "positive_count": 14,
-          "negative_count": 7,
-          "neutral_count": 1,
+          "positive_count": 12,
+          "negative_count": 4,
+          "neutral_count": 6,
           "mention_count": 22,
-          "net_metric": 0.3181818181818182,
+          "net_metric": 0.36363636363636365,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T15:00:00Z",
           "bucket_end": "2026-11-06T16:00:00Z",
           "positive_count": 9,
-          "negative_count": 7,
-          "neutral_count": 2,
+          "negative_count": 5,
+          "neutral_count": 4,
           "mention_count": 18,
-          "net_metric": 0.1111111111111111,
+          "net_metric": 0.2222222222222222,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T16:00:00Z",
           "bucket_end": "2026-11-06T17:00:00Z",
           "positive_count": 11,
-          "negative_count": 6,
-          "neutral_count": 2,
+          "negative_count": 5,
+          "neutral_count": 3,
           "mention_count": 19,
-          "net_metric": 0.2631578947368421,
+          "net_metric": 0.3157894736842105,
           "data_status": "ok"
         },
         {
@@ -1078,39 +1058,39 @@
         {
           "bucket_start": "2026-11-06T19:00:00Z",
           "bucket_end": "2026-11-06T20:00:00Z",
-          "positive_count": 17,
-          "negative_count": 2,
-          "neutral_count": 2,
+          "positive_count": 14,
+          "negative_count": 3,
+          "neutral_count": 4,
           "mention_count": 21,
-          "net_metric": 0.7142857142857143,
+          "net_metric": 0.5238095238095238,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T20:00:00Z",
           "bucket_end": "2026-11-06T21:00:00Z",
-          "positive_count": 13,
+          "positive_count": 14,
           "negative_count": 10,
-          "neutral_count": 7,
+          "neutral_count": 6,
           "mention_count": 30,
-          "net_metric": 0.1,
+          "net_metric": 0.13333333333333333,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T21:00:00Z",
           "bucket_end": "2026-11-06T22:00:00Z",
           "positive_count": 6,
-          "negative_count": 10,
-          "neutral_count": 4,
+          "negative_count": 8,
+          "neutral_count": 6,
           "mention_count": 20,
-          "net_metric": -0.2,
+          "net_metric": -0.1,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-06T22:00:00Z",
           "bucket_end": "2026-11-06T23:00:00Z",
-          "positive_count": 14,
-          "negative_count": 4,
-          "neutral_count": 3,
+          "positive_count": 15,
+          "negative_count": 5,
+          "neutral_count": 1,
           "mention_count": 21,
           "net_metric": 0.47619047619047616,
           "data_status": "ok"
@@ -1118,21 +1098,21 @@
         {
           "bucket_start": "2026-11-06T23:00:00Z",
           "bucket_end": "2026-11-07T00:00:00Z",
-          "positive_count": 7,
+          "positive_count": 8,
           "negative_count": 2,
-          "neutral_count": 2,
+          "neutral_count": 1,
           "mention_count": 11,
-          "net_metric": 0.45454545454545453,
+          "net_metric": 0.5454545454545454,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-07T00:00:00Z",
           "bucket_end": "2026-11-07T01:00:00Z",
-          "positive_count": 3,
+          "positive_count": 4,
           "negative_count": 7,
-          "neutral_count": 5,
+          "neutral_count": 4,
           "mention_count": 15,
-          "net_metric": -0.26666666666666666,
+          "net_metric": -0.2,
           "data_status": "ok"
         },
         {
@@ -1148,9 +1128,9 @@
         {
           "bucket_start": "2026-11-07T02:00:00Z",
           "bucket_end": "2026-11-07T03:00:00Z",
-          "positive_count": 3,
-          "negative_count": 3,
-          "neutral_count": 5,
+          "positive_count": 4,
+          "negative_count": 4,
+          "neutral_count": 3,
           "mention_count": 11,
           "net_metric": 0.0,
           "data_status": "ok"
@@ -1158,31 +1138,31 @@
         {
           "bucket_start": "2026-11-07T03:00:00Z",
           "bucket_end": "2026-11-07T04:00:00Z",
-          "positive_count": 4,
+          "positive_count": 6,
           "negative_count": 3,
-          "neutral_count": 5,
+          "neutral_count": 3,
           "mention_count": 12,
-          "net_metric": 0.08333333333333333,
+          "net_metric": 0.25,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-07T04:00:00Z",
           "bucket_end": "2026-11-07T05:00:00Z",
-          "positive_count": 5,
+          "positive_count": 6,
           "negative_count": 2,
-          "neutral_count": 2,
+          "neutral_count": 1,
           "mention_count": 9,
-          "net_metric": 0.3333333333333333,
+          "net_metric": 0.4444444444444444,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-07T05:00:00Z",
           "bucket_end": "2026-11-07T06:00:00Z",
-          "positive_count": 5,
+          "positive_count": 3,
           "negative_count": 2,
-          "neutral_count": 2,
+          "neutral_count": 4,
           "mention_count": 9,
-          "net_metric": 0.3333333333333333,
+          "net_metric": 0.1111111111111111,
           "data_status": "ok"
         },
         {
@@ -1209,10 +1189,10 @@
           "bucket_start": "2026-11-07T08:00:00Z",
           "bucket_end": "2026-11-07T09:00:00Z",
           "positive_count": 5,
-          "negative_count": 6,
-          "neutral_count": 5,
+          "negative_count": 4,
+          "neutral_count": 7,
           "mention_count": 16,
-          "net_metric": -0.0625,
+          "net_metric": 0.0625,
           "data_status": "ok"
         },
         {
@@ -1248,21 +1228,21 @@
         {
           "bucket_start": "2026-11-07T12:00:00Z",
           "bucket_end": "2026-11-07T13:00:00Z",
-          "positive_count": 8,
+          "positive_count": 9,
           "negative_count": 9,
-          "neutral_count": 4,
+          "neutral_count": 3,
           "mention_count": 21,
-          "net_metric": -0.047619047619047616,
+          "net_metric": 0.0,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-07T13:00:00Z",
           "bucket_end": "2026-11-07T14:00:00Z",
-          "positive_count": 8,
+          "positive_count": 10,
           "negative_count": 4,
-          "neutral_count": 4,
+          "neutral_count": 2,
           "mention_count": 16,
-          "net_metric": 0.25,
+          "net_metric": 0.375,
           "data_status": "ok"
         },
         {
@@ -1279,20 +1259,20 @@
           "bucket_start": "2026-11-07T15:00:00Z",
           "bucket_end": "2026-11-07T16:00:00Z",
           "positive_count": 9,
-          "negative_count": 5,
-          "neutral_count": 0,
+          "negative_count": 4,
+          "neutral_count": 1,
           "mention_count": 14,
-          "net_metric": 0.2857142857142857,
+          "net_metric": 0.35714285714285715,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-07T16:00:00Z",
           "bucket_end": "2026-11-07T17:00:00Z",
-          "positive_count": 15,
-          "negative_count": 4,
-          "neutral_count": 6,
+          "positive_count": 17,
+          "negative_count": 3,
+          "neutral_count": 5,
           "mention_count": 25,
-          "net_metric": 0.44,
+          "net_metric": 0.56,
           "data_status": "ok"
         },
         {
@@ -1308,21 +1288,21 @@
         {
           "bucket_start": "2026-11-07T18:00:00Z",
           "bucket_end": "2026-11-07T19:00:00Z",
-          "positive_count": 11,
+          "positive_count": 10,
           "negative_count": 8,
-          "neutral_count": 5,
+          "neutral_count": 6,
           "mention_count": 24,
-          "net_metric": 0.125,
+          "net_metric": 0.08333333333333333,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-07T19:00:00Z",
           "bucket_end": "2026-11-07T20:00:00Z",
-          "positive_count": 13,
-          "negative_count": 3,
+          "positive_count": 14,
+          "negative_count": 2,
           "neutral_count": 6,
           "mention_count": 22,
-          "net_metric": 0.45454545454545453,
+          "net_metric": 0.5454545454545454,
           "data_status": "ok"
         },
         {
@@ -1338,21 +1318,21 @@
         {
           "bucket_start": "2026-11-07T21:00:00Z",
           "bucket_end": "2026-11-07T22:00:00Z",
-          "positive_count": 17,
+          "positive_count": 18,
           "negative_count": 7,
-          "neutral_count": 3,
+          "neutral_count": 2,
           "mention_count": 27,
-          "net_metric": 0.37037037037037035,
+          "net_metric": 0.4074074074074074,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-07T22:00:00Z",
           "bucket_end": "2026-11-07T23:00:00Z",
           "positive_count": 17,
-          "negative_count": 6,
-          "neutral_count": 6,
+          "negative_count": 7,
+          "neutral_count": 5,
           "mention_count": 29,
-          "net_metric": 0.3793103448275862,
+          "net_metric": 0.3448275862068966,
           "data_status": "ok"
         },
         {
@@ -1369,20 +1349,20 @@
           "bucket_start": "2026-11-08T00:00:00Z",
           "bucket_end": "2026-11-08T01:00:00Z",
           "positive_count": 12,
-          "negative_count": 4,
-          "neutral_count": 8,
+          "negative_count": 5,
+          "neutral_count": 7,
           "mention_count": 24,
-          "net_metric": 0.3333333333333333,
+          "net_metric": 0.2916666666666667,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-08T01:00:00Z",
           "bucket_end": "2026-11-08T02:00:00Z",
-          "positive_count": 5,
-          "negative_count": 7,
-          "neutral_count": 3,
+          "positive_count": 7,
+          "negative_count": 6,
+          "neutral_count": 2,
           "mention_count": 15,
-          "net_metric": -0.13333333333333333,
+          "net_metric": 0.06666666666666667,
           "data_status": "ok"
         },
         {
@@ -1448,31 +1428,31 @@
         {
           "bucket_start": "2026-11-08T08:00:00Z",
           "bucket_end": "2026-11-08T09:00:00Z",
-          "positive_count": 23,
+          "positive_count": 24,
           "negative_count": 1,
-          "neutral_count": 4,
+          "neutral_count": 3,
           "mention_count": 28,
-          "net_metric": 0.7857142857142857,
+          "net_metric": 0.8214285714285714,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-08T09:00:00Z",
           "bucket_end": "2026-11-08T10:00:00Z",
           "positive_count": 14,
-          "negative_count": 6,
-          "neutral_count": 3,
+          "negative_count": 7,
+          "neutral_count": 2,
           "mention_count": 23,
-          "net_metric": 0.34782608695652173,
+          "net_metric": 0.30434782608695654,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-08T10:00:00Z",
           "bucket_end": "2026-11-08T11:00:00Z",
           "positive_count": 17,
-          "negative_count": 5,
-          "neutral_count": 3,
+          "negative_count": 4,
+          "neutral_count": 4,
           "mention_count": 25,
-          "net_metric": 0.48,
+          "net_metric": 0.52,
           "data_status": "ok"
         },
         {
@@ -1488,11 +1468,11 @@
         {
           "bucket_start": "2026-11-08T12:00:00Z",
           "bucket_end": "2026-11-08T13:00:00Z",
-          "positive_count": 72,
+          "positive_count": 73,
           "negative_count": 5,
-          "neutral_count": 6,
+          "neutral_count": 5,
           "mention_count": 83,
-          "net_metric": 0.8072289156626506,
+          "net_metric": 0.8192771084337349,
           "data_status": "ok"
         },
         {
@@ -1509,60 +1489,60 @@
           "bucket_start": "2026-11-08T14:00:00Z",
           "bucket_end": "2026-11-08T15:00:00Z",
           "positive_count": 30,
-          "negative_count": 6,
-          "neutral_count": 5,
+          "negative_count": 5,
+          "neutral_count": 6,
           "mention_count": 41,
-          "net_metric": 0.5853658536585366,
+          "net_metric": 0.6097560975609756,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-08T15:00:00Z",
           "bucket_end": "2026-11-08T16:00:00Z",
-          "positive_count": 29,
+          "positive_count": 30,
           "negative_count": 7,
-          "neutral_count": 9,
+          "neutral_count": 8,
           "mention_count": 45,
-          "net_metric": 0.4888888888888889,
+          "net_metric": 0.5111111111111111,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-08T16:00:00Z",
           "bucket_end": "2026-11-08T17:00:00Z",
-          "positive_count": 69,
+          "positive_count": 70,
           "negative_count": 10,
-          "neutral_count": 6,
+          "neutral_count": 5,
           "mention_count": 85,
-          "net_metric": 0.6941176470588235,
+          "net_metric": 0.7058823529411765,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-08T17:00:00Z",
           "bucket_end": "2026-11-08T18:00:00Z",
-          "positive_count": 85,
-          "negative_count": 8,
+          "positive_count": 84,
+          "negative_count": 9,
           "neutral_count": 4,
           "mention_count": 97,
-          "net_metric": 0.7938144329896907,
+          "net_metric": 0.7731958762886598,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-08T18:00:00Z",
           "bucket_end": "2026-11-08T19:00:00Z",
-          "positive_count": 31,
+          "positive_count": 33,
           "negative_count": 7,
-          "neutral_count": 4,
+          "neutral_count": 2,
           "mention_count": 42,
-          "net_metric": 0.5714285714285714,
+          "net_metric": 0.6190476190476191,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-08T19:00:00Z",
           "bucket_end": "2026-11-08T20:00:00Z",
           "positive_count": 34,
-          "negative_count": 8,
-          "neutral_count": 4,
+          "negative_count": 7,
+          "neutral_count": 5,
           "mention_count": 46,
-          "net_metric": 0.5652173913043478,
+          "net_metric": 0.5869565217391305,
           "data_status": "ok"
         },
         {
@@ -1589,20 +1569,20 @@
           "bucket_start": "2026-11-08T22:00:00Z",
           "bucket_end": "2026-11-08T23:00:00Z",
           "positive_count": 24,
-          "negative_count": 5,
-          "neutral_count": 2,
+          "negative_count": 4,
+          "neutral_count": 3,
           "mention_count": 31,
-          "net_metric": 0.6129032258064516,
+          "net_metric": 0.6451612903225806,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-08T23:00:00Z",
           "bucket_end": "2026-11-09T00:00:00Z",
-          "positive_count": 45,
+          "positive_count": 46,
           "negative_count": 8,
-          "neutral_count": 2,
+          "neutral_count": 1,
           "mention_count": 55,
-          "net_metric": 0.6727272727272727,
+          "net_metric": 0.6909090909090909,
           "data_status": "ok"
         },
         {
@@ -1638,21 +1618,21 @@
         {
           "bucket_start": "2026-11-09T03:00:00Z",
           "bucket_end": "2026-11-09T04:00:00Z",
-          "positive_count": 7,
-          "negative_count": 1,
+          "positive_count": 6,
+          "negative_count": 2,
           "neutral_count": 2,
           "mention_count": 10,
-          "net_metric": 0.6,
+          "net_metric": 0.4,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-09T04:00:00Z",
           "bucket_end": "2026-11-09T05:00:00Z",
-          "positive_count": 3,
+          "positive_count": 4,
           "negative_count": 0,
-          "neutral_count": 2,
+          "neutral_count": 1,
           "mention_count": 5,
-          "net_metric": 0.6,
+          "net_metric": 0.8,
           "data_status": "ok"
         },
         {
@@ -1669,30 +1649,50 @@
           "bucket_start": "2026-11-09T06:00:00Z",
           "bucket_end": "2026-11-09T07:00:00Z",
           "positive_count": 6,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 7,
-          "net_metric": 0.8571428571428571,
+          "net_metric": 0.7142857142857143,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-09T07:00:00Z",
           "bucket_end": "2026-11-09T08:00:00Z",
-          "positive_count": 2,
-          "negative_count": 5,
+          "positive_count": 3,
+          "negative_count": 4,
           "neutral_count": 4,
           "mention_count": 11,
-          "net_metric": -0.2727272727272727,
+          "net_metric": -0.09090909090909091,
           "data_status": "ok"
         },
         {
           "bucket_start": "2026-11-09T08:00:00Z",
           "bucket_end": "2026-11-09T09:00:00Z",
-          "positive_count": 12,
-          "negative_count": 2,
+          "positive_count": 13,
+          "negative_count": 1,
           "neutral_count": 3,
           "mention_count": 17,
-          "net_metric": 0.5882352941176471,
+          "net_metric": 0.7058823529411765,
+          "data_status": "ok"
+        },
+        {
+          "bucket_start": "2026-11-09T09:00:00Z",
+          "bucket_end": "2026-11-09T10:00:00Z",
+          "positive_count": 90,
+          "negative_count": 2,
+          "neutral_count": 2,
+          "mention_count": 94,
+          "net_metric": 0.9361702127659575,
+          "data_status": "ok"
+        },
+        {
+          "bucket_start": "2026-11-09T10:00:00Z",
+          "bucket_end": "2026-11-09T11:00:00Z",
+          "positive_count": 86,
+          "negative_count": 2,
+          "neutral_count": 4,
+          "mention_count": 92,
+          "net_metric": 0.9130434782608695,
           "data_status": "ok"
         }
       ]
@@ -1701,26 +1701,6 @@
       "entity_id": "anticheat",
       "name": "Anti-cheat / VAC",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T09:00:00Z",
-          "bucket_end": "2026-11-02T10:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T10:00:00Z",
-          "bucket_end": "2026-11-02T11:00:00Z",
-          "positive_count": 0,
-          "negative_count": 3,
-          "neutral_count": 0,
-          "mention_count": 3,
-          "net_metric": -1.0,
-          "data_status": "insufficient_sample"
-        },
         {
           "bucket_start": "2026-11-02T11:00:00Z",
           "bucket_end": "2026-11-02T12:00:00Z",
@@ -1855,10 +1835,10 @@
           "bucket_start": "2026-11-03T00:00:00Z",
           "bucket_end": "2026-11-03T01:00:00Z",
           "positive_count": 0,
-          "negative_count": 3,
-          "neutral_count": 1,
+          "negative_count": 4,
+          "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": -0.75,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -1905,10 +1885,10 @@
           "bucket_start": "2026-11-03T05:00:00Z",
           "bucket_end": "2026-11-03T06:00:00Z",
           "positive_count": 0,
-          "negative_count": 3,
-          "neutral_count": 0,
+          "negative_count": 2,
+          "neutral_count": 1,
           "mention_count": 3,
-          "net_metric": -1.0,
+          "net_metric": -0.6666666666666666,
           "data_status": "insufficient_sample"
         },
         {
@@ -2084,11 +2064,11 @@
         {
           "bucket_start": "2026-11-03T23:00:00Z",
           "bucket_end": "2026-11-04T00:00:00Z",
-          "positive_count": 1,
-          "negative_count": 3,
+          "positive_count": 0,
+          "negative_count": 4,
           "neutral_count": 0,
           "mention_count": 4,
-          "net_metric": -0.5,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -2254,11 +2234,11 @@
         {
           "bucket_start": "2026-11-04T16:00:00Z",
           "bucket_end": "2026-11-04T17:00:00Z",
-          "positive_count": 1,
-          "negative_count": 4,
+          "positive_count": 0,
+          "negative_count": 5,
           "neutral_count": 0,
           "mention_count": 5,
-          "net_metric": -0.6,
+          "net_metric": -1.0,
           "data_status": "ok"
         },
         {
@@ -2464,11 +2444,11 @@
         {
           "bucket_start": "2026-11-05T13:00:00Z",
           "bucket_end": "2026-11-05T14:00:00Z",
-          "positive_count": 1,
+          "positive_count": 0,
           "negative_count": 2,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 3,
-          "net_metric": -0.3333333333333333,
+          "net_metric": -0.6666666666666666,
           "data_status": "insufficient_sample"
         },
         {
@@ -2614,11 +2594,11 @@
         {
           "bucket_start": "2026-11-06T04:00:00Z",
           "bucket_end": "2026-11-06T05:00:00Z",
-          "positive_count": 1,
-          "negative_count": 1,
+          "positive_count": 0,
+          "negative_count": 2,
           "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -2715,10 +2695,10 @@
           "bucket_start": "2026-11-06T14:00:00Z",
           "bucket_end": "2026-11-06T15:00:00Z",
           "positive_count": 0,
-          "negative_count": 6,
-          "neutral_count": 0,
+          "negative_count": 5,
+          "neutral_count": 1,
           "mention_count": 6,
-          "net_metric": -1.0,
+          "net_metric": -0.8333333333333334,
           "data_status": "ok"
         },
         {
@@ -2825,10 +2805,10 @@
           "bucket_start": "2026-11-07T01:00:00Z",
           "bucket_end": "2026-11-07T02:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": -1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -3225,10 +3205,10 @@
           "bucket_start": "2026-11-08T17:00:00Z",
           "bucket_end": "2026-11-08T18:00:00Z",
           "positive_count": 0,
-          "negative_count": 3,
-          "neutral_count": 0,
+          "negative_count": 2,
+          "neutral_count": 1,
           "mention_count": 3,
-          "net_metric": -1.0,
+          "net_metric": -0.6666666666666666,
           "data_status": "insufficient_sample"
         },
         {
@@ -3254,11 +3234,11 @@
         {
           "bucket_start": "2026-11-08T20:00:00Z",
           "bucket_end": "2026-11-08T21:00:00Z",
-          "positive_count": 1,
-          "negative_count": 5,
+          "positive_count": 0,
+          "negative_count": 6,
           "neutral_count": 0,
           "mention_count": 6,
-          "net_metric": -0.6666666666666666,
+          "net_metric": -1.0,
           "data_status": "ok"
         },
         {
@@ -3380,6 +3360,26 @@
           "mention_count": 1,
           "net_metric": -1.0,
           "data_status": "insufficient_sample"
+        },
+        {
+          "bucket_start": "2026-11-09T09:00:00Z",
+          "bucket_end": "2026-11-09T10:00:00Z",
+          "positive_count": 0,
+          "negative_count": 1,
+          "neutral_count": 0,
+          "mention_count": 1,
+          "net_metric": -1.0,
+          "data_status": "insufficient_sample"
+        },
+        {
+          "bucket_start": "2026-11-09T10:00:00Z",
+          "bucket_end": "2026-11-09T11:00:00Z",
+          "positive_count": 0,
+          "negative_count": 1,
+          "neutral_count": 0,
+          "mention_count": 1,
+          "net_metric": -1.0,
+          "data_status": "insufficient_sample"
         }
       ]
     },
@@ -3387,26 +3387,6 @@
       "entity_id": "matchmaking",
       "name": "Matchmaking / ranks",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T09:00:00Z",
-          "bucket_end": "2026-11-02T10:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T10:00:00Z",
-          "bucket_end": "2026-11-02T11:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
         {
           "bucket_start": "2026-11-02T11:00:00Z",
           "bucket_end": "2026-11-02T12:00:00Z",
@@ -3631,10 +3611,10 @@
           "bucket_start": "2026-11-03T09:00:00Z",
           "bucket_end": "2026-11-03T10:00:00Z",
           "positive_count": 0,
-          "negative_count": 2,
-          "neutral_count": 1,
+          "negative_count": 3,
+          "neutral_count": 0,
           "mention_count": 3,
-          "net_metric": -0.6666666666666666,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -3950,11 +3930,11 @@
         {
           "bucket_start": "2026-11-04T17:00:00Z",
           "bucket_end": "2026-11-04T18:00:00Z",
-          "positive_count": 0,
+          "positive_count": 1,
           "negative_count": 0,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -3981,10 +3961,10 @@
           "bucket_start": "2026-11-04T20:00:00Z",
           "bucket_end": "2026-11-04T21:00:00Z",
           "positive_count": 0,
-          "negative_count": 3,
-          "neutral_count": 1,
+          "negative_count": 2,
+          "neutral_count": 2,
           "mention_count": 4,
-          "net_metric": -0.75,
+          "net_metric": -0.5,
           "data_status": "insufficient_sample"
         },
         {
@@ -4440,11 +4420,11 @@
         {
           "bucket_start": "2026-11-06T18:00:00Z",
           "bucket_end": "2026-11-06T19:00:00Z",
-          "positive_count": 1,
-          "negative_count": 0,
+          "positive_count": 0,
+          "negative_count": 1,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -4681,10 +4661,10 @@
           "bucket_start": "2026-11-07T18:00:00Z",
           "bucket_end": "2026-11-07T19:00:00Z",
           "positive_count": 0,
-          "negative_count": 3,
-          "neutral_count": 0,
+          "negative_count": 2,
+          "neutral_count": 1,
           "mention_count": 3,
-          "net_metric": -1.0,
+          "net_metric": -0.6666666666666666,
           "data_status": "insufficient_sample"
         },
         {
@@ -4751,10 +4731,10 @@
           "bucket_start": "2026-11-08T01:00:00Z",
           "bucket_end": "2026-11-08T02:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 1,
+          "negative_count": 2,
+          "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": -0.5,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -4881,10 +4861,10 @@
           "bucket_start": "2026-11-08T14:00:00Z",
           "bucket_end": "2026-11-08T15:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -5060,6 +5040,26 @@
         {
           "bucket_start": "2026-11-09T08:00:00Z",
           "bucket_end": "2026-11-09T09:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T09:00:00Z",
+          "bucket_end": "2026-11-09T10:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T10:00:00Z",
+          "bucket_end": "2026-11-09T11:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -5074,26 +5074,6 @@
       "name": "Servers / network",
       "buckets": [
         {
-          "bucket_start": "2026-11-02T09:00:00Z",
-          "bucket_end": "2026-11-02T10:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T10:00:00Z",
-          "bucket_end": "2026-11-02T11:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
           "bucket_start": "2026-11-02T11:00:00Z",
           "bucket_end": "2026-11-02T12:00:00Z",
           "positive_count": 0,
@@ -6746,6 +6726,26 @@
         {
           "bucket_start": "2026-11-09T08:00:00Z",
           "bucket_end": "2026-11-09T09:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T09:00:00Z",
+          "bucket_end": "2026-11-09T10:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T10:00:00Z",
+          "bucket_end": "2026-11-09T11:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -6760,26 +6760,6 @@
       "name": "Skins / economy",
       "buckets": [
         {
-          "bucket_start": "2026-11-02T09:00:00Z",
-          "bucket_end": "2026-11-02T10:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
-          "mention_count": 1,
-          "net_metric": 0.0,
-          "data_status": "insufficient_sample"
-        },
-        {
-          "bucket_start": "2026-11-02T10:00:00Z",
-          "bucket_end": "2026-11-02T11:00:00Z",
-          "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 0,
-          "mention_count": 1,
-          "net_metric": -1.0,
-          "data_status": "insufficient_sample"
-        },
-        {
           "bucket_start": "2026-11-02T11:00:00Z",
           "bucket_end": "2026-11-02T12:00:00Z",
           "positive_count": 0,
@@ -6983,20 +6963,20 @@
           "bucket_start": "2026-11-03T07:00:00Z",
           "bucket_end": "2026-11-03T08:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 2,
+          "negative_count": 1,
+          "neutral_count": 1,
           "mention_count": 2,
-          "net_metric": 0.0,
+          "net_metric": -0.5,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-03T08:00:00Z",
           "bucket_end": "2026-11-03T09:00:00Z",
-          "positive_count": 0,
-          "negative_count": 1,
+          "positive_count": 1,
+          "negative_count": 0,
           "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": -1.0,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -7353,10 +7333,10 @@
           "bucket_start": "2026-11-04T20:00:00Z",
           "bucket_end": "2026-11-04T21:00:00Z",
           "positive_count": 0,
-          "negative_count": 2,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 2,
           "mention_count": 3,
-          "net_metric": -0.6666666666666666,
+          "net_metric": -0.3333333333333333,
           "data_status": "insufficient_sample"
         },
         {
@@ -7723,10 +7703,10 @@
           "bucket_start": "2026-11-06T09:00:00Z",
           "bucket_end": "2026-11-06T10:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -8033,10 +8013,10 @@
           "bucket_start": "2026-11-07T16:00:00Z",
           "bucket_end": "2026-11-07T17:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": -1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -8438,16 +8418,10 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
-        }
-      ]
-    },
-    {
-      "entity_id": "performance",
-      "name": "Performance / stability",
-      "buckets": [
+        },
         {
-          "bucket_start": "2026-11-02T09:00:00Z",
-          "bucket_end": "2026-11-02T10:00:00Z",
+          "bucket_start": "2026-11-09T09:00:00Z",
+          "bucket_end": "2026-11-09T10:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -8456,15 +8430,21 @@
           "data_status": "no_data"
         },
         {
-          "bucket_start": "2026-11-02T10:00:00Z",
-          "bucket_end": "2026-11-02T11:00:00Z",
-          "positive_count": 1,
+          "bucket_start": "2026-11-09T10:00:00Z",
+          "bucket_end": "2026-11-09T11:00:00Z",
+          "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
-          "mention_count": 1,
-          "net_metric": 1.0,
-          "data_status": "insufficient_sample"
-        },
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        }
+      ]
+    },
+    {
+      "entity_id": "performance",
+      "name": "Performance / stability",
+      "buckets": [
         {
           "bucket_start": "2026-11-02T11:00:00Z",
           "bucket_end": "2026-11-02T12:00:00Z",
@@ -8569,10 +8549,10 @@
           "bucket_start": "2026-11-02T21:00:00Z",
           "bucket_end": "2026-11-02T22:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": -1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -8609,10 +8589,10 @@
           "bucket_start": "2026-11-03T01:00:00Z",
           "bucket_end": "2026-11-03T02:00:00Z",
           "positive_count": 1,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": 0.5,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -9089,10 +9069,10 @@
           "bucket_start": "2026-11-05T01:00:00Z",
           "bucket_end": "2026-11-05T02:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -9118,11 +9098,11 @@
         {
           "bucket_start": "2026-11-05T04:00:00Z",
           "bucket_end": "2026-11-05T05:00:00Z",
-          "positive_count": 0,
+          "positive_count": 1,
           "negative_count": 0,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -9179,10 +9159,10 @@
           "bucket_start": "2026-11-05T10:00:00Z",
           "bucket_end": "2026-11-05T11:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -9258,11 +9238,11 @@
         {
           "bucket_start": "2026-11-05T18:00:00Z",
           "bucket_end": "2026-11-05T19:00:00Z",
-          "positive_count": 0,
+          "positive_count": 1,
           "negative_count": 2,
-          "neutral_count": 2,
+          "neutral_count": 1,
           "mention_count": 4,
-          "net_metric": -0.5,
+          "net_metric": -0.25,
           "data_status": "insufficient_sample"
         },
         {
@@ -9348,11 +9328,11 @@
         {
           "bucket_start": "2026-11-06T03:00:00Z",
           "bucket_end": "2026-11-06T04:00:00Z",
-          "positive_count": 0,
+          "positive_count": 1,
           "negative_count": 0,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -9568,11 +9548,11 @@
         {
           "bucket_start": "2026-11-07T01:00:00Z",
           "bucket_end": "2026-11-07T02:00:00Z",
-          "positive_count": 0,
+          "positive_count": 1,
           "negative_count": 0,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -9608,11 +9588,11 @@
         {
           "bucket_start": "2026-11-07T05:00:00Z",
           "bucket_end": "2026-11-07T06:00:00Z",
-          "positive_count": 0,
+          "positive_count": 1,
           "negative_count": 0,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -9978,11 +9958,11 @@
         {
           "bucket_start": "2026-11-08T18:00:00Z",
           "bucket_end": "2026-11-08T19:00:00Z",
-          "positive_count": 0,
+          "positive_count": 1,
           "negative_count": 1,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 2,
-          "net_metric": -0.5,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -10038,11 +10018,11 @@
         {
           "bucket_start": "2026-11-09T00:00:00Z",
           "bucket_end": "2026-11-09T01:00:00Z",
-          "positive_count": 2,
+          "positive_count": 0,
           "negative_count": 1,
-          "neutral_count": 1,
+          "neutral_count": 3,
           "mention_count": 4,
-          "net_metric": 0.25,
+          "net_metric": -0.25,
           "data_status": "insufficient_sample"
         },
         {
@@ -10124,6 +10104,26 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T09:00:00Z",
+          "bucket_end": "2026-11-09T10:00:00Z",
+          "positive_count": 1,
+          "negative_count": 0,
+          "neutral_count": 3,
+          "mention_count": 4,
+          "net_metric": 0.25,
+          "data_status": "insufficient_sample"
+        },
+        {
+          "bucket_start": "2026-11-09T10:00:00Z",
+          "bucket_end": "2026-11-09T11:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 5,
+          "mention_count": 5,
+          "net_metric": 0.0,
+          "data_status": "ok"
         }
       ]
     },
@@ -10131,26 +10131,6 @@
       "entity_id": "weapon_balance",
       "name": "Weapon balance / meta",
       "buckets": [
-        {
-          "bucket_start": "2026-11-02T09:00:00Z",
-          "bucket_end": "2026-11-02T10:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 0,
-          "mention_count": 0,
-          "net_metric": null,
-          "data_status": "no_data"
-        },
-        {
-          "bucket_start": "2026-11-02T10:00:00Z",
-          "bucket_end": "2026-11-02T11:00:00Z",
-          "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
-          "mention_count": 1,
-          "net_metric": 0.0,
-          "data_status": "insufficient_sample"
-        },
         {
           "bucket_start": "2026-11-02T11:00:00Z",
           "bucket_end": "2026-11-02T12:00:00Z",
@@ -10975,10 +10955,10 @@
           "bucket_start": "2026-11-05T21:00:00Z",
           "bucket_end": "2026-11-05T22:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -11294,11 +11274,11 @@
         {
           "bucket_start": "2026-11-07T05:00:00Z",
           "bucket_end": "2026-11-07T06:00:00Z",
-          "positive_count": 0,
+          "positive_count": 1,
           "negative_count": 0,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -11424,11 +11404,11 @@
         {
           "bucket_start": "2026-11-07T18:00:00Z",
           "bucket_end": "2026-11-07T19:00:00Z",
-          "positive_count": 1,
+          "positive_count": 0,
           "negative_count": 0,
-          "neutral_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": 1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -11810,16 +11790,10 @@
           "mention_count": 0,
           "net_metric": null,
           "data_status": "no_data"
-        }
-      ]
-    },
-    {
-      "entity_id": "monetization",
-      "name": "Monetization / price",
-      "buckets": [
+        },
         {
-          "bucket_start": "2026-11-02T09:00:00Z",
-          "bucket_end": "2026-11-02T10:00:00Z",
+          "bucket_start": "2026-11-09T09:00:00Z",
+          "bucket_end": "2026-11-09T10:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,
@@ -11828,15 +11802,21 @@
           "data_status": "no_data"
         },
         {
-          "bucket_start": "2026-11-02T10:00:00Z",
-          "bucket_end": "2026-11-02T11:00:00Z",
+          "bucket_start": "2026-11-09T10:00:00Z",
+          "bucket_end": "2026-11-09T11:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
+          "negative_count": 0,
           "neutral_count": 0,
-          "mention_count": 1,
-          "net_metric": -1.0,
-          "data_status": "insufficient_sample"
-        },
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        }
+      ]
+    },
+    {
+      "entity_id": "monetization",
+      "name": "Monetization / price",
+      "buckets": [
         {
           "bucket_start": "2026-11-02T11:00:00Z",
           "bucket_end": "2026-11-02T12:00:00Z",
@@ -12451,20 +12431,20 @@
           "bucket_start": "2026-11-05T00:00:00Z",
           "bucket_end": "2026-11-05T01:00:00Z",
           "positive_count": 0,
-          "negative_count": 0,
-          "neutral_count": 1,
+          "negative_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": -1.0,
           "data_status": "insufficient_sample"
         },
         {
           "bucket_start": "2026-11-05T01:00:00Z",
           "bucket_end": "2026-11-05T02:00:00Z",
-          "positive_count": 0,
+          "positive_count": 1,
           "negative_count": 0,
-          "neutral_count": 1,
+          "neutral_count": 0,
           "mention_count": 1,
-          "net_metric": 0.0,
+          "net_metric": 1.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -13121,10 +13101,10 @@
           "bucket_start": "2026-11-07T19:00:00Z",
           "bucket_end": "2026-11-07T20:00:00Z",
           "positive_count": 0,
-          "negative_count": 1,
-          "neutral_count": 0,
+          "negative_count": 0,
+          "neutral_count": 1,
           "mention_count": 1,
-          "net_metric": -1.0,
+          "net_metric": 0.0,
           "data_status": "insufficient_sample"
         },
         {
@@ -13490,6 +13470,26 @@
         {
           "bucket_start": "2026-11-09T08:00:00Z",
           "bucket_end": "2026-11-09T09:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T09:00:00Z",
+          "bucket_end": "2026-11-09T10:00:00Z",
+          "positive_count": 0,
+          "negative_count": 0,
+          "neutral_count": 0,
+          "mention_count": 0,
+          "net_metric": null,
+          "data_status": "no_data"
+        },
+        {
+          "bucket_start": "2026-11-09T10:00:00Z",
+          "bucket_end": "2026-11-09T11:00:00Z",
           "positive_count": 0,
           "negative_count": 0,
           "neutral_count": 0,

@@ -3,8 +3,8 @@
   "app_id": 570,
   "game": "Dota 2",
   "consumer": "sentiment_algorithm_v1",
-  "generated_at": "2026-11-09T09:30:19Z",
-  "computed_at": "2026-11-09T09:30:19Z",
+  "generated_at": "2026-11-09T11:57:35Z",
+  "computed_at": "2026-11-09T11:57:35Z",
   "mode": "live",
   "source_mode": "live",
   "dataset_type": null,
@@ -13,7 +13,7 @@
     "version": "sentiment-llm-v1",
     "vader_fallback_version": "sentiment-v1",
     "llm_model": "CS5351/DeepSeek-V4-Flash",
-    "llm_prompt_version": "llm-entity-v1",
+    "llm_prompt_version": "llm-entity-v2-overall",
     "entity_config_version": "entities-v1",
     "entity_config_hash": "37b2b9f8a65c5e901f0b50ac0cd2d2c44cd72bbb0f512a3c58cdbc2c61fd5153",
     "window_hours": 1.0,
@@ -28,36 +28,36 @@
     "significance_test": "chi_square_independence_df2"
   },
   "window": {
-    "current_start": "2026-11-09T08:30:19Z",
-    "current_end": "2026-11-09T09:30:19Z",
-    "baseline_start": "2026-11-08T08:30:19Z",
-    "baseline_end": "2026-11-09T08:30:19Z"
+    "current_start": "2026-11-09T10:57:35Z",
+    "current_end": "2026-11-09T11:57:35Z",
+    "baseline_start": "2026-11-08T10:57:35Z",
+    "baseline_end": "2026-11-09T10:57:35Z"
   },
   "source_stream_id": "a6b03dc5-8536-4813-82e0-693a52f0edf6",
-  "processed_cursor": "2870",
-  "source_latest_cursor": "2870",
+  "processed_cursor": "2873",
+  "source_latest_cursor": "2873",
   "cursor_lag": 0,
-  "health_fetched_at": "2026-11-09T09:30:19Z",
+  "health_fetched_at": "2026-11-09T11:57:35Z",
   "backfill_status": "completed",
   "backfill_target_days": 30,
   "scope_start_unix": 1791612392,
-  "last_success_at": "2026-11-09T09:21:02Z",
+  "last_success_at": "2026-11-09T11:50:10Z",
   "last_error": null,
   "pipeline_versions": [
     "clean-en-v3"
   ],
   "review_counts": {
-    "total": 2870,
-    "analyzed": 2160,
-    "llm_labeled_reviews": 2160,
-    "llm_labeled_rows": 2586,
-    "vader_rows": 2586,
+    "total": 2873,
+    "analyzed": 2163,
+    "llm_labeled_reviews": 2163,
+    "llm_labeled_rows": 2589,
+    "vader_rows": 2589,
     "excluded_unusable": 710,
     "skipped_empty": 0
   },
   "llm_coverage": 1.0,
   "scorer_counts": {
-    "llm": 2586
+    "llm": 2589
   },
   "vader_fallback_rows": 0,
   "data_status": "ok",
@@ -70,30 +70,30 @@
       "scope": "document",
       "mention_required": false,
       "current": {
-        "positive_count": 0,
-        "negative_count": 1,
+        "positive_count": 1,
+        "negative_count": 2,
         "neutral_count": 0,
-        "mention_count": 1,
-        "metric": -1.0
+        "mention_count": 3,
+        "metric": -0.3333333333333333
       },
       "baseline": {
-        "positive_count": 23,
-        "negative_count": 23,
+        "positive_count": 19,
+        "negative_count": 17,
         "neutral_count": 12,
-        "mention_count": 58,
-        "metric": 0.0
+        "mention_count": 48,
+        "metric": 0.041666666666666664
       },
       "metric": "net_sentiment",
-      "change": -1.0,
+      "change": -0.375,
       "change_flag": false,
       "alert_type": "none",
       "significance": {
         "test": "chi_square_independence",
         "df": 2,
-        "chi2": 1.483477,
+        "chi2": 1.518257,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 0.2034,
+        "expected_min": 0.7059,
         "significant": false
       },
       "data_status": "insufficient_window",
@@ -119,9 +119,9 @@
       },
       "baseline": {
         "positive_count": 0,
-        "negative_count": 5,
+        "negative_count": 4,
         "neutral_count": 0,
-        "mention_count": 5,
+        "mention_count": 4,
         "metric": -1.0
       },
       "metric": "net_sentiment",
@@ -132,9 +132,9 @@
         "test": "chi_square_independence",
         "df": 2,
         "chi2": 0.0,
-        "p_value": 1.0,
-        "conditions_met": true,
-        "expected_min": 5.0,
+        "p_value": null,
+        "conditions_met": false,
+        "expected_min": 4.0,
         "significant": false
       },
       "data_status": "insufficient_window",
@@ -308,9 +308,9 @@
       },
       "baseline": {
         "positive_count": 0,
-        "negative_count": 4,
+        "negative_count": 2,
         "neutral_count": 0,
-        "mention_count": 4,
+        "mention_count": 2,
         "metric": -1.0
       },
       "metric": "net_sentiment",
@@ -323,7 +323,7 @@
         "chi2": 0.0,
         "p_value": null,
         "conditions_met": false,
-        "expected_min": 4.0,
+        "expected_min": 2.0,
         "significant": false
       },
       "data_status": "insufficient_window",

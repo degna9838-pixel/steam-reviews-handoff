@@ -65,7 +65,12 @@ def build_single_prompt(job: dict, max_text_chars: int = 0, style: str = "simple
         )
     overall = (
         "If the entity is mentioned but its local stance is unclear, use the review's overall attitude toward the game.\n"
-        if style == "simple_overall" else ""
+        if style in {"simple_overall", "simple_overall_strict"} else ""
+    )
+    strict = (
+        "Do not choose neutral when there is a clear complaint or praise about the entity; "
+        "use neutral only for factual mentions/questions or genuinely balanced mixed sentiment.\n"
+        if style == "simple_overall_strict" else ""
     )
     return (
         "Classify the sentiment of this Steam review toward the specified entity. "
@@ -73,7 +78,7 @@ def build_single_prompt(job: dict, max_text_chars: int = 0, style: str = "simple
         "Rules: positive = praise/satisfaction/approval/improvement; "
         "negative = criticism/complaint/disappointment/failure/request to fix something broken; "
         "neutral = factual mention/question/no clear stance, or balanced mixed sentiment.\n"
-        f"{overall}"
+        f"{overall}{strict}"
         "Return strict JSON only, with exactly two keys: "
         '{"label":"positive|negative|neutral","reason":"short reason"}. '
         "No markdown, no code fences, no extra text.\n\n"
@@ -105,7 +110,12 @@ def build_batch_prompt(batch: list[dict], max_text_chars: int = 0, style: str = 
         )
     overall = (
         "If an entity is mentioned but its local stance is unclear, use the review's overall attitude toward the game.\n"
-        if style == "simple_overall" else ""
+        if style in {"simple_overall", "simple_overall_strict"} else ""
+    )
+    strict = (
+        "Do not choose neutral when there is a clear complaint or praise about the entity; "
+        "use neutral only for factual mentions/questions or genuinely balanced mixed sentiment.\n"
+        if style == "simple_overall_strict" else ""
     )
     return (
         "Classify the sentiment of each Steam review toward its specified entity. "
@@ -113,7 +123,7 @@ def build_batch_prompt(batch: list[dict], max_text_chars: int = 0, style: str = 
         "Rules: positive = praise/satisfaction/approval/improvement; "
         "negative = criticism/complaint/disappointment/failure/request to fix something broken; "
         "neutral = factual mention/question/no clear stance, or balanced mixed sentiment.\n"
-        f"{overall}"
+        f"{overall}{strict}"
         "Return strict JSON only:\n"
         '{"results":[{"index":1,"label":"positive|negative|neutral","reason":"short reason"}]}\n'
         "Include every index exactly once. No markdown, no code fences, no extra text.\n\n"
@@ -304,7 +314,7 @@ def main(argv=None) -> int:
     parser.add_argument("--batch-size", type=int, default=1)
     parser.add_argument("--max-batch-chars", type=int, default=3000)
     parser.add_argument("--max-text-chars", type=int, default=0)
-    parser.add_argument("--prompt-style", choices=("simple", "simple_overall", "context"), default="simple")
+    parser.add_argument("--prompt-style", choices=("simple", "simple_overall", "simple_overall_strict", "context"), default="simple")
     parser.add_argument("--retries", type=int, default=3)
     parser.add_argument("--timeout", type=float, default=90.0)
     parser.add_argument("--sleep", type=float, default=0.0)

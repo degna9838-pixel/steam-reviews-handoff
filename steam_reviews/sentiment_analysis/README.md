@@ -308,7 +308,16 @@ bash sentiment_analysis/calibration/run_cityu_llm.sh `
   --prompt-style simple_overall --sleep 0.05
 ```
 
-注意：120 条已经用于挑 prompt，0.825 偏乐观，需要用新的 100–150 条 holdout 复核；如果要把 `simple_overall` 用到全量，建议把 `prompt_version` 升为 `llm-entity-v2-overall` 并重新导入，避免和现有 `llm-entity-v1` 标签混在一起。
+注意：120 条已经用于挑 prompt，0.825 偏乐观。随后又做了 **100 条不重叠的 clean holdout**（随机按实体抽样，不是按 VADER 标签分层）：
+
+| 方法 | accuracy | macro-F1 | kappa | 95% accuracy CI |
+|---|---:|---:|---:|---|
+| 当前 `simple` | 0.680 | 0.598 | 0.441 | 0.59–0.77 |
+| `simple_overall` | **0.830** | **0.747** | **0.683** | 0.75–0.90 |
+
+clean holdout 上 `simple_overall` 的 positive recall 0.741（simple 0.519）、negative recall 0.918（simple 0.770）、neutral F1 0.538（simple 0.389）。这确认了提升是真实的，全量已重标为 `prompt_version=llm-entity-v2-overall`。
+
+Phantom Blade Zero 的 40 条 holdout 也支持该结论：`simple` 0.575 / 0.444 / 0.211，`simple_overall` **0.725 / 0.606 / 0.463**（小样本、正类占比高，只看方向）。Dota 2 的 40 条 holdout 尚待填写。`llm-entity-v1` 的旧预测仍保留在 `llm/predictions.jsonl`，需要回滚时可重新导入。
 
 ## LLM 抽样校准（可选，CityU 网关）
 
@@ -345,16 +354,16 @@ python3 sentiment_analysis/calibration/compare_calibration.py \
 
 | 游戏 | 总评论 | 已分析 | LLM 标注行 | 当前提及 | 当前 metric | 基线提及 | 基线 metric | 变化 | 告警 | 状态 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|---|
-| CS2 | 18,518 | 15,478 | 19,367 | 1,052 | 0.704 | 2,877 | 0.237 | +0.467 | statistical | ok |
-| Dota 2 | 2,870 | 2,160 | 2,586 | 56 | 0.036 | 447 | 0.076 | -0.040 | none | ok |
-| Phantom Blade Zero | 10,895 | 9,799 | 22,075 | 526 | 0.789 | 4,780 | 0.802 | -0.013 | none | ok |
+| CS2 | 18,748 | 15,699 | 19,601 | 1,095 | 0.740 | 3,009 | 0.295 | +0.445 | statistical | ok |
+| Dota 2 | 2,873 | 2,163 | 2,589 | 47 | 0.021 | 450 | 0.082 | -0.061 | none | ok |
+| Phantom Blade Zero | 10,927 | 9,824 | 22,154 | 504 | 0.802 | 4,755 | 0.810 | -0.008 | none | ok |
 
-分实体告警（24h/7d）：
+分实体告警（24h/7d，`prompt_version=llm-entity-v2-overall`）：
 
-- CS2：整体 metric 从 0.237 升到 0.704（+0.467，卡方显著）；`anticheat` 当前 51 次、-0.902（基线 469 次、-0.913）；`matchmaking` 当前 11 次、-0.818（基线 110 次、-0.727）；`skins_economy` 当前 6 次、+0.167（基线 64 次、-0.344，阈值告警）；`performance` 当前 21 次、-0.048（基线 55 次、-0.255，阈值告警）；`weapon_balance` 当前 9 次、+0.111（基线 49 次、-0.224，阈值告警）；`servers`/`monetization` 当前 <5 次，`insufficient_window`。
-- Dota 2：整体稳定；`matchmaking` 当前 5 次、-1.000（基线 35 次、-0.800，阈值告警）；其他实体当前样本 0–3 条，`insufficient_window`。
-- Phantom Blade Zero：整体稳定；`performance_pc` 当前 62 次、+0.065（基线 434 次、-0.088，变化 +0.152，阈值告警）；`combat` 当前 206 次、+0.714（基线 1,725 次、+0.795）；`story` 当前 125 次、+0.312（基线 818 次、+0.256）；`graphics_art` +0.791；`boss_design` +0.484；`difficulty` +0.280；`price_value` +0.500。
-- 1h/24h 窗口仍稀疏（CS2 当前约 45 条、Dota 2 约 1 条、Phantom 约 12 条），只用于演示实时告警链路；结论以 24h/7d 为准。
+- CS2：整体 metric 从 0.295 升到 0.740（+0.445，卡方显著）；`anticheat` 当前 48 次、-0.917（基线 465 次、-0.923）；`matchmaking` 当前 9 次、-0.889（基线 111 次、-0.730，阈值告警）；`skins_economy` 当前 5 次、0.000（基线 64 次、-0.281，阈值告警）；`performance` 当前 31 次、-0.032（基线 54 次、-0.204，卡方显著）；`weapon_balance` 当前 9 次、+0.111（基线 48 次、-0.292，阈值告警）；`servers`/`monetization` 当前 <5 次，`insufficient_window`。
+- Dota 2：整体稳定；`matchmaking` 当前 4 次、-1.000（基线 36 次、-0.833）；其他实体当前样本 0–2 条，`insufficient_window`。
+- Phantom Blade Zero：整体稳定；`performance_pc` 当前 61 次、+0.115（基线 431 次、-0.084，变化 +0.198，阈值告警）；`boss_design` 当前 129 次、+0.442（基线 898 次、+0.563，卡方显著但变化未过阈值）；`combat` +0.718；`story` +0.328；`graphics_art` +0.755；`difficulty` +0.283；`price_value` +0.558。
+- 1h/24h 窗口仍稀疏（CS2 约 81 条、Dota 2 极少、Phantom 约 9 条），只用于演示实时告警链路；结论以 24h/7d 为准。
 
 首次少量验证：CS2 cursor 0→500（5 页）后汇总，`data_status=backfill_incomplete`、`provisional=true`，用于验证“先少量再全量”流程，不作为最终结果。之后完成 30 天回填和 LLM 全量标注，再重算 1h/24h 与 24h/7d。
 
