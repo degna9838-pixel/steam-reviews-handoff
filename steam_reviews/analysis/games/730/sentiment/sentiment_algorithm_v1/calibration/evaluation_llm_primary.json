@@ -1,0 +1,397 @@
+{
+  "schema_version": "sentiment-evaluation-1.0",
+  "rows_read": 120,
+  "gold_field": "human_label",
+  "prediction_field": "llm_primary_label",
+  "errors": {},
+  "overall": {
+    "n": 120,
+    "accuracy": 0.75,
+    "macro_f1": 0.656746,
+    "kappa": 0.549154664996869,
+    "confusion": {
+      "positive": {
+        "positive": 19,
+        "negative": 3,
+        "neutral": 9
+      },
+      "negative": {
+        "positive": 2,
+        "negative": 63,
+        "neutral": 4
+      },
+      "neutral": {
+        "positive": 1,
+        "negative": 11,
+        "neutral": 8
+      }
+    },
+    "per_class": {
+      "positive": {
+        "support": 31,
+        "precision": 0.863636,
+        "recall": 0.612903,
+        "f1": 0.716981
+      },
+      "negative": {
+        "support": 69,
+        "precision": 0.818182,
+        "recall": 0.913043,
+        "f1": 0.863014
+      },
+      "neutral": {
+        "support": 20,
+        "precision": 0.380952,
+        "recall": 0.4,
+        "f1": 0.390244
+      }
+    }
+  },
+  "per_entity": {
+    "anticheat": {
+      "n": 15,
+      "accuracy": 0.8,
+      "macro_f1": 0.296296,
+      "kappa": -0.0714285714285713,
+      "confusion": {
+        "positive": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 1,
+          "negative": 12,
+          "neutral": 1
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 0
+        }
+      },
+      "per_class": {
+        "positive": {
+          "support": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "negative": {
+          "support": 14,
+          "precision": 0.923077,
+          "recall": 0.857143,
+          "f1": 0.888889
+        },
+        "neutral": {
+          "support": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    "game": {
+      "n": 15,
+      "accuracy": 0.8,
+      "macro_f1": 0.794444,
+      "kappa": 0.7000000000000001,
+      "confusion": {
+        "positive": {
+          "positive": 5,
+          "negative": 0,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 1,
+          "negative": 4,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 3
+        }
+      },
+      "per_class": {
+        "positive": {
+          "support": 5,
+          "precision": 0.714286,
+          "recall": 1.0,
+          "f1": 0.833333
+        },
+        "negative": {
+          "support": 5,
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8
+        },
+        "neutral": {
+          "support": 5,
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.75
+        }
+      }
+    },
+    "matchmaking": {
+      "n": 15,
+      "accuracy": 0.666667,
+      "macro_f1": 0.533333,
+      "kappa": 0.3589743589743589,
+      "confusion": {
+        "positive": {
+          "positive": 1,
+          "negative": 2,
+          "neutral": 1
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 8,
+          "neutral": 2
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 1
+        }
+      },
+      "per_class": {
+        "positive": {
+          "support": 4,
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4
+        },
+        "negative": {
+          "support": 10,
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8
+        },
+        "neutral": {
+          "support": 1,
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    "monetization": {
+      "n": 15,
+      "accuracy": 0.666667,
+      "macro_f1": 0.509259,
+      "kappa": 0.40476190476190477,
+      "confusion": {
+        "positive": {
+          "positive": 3,
+          "negative": 1,
+          "neutral": 1
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 7,
+          "neutral": 1
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0
+        }
+      },
+      "per_class": {
+        "positive": {
+          "support": 5,
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.75
+        },
+        "negative": {
+          "support": 8,
+          "precision": 0.7,
+          "recall": 0.875,
+          "f1": 0.777778
+        },
+        "neutral": {
+          "support": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    "performance": {
+      "n": 15,
+      "accuracy": 0.733333,
+      "macro_f1": 0.555556,
+      "kappa": 0.5833333333333333,
+      "confusion": {
+        "positive": {
+          "positive": 4,
+          "negative": 0,
+          "neutral": 4
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 7,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 0
+        }
+      },
+      "per_class": {
+        "positive": {
+          "support": 8,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.666667
+        },
+        "negative": {
+          "support": 7,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "neutral": {
+          "support": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    "servers": {
+      "n": 15,
+      "accuracy": 0.866667,
+      "macro_f1": 0.542222,
+      "kappa": 0.5454545454545455,
+      "confusion": {
+        "positive": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 1
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 12,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 0
+        }
+      },
+      "per_class": {
+        "positive": {
+          "support": 2,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.666667
+        },
+        "negative": {
+          "support": 12,
+          "precision": 0.923077,
+          "recall": 1.0,
+          "f1": 0.96
+        },
+        "neutral": {
+          "support": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    "skins_economy": {
+      "n": 15,
+      "accuracy": 0.733333,
+      "macro_f1": 0.703704,
+      "kappa": 0.5522388059701491,
+      "confusion": {
+        "positive": {
+          "positive": 3,
+          "negative": 0,
+          "neutral": 0
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 7,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 4,
+          "neutral": 1
+        }
+      },
+      "per_class": {
+        "positive": {
+          "support": 3,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "negative": {
+          "support": 7,
+          "precision": 0.636364,
+          "recall": 1.0,
+          "f1": 0.777778
+        },
+        "neutral": {
+          "support": 5,
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.333333
+        }
+      }
+    },
+    "weapon_balance": {
+      "n": 15,
+      "accuracy": 0.733333,
+      "macro_f1": 0.707937,
+      "kappa": 0.5833333333333333,
+      "confusion": {
+        "positive": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 2
+        },
+        "negative": {
+          "positive": 0,
+          "negative": 6,
+          "neutral": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 3
+        }
+      },
+      "per_class": {
+        "positive": {
+          "support": 4,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.666667
+        },
+        "negative": {
+          "support": 6,
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1": 0.857143
+        },
+        "neutral": {
+          "support": 5,
+          "precision": 0.6,
+          "recall": 0.6,
+          "f1": 0.6
+        }
+      }
+    }
+  },
+  "note": "Gold labels must be human/independent labels; VADER or LLM labels alone are not ground truth."
+}

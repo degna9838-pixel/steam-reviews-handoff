@@ -78,6 +78,46 @@ def init_schema(db: sqlite3.Connection) -> None:
     """)
     db.execute("CREATE INDEX IF NOT EXISTS analysis_entity_time ON analysis(entity_id, created_at)")
     db.execute("CREATE INDEX IF NOT EXISTS analysis_review ON analysis(review_id)")
+    db.execute("""
+        CREATE TABLE IF NOT EXISTS llm_analysis(
+            review_id TEXT NOT NULL,
+            revision INTEGER NOT NULL,
+            entity_id TEXT NOT NULL,
+            mentioned INTEGER NOT NULL CHECK(mentioned IN (0,1)),
+            sentiment_label TEXT,
+            sentiment_score REAL,
+            evidence TEXT NOT NULL DEFAULT '',
+            created_at TEXT NOT NULL,
+            pipeline_version TEXT NOT NULL,
+            algorithm_version TEXT NOT NULL,
+            entity_config_version TEXT NOT NULL,
+            analyzed_at TEXT NOT NULL,
+            model TEXT NOT NULL,
+            prompt_version TEXT NOT NULL,
+            raw_json TEXT NOT NULL,
+            PRIMARY KEY(review_id, revision, entity_id)
+        )
+    """)
+    db.execute("CREATE INDEX IF NOT EXISTS llm_analysis_entity_time ON llm_analysis(entity_id, created_at)")
+    db.execute("CREATE INDEX IF NOT EXISTS llm_analysis_review ON llm_analysis(review_id)")
+    db.execute("DROP VIEW IF EXISTS effective_analysis")
+    db.execute("""
+        CREATE VIEW effective_analysis AS
+        SELECT review_id,revision,entity_id,sentiment_label,sentiment_score,evidence,
+               created_at,pipeline_version,algorithm_version,entity_config_version,
+               analyzed_at,NULL AS reused_from_revision,'llm' AS scorer
+        FROM llm_analysis
+        WHERE mentioned=1
+        UNION ALL
+        SELECT a.review_id,a.revision,a.entity_id,a.sentiment_label,a.sentiment_score,a.evidence,
+               a.created_at,a.pipeline_version,a.algorithm_version,a.entity_config_version,
+               a.analyzed_at,a.reused_from_revision,'vader' AS scorer
+        FROM analysis a
+        WHERE NOT EXISTS (
+            SELECT 1 FROM llm_analysis l
+            WHERE l.review_id=a.review_id AND l.revision=a.revision AND l.entity_id=a.entity_id
+        )
+    """)
     db.commit()
 
 
@@ -413,3 +453,57 @@ def analysis_rows(db: sqlite3.Connection, algorithm_version: str) -> list[sqlite
 
 def current_records(db: sqlite3.Connection) -> list[dict]:
     return [json.loads(row["record_json"]) for row in db.execute("SELECT record_json FROM reviews ORDER BY review_id")]
+
+
+def llm_labeled_reviews(db: sqlite3.Connection) -> int:
+    row = db.execute(
+        """
+        SELECT COUNT(DISTINCT l.review_id)
+        FROM llm_analysis l
+        JOIN review_status s ON s.review_id=l.review_id AND s.revision=l.revision
+        WHERE s.status='analyzed'
+        """
+    ).fetchone()
+    return int(row[0]) if row else 0
+
+
+def analyzed_reviews(db: sqlite3.Connection) -> int:
+    row = db.execute("SELECT COUNT(*) FROM review_status WHERE status='analyzed'").fetchone()
+    return int(row[0]) if row else 0
+
+
+def llm_labeled_rows(db: sqlite3.Connection) -> int:
+    row = db.execute(
+        """
+        SELECT COUNT(*)
+        FROM llm_analysis l
+        JOIN review_status s ON s.review_id=l.review_id AND s.revision=l.revision
+        WHERE s.status='analyzed'
+        """
+    ).fetchone()
+    return int(row[0]) if row else 0
+
+
+def analysis_row_count(db: sqlite3.Connection) -> int:
+    row = db.execute(
+        """
+        SELECT COUNT(*)
+        FROM analysis a
+        JOIN review_status s ON s.review_id=a.review_id AND s.revision=a.revision
+        WHERE s.status='analyzed'
+        """
+    ).fetchone()
+    return int(row[0]) if row else 0
+
+
+def scorer_counts(db: sqlite3.Connection) -> dict:
+    rows = db.execute(
+        """
+        SELECT e.scorer,COUNT(*) AS n
+        FROM effective_analysis e
+        JOIN review_status s ON s.review_id=e.review_id AND s.revision=e.revision
+        WHERE s.status='analyzed'
+        GROUP BY e.scorer
+        """
+    ).fetchall()
+    return {row["scorer"]: int(row["n"]) for row in rows}

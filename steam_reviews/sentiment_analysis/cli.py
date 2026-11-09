@@ -8,8 +8,10 @@ from pathlib import Path
 from .client import (
     doctor,
     export_dashboard,
+    export_llm_jobs,
     export_reviews,
     export_samples,
+    import_llm_labels,
     rebuild,
     run_all_games,
     run_game,
@@ -140,6 +142,21 @@ def build_parser() -> argparse.ArgumentParser:
     evaluate_parser.add_argument("--entity-field", default="entity_id")
     evaluate_parser.add_argument("--out", type=Path, required=True)
 
+    jobs = sub.add_parser("export-llm-jobs", help="Export review jobs for LLM labeling")
+    jobs.add_argument("--app-id", type=int, required=True)
+    jobs.add_argument("--consumer", default=LIVE_CONSUMER)
+    jobs.add_argument("--out", type=Path, required=True)
+    jobs.add_argument("--limit", type=_positive_int)
+    jobs.add_argument("--include-labeled", action="store_true")
+    jobs.add_argument("--model", default=None)
+
+    labels = sub.add_parser("import-llm-labels", help="Import LLM labeling predictions")
+    labels.add_argument("--app-id", type=int, required=True)
+    labels.add_argument("--consumer", default=LIVE_CONSUMER)
+    labels.add_argument("--predictions", type=Path, required=True)
+    labels.add_argument("--model", default=None)
+    labels.add_argument("--prompt-version", default=None)
+
     return parser
 
 
@@ -226,6 +243,22 @@ def main(argv=None) -> int:
                 "kappa": report["overall"]["kappa"],
                 "errors": report["errors"],
             }, ensure_ascii=False, indent=2))
+            return 0
+        if args.command == "export-llm-jobs":
+            validate_app_id(args.app_id)
+            kwargs = {"limit": args.limit, "include_labeled": args.include_labeled}
+            if args.model:
+                kwargs["model"] = args.model
+            export_llm_jobs(args.app_id, args.consumer, args.out, **kwargs)
+            return 0
+        if args.command == "import-llm-labels":
+            validate_app_id(args.app_id)
+            kwargs = {}
+            if args.model:
+                kwargs["model"] = args.model
+            if args.prompt_version:
+                kwargs["prompt_version"] = args.prompt_version
+            import_llm_labels(args.app_id, args.consumer, args.predictions, **kwargs)
             return 0
         parser.error("Unknown command")
     except KeyboardInterrupt:

@@ -17,9 +17,19 @@ from .settings import (
     DEFAULT_CHANGE_THRESHOLD,
     DEFAULT_MIN_MENTIONS,
     DEFAULT_WINDOW_HOURS,
+    LLM_ALGORITHM_NAME,
+    LLM_ALGORITHM_VERSION,
+    LLM_PROMPT_VERSION,
     SUMMARY_SCHEMA_VERSION,
 )
-from .store import state_get
+from .store import (
+    analysis_row_count,
+    analyzed_reviews,
+    llm_labeled_reviews,
+    llm_labeled_rows,
+    scorer_counts,
+    state_get,
+)
 from .util import atomic_write_json, iso_hour, iso_utc, parse_utc, utc_now
 
 LABELS = ("positive", "negative", "neutral")
@@ -50,30 +60,29 @@ def query_window(
     entity_id: str,
     start: datetime,
     end: datetime,
-    algorithm_version: str,
 ) -> tuple[dict, list[str]]:
     rows = db.execute(
         """
         SELECT a.sentiment_label,COUNT(*) AS n
-        FROM analysis a
+        FROM effective_analysis a
         JOIN review_status s ON s.review_id=a.review_id AND s.revision=a.revision
-        WHERE a.entity_id=? AND a.algorithm_version=? AND s.status='analyzed'
+        WHERE a.entity_id=? AND s.status='analyzed'
           AND a.created_at>=? AND a.created_at<?
         GROUP BY a.sentiment_label
         """,
-        (entity_id, algorithm_version, iso_utc(start), iso_utc(end)),
+        (entity_id, iso_utc(start), iso_utc(end)),
     ).fetchall()
     counts = _counts_from_rows(rows)
     versions = [row[0] for row in db.execute(
         """
         SELECT DISTINCT a.pipeline_version
-        FROM analysis a
+        FROM effective_analysis a
         JOIN review_status s ON s.review_id=a.review_id AND s.revision=a.revision
-        WHERE a.entity_id=? AND a.algorithm_version=? AND s.status='analyzed'
+        WHERE a.entity_id=? AND s.status='analyzed'
           AND a.created_at>=? AND a.created_at<?
         ORDER BY a.pipeline_version
         """,
-        (entity_id, algorithm_version, iso_utc(start), iso_utc(end)),
+        (entity_id, iso_utc(start), iso_utc(end)),
     ).fetchall()]
     return counts, versions
 
@@ -130,7 +139,13 @@ def _source_stale(health: dict) -> bool:
     return age > limit
 
 
-def _data_status(mode: str, health: dict, window_versions: set[str], has_rows: bool) -> tuple[str, list[str]]:
+def _data_status(
+    mode: str,
+    health: dict,
+    window_versions: set[str],
+    has_rows: bool,
+    llm_coverage: float | None,
+) -> tuple[str, list[str]]:
     reasons: list[str] = []
     if mode == "sample":
         return "sample", ["synthetic sample data"]
@@ -141,14 +156,23 @@ def _data_status(mode: str, health: dict, window_versions: set[str], has_rows: b
     mixed = sorted(version for version in window_versions if version != CURRENT_PIPELINE)
     if mixed:
         reasons.append("window contains non-current pipeline versions: " + ", ".join(mixed))
+    if not has_rows and not reasons:
+        return "no_data", ["no analyzed mentions in the window"]
+    if llm_coverage is not None and llm_coverage < 0.999:
+        if llm_coverage <= 0:
+            reasons.append("no LLM labels imported; summaries are VADER-only")
+        else:
+            reasons.append(f"LLM coverage is {llm_coverage:.1%}; remaining rows use VADER fallback")
     if reasons:
         if "backfill status is pending/running" in reasons:
             return "backfill_incomplete", reasons
         if any("source has not refreshed" in reason for reason in reasons):
             return "stale_source", reasons
-        return "mixed_pipeline_versions", reasons
-    if not has_rows:
-        return "no_data", ["no analyzed mentions in the window"]
+        if mixed:
+            return "mixed_pipeline_versions", reasons
+        if llm_coverage is not None and llm_coverage <= 0:
+            return "vader_only", reasons
+        return "llm_partial", reasons
     return "ok", []
 
 
@@ -163,7 +187,6 @@ def summarize_game(
     min_mentions: int = DEFAULT_MIN_MENTIONS,
     change_threshold: float = DEFAULT_CHANGE_THRESHOLD,
     alpha: float = DEFAULT_ALPHA,
-    algorithm_version: str = ALGORITHM_VERSION,
 ) -> dict:
     now = now or utc_now()
     current_start = now - timedelta(hours=window_hours)
@@ -173,8 +196,8 @@ def summarize_game(
     entities_out = []
     has_rows = False
     for entity in config.entities:
-        current, current_versions = query_window(db, entity.entity_id, current_start, now, algorithm_version)
-        baseline, baseline_versions = query_window(db, entity.entity_id, baseline_start, current_start, algorithm_version)
+        current, current_versions = query_window(db, entity.entity_id, current_start, now)
+        baseline, baseline_versions = query_window(db, entity.entity_id, baseline_start, current_start)
         window_versions.update(current_versions)
         window_versions.update(baseline_versions)
         if current["mention_count"] or baseline["mention_count"]:
@@ -215,7 +238,13 @@ def summarize_game(
             "current_pipeline_versions": current_versions,
             "baseline_pipeline_versions": baseline_versions,
         })
-    data_status, reasons = _data_status(mode, health, window_versions, has_rows)
+    analyzed = analyzed_reviews(db)
+    llm_labeled = llm_labeled_reviews(db)
+    llm_rows = llm_labeled_rows(db)
+    vader_rows_total = analysis_row_count(db)
+    llm_coverage = (llm_rows / vader_rows_total) if vader_rows_total else None
+    scorers = scorer_counts(db)
+    data_status, reasons = _data_status(mode, health, window_versions, has_rows, llm_coverage)
     provisional = data_status != "ok"
     for item in entities_out:
         item["provisional"] = provisional
@@ -243,8 +272,11 @@ def summarize_game(
         "source_mode": health.get("mode"),
         "dataset_type": health.get("dataset_type"),
         "algorithm": {
-            "name": ALGORITHM_NAME,
-            "version": algorithm_version,
+            "name": LLM_ALGORITHM_NAME,
+            "version": LLM_ALGORITHM_VERSION,
+            "vader_fallback_version": ALGORITHM_VERSION,
+            "llm_model": state_get(db, "llm_model") or "CS5351/DeepSeek-V4-Flash",
+            "llm_prompt_version": state_get(db, "llm_prompt_version") or LLM_PROMPT_VERSION,
             "entity_config_version": config.version,
             "entity_config_hash": config.content_hash,
             "window_hours": window_hours,
@@ -275,9 +307,15 @@ def summarize_game(
         "review_counts": {
             "total": int(total_reviews),
             "analyzed": status_counts.get("analyzed", 0),
+            "llm_labeled_reviews": llm_labeled,
+            "llm_labeled_rows": llm_rows,
+            "vader_rows": vader_rows_total,
             "excluded_unusable": status_counts.get("excluded_unusable", 0),
             "skipped_empty": status_counts.get("skipped_empty", 0),
         },
+        "llm_coverage": llm_coverage,
+        "scorer_counts": scorers,
+        "vader_fallback_rows": scorers.get("vader", 0),
         "data_status": data_status,
         "data_status_reasons": reasons,
         "provisional": provisional,
@@ -303,7 +341,6 @@ def export_dashboard(
     days: int = 7,
     bucket_hours: int = 1,
     min_mentions: int = DEFAULT_MIN_MENTIONS,
-    algorithm_version: str = ALGORITHM_VERSION,
 ) -> dict:
     now = now or utc_now()
     if days <= 0 or bucket_hours <= 0:
@@ -323,12 +360,12 @@ def export_dashboard(
     rows = db.execute(
         """
         SELECT a.entity_id,a.created_at,a.sentiment_label
-        FROM analysis a
+        FROM effective_analysis a
         JOIN review_status s ON s.review_id=a.review_id AND s.revision=a.revision
-        WHERE a.algorithm_version=? AND s.status='analyzed'
+        WHERE s.status='analyzed'
           AND a.created_at>=? AND a.created_at<?
         """,
-        (algorithm_version, iso_utc(start), iso_utc(end)),
+        (iso_utc(start), iso_utc(end)),
     ).fetchall()
     for row in rows:
         if row["entity_id"] not in grouped:
@@ -373,6 +410,6 @@ def export_dashboard(
         "bucket_hours": bucket_hours,
         "min_mentions": min_mentions,
         "range": {"start": iso_utc(start), "end": iso_utc(end)},
-        "algorithm_version": algorithm_version,
+        "algorithm_version": LLM_ALGORITHM_VERSION,
         "entities": entities_out,
     }

@@ -18,6 +18,7 @@ analysis/**/calibration/*.jsonl
 analysis/**/calibration/*.csv
 analysis/**/calibration/*.manifest.json
 analysis/**/calibration/raw/
+analysis/**/llm/*.jsonl
 analysis/**/reviews.jsonl
 analysis/**/summaries/**/summary_*.json
 

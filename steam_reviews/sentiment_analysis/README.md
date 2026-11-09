@@ -96,13 +96,36 @@ cd steam_reviews
 
 ## 情感算法
 
-- 全量：VADER `vaderSentiment==3.3.2` + 可审查的 `domain_lexicon.json`（gaming 俚语、性能/作弊/付费等）。
-- 标签：`compound >= 0.05` positive，`<= -0.05` negative，否则 neutral；分数原样保存，不伪造概率/置信度。
-- 分句内评分；同一实体跨多个分句取均值；证据保留命中分句。
-- 输入只用 `text_clean`，不使用 `tokens_trend`，不把 `steam_recommended` 当情感真值。
-- 对 `pay to win`/`pay-to-win` 归一为 `p2w`，弯引号归一为 ASCII 单引号，保留否定。
+**当前主检测：CityU LLM（`CS5351/DeepSeek-V4-Flash`）**。对每条 review × VADER 识别出的实体（含整体 game），把完整 `text_clean` 和实体名发给 LLM，要求返回 `positive/negative/neutral + reason`。LLM 标签写入 `llm_analysis` 表；`effective_analysis` 视图优先使用 LLM，未覆盖的实体回退到 VADER。这样既利用 LLM 对反讽/上下文的能力，又保留可复现的本地 fallback。
 
-局限：反讽、引用、短文本、混语、同一分句内的多实体相反态度、游戏术语上下文歧义、词典领域覆盖不足；Steam 英文筛选和近实时采样也有选择偏差。VADER 的 compound 不是概率。LLM 校准是抽样一致性检查，不是人工真值。
+VADER fallback：`vaderSentiment==3.3.2` + `domain_lexicon.json`；compound 阈值 ±0.05；分句评分；只作 fallback 和 baseline。输入只用 `text_clean`，不使用 `tokens_trend`，不把 `steam_recommended` 当情感真值。
+
+LLM prompt 要点：实体名 + 完整评论；明确 positive/negative/neutral 规则；反讽按真实意图；请求修复视为 negative；正负平衡视为 neutral；严格 JSON，`reason` 简短。批量模式把最多 8 条 review-entity 放进一次请求，减少调用次数；解析失败会回退为单条调用。
+
+局限：LLM 也有错误，且 `neutral` 仍最难（人工 120 条上 neutral F1 约 0.39）；LLM 不是人工真值；同一 review 的实体由 VADER 别名匹配决定，别名漏召回仍会漏实体；Steam 英文筛选和采样偏差仍在。
+
+## LLM 主检测接入流程
+
+```powershell
+# 1) 从本地分析库导出待标注的 review × entity jobs（默认跳过已有 LLM 标签）
+.\.venv\Scripts\python.exe -m sentiment_analysis export-llm-jobs `
+  --app-id 730 --consumer sentiment_algorithm_v1 `
+  --out analysis\games\730\sentiment\sentiment_algorithm_v1\llm\jobs.jsonl
+
+# 2) 在 WSL 内调用 CityU 网关（批大小 8、4 并发、断点续跑）
+#    只从 ~/.env_secrets 读取 CITYUCS_LLM_*，不写密钥
+wsl.exe -d Ubuntu-24.04 -u otojf7 -- bash -lc "cd /mnt/d/CS_SEMA/5481_data/group_project/steam-reviews-handoff/steam_reviews && bash sentiment_analysis/calibration/run_cityu_llm.sh --input analysis/games/730/sentiment/sentiment_algorithm_v1/llm/jobs.jsonl --output analysis/games/730/sentiment/sentiment_algorithm_v1/llm/predictions.jsonl --workers 4 --batch-size 8 --max-batch-chars 3000 --sleep 0.1 --resume"
+
+# 3) 导入 LLM 标签；effective_analysis 立即优先 LLM
+.\.venv\Scripts\python.exe -m sentiment_analysis import-llm-labels `
+  --app-id 730 --consumer sentiment_algorithm_v1 `
+  --predictions analysis\games\730\sentiment\sentiment_algorithm_v1\llm\predictions.jsonl
+
+# 4) 重算汇总；llm_coverage=1.0 时 data_status=ok，否则 llm_partial
+.\.venv\Scripts\python.exe -m sentiment_analysis summarize --app-id 730 --consumer sentiment_algorithm_v1 --window-hours 24 --baseline-hours 168
+```
+
+成本/时间参考：CS2 约 1.93 万个 review×entity jobs；批大小 8、4 并发时约 40–60 分钟（受网关限流影响）。三游戏合计约 4.6 万个 jobs，建议按游戏分批跑，每批完成后导入并检查 `verify`。429 会自动重试；失败项用 `--resume` 补跑。
 
 ## 结果契约
 
@@ -131,11 +154,13 @@ analysis/games/<app_id>/sentiment/<consumer>/calibration/calibration_report.json
   "processed_cursor": "18446",
   "source_latest_cursor": "18446",
   "cursor_lag": 0,
-  "backfill_status": "running",
-  "provisional": true,
-  "data_status": "backfill_incomplete",
+  "backfill_status": "completed",
+  "provisional": false,
+  "data_status": "ok",
+  "llm_coverage": 1.0,
+  "scorer_counts": {"llm": 19294, "vader": 0},
   "window": {"current_start": "...", "current_end": "...", "baseline_start": "...", "baseline_end": "..."},
-  "algorithm": {"name": "vader-domain", "version": "sentiment-v1", "min_mentions": 5, "change_threshold": 0.15, "alpha": 0.05},
+  "algorithm": {"name": "llm-entity", "version": "sentiment-llm-v1", "llm_model": "CS5351/DeepSeek-V4-Flash", "vader_fallback_version": "sentiment-v1", "min_mentions": 5, "change_threshold": 0.15, "alpha": 0.05},
   "entities": [{
     "entity_id": "anticheat",
     "current": {"positive_count": 7, "negative_count": 46, "neutral_count": 4, "mention_count": 57, "metric": -0.684},
@@ -153,7 +178,7 @@ analysis/games/<app_id>/sentiment/<consumer>/calibration/calibration_report.json
 - `metric` = `(positive - negative) / mention_count`，范围 -1..1；`mention_count=0` 时为 `null`，不置零。
 - `change` = 当前 metric − 基线 metric；只有两窗口 `mention_count >= min_mentions` 且 `|change| >= change_threshold` 才 `change_flag=true`。
 - 额外做 3×2 卡方独立性检验（标签分布 × 当前/基线，df=2，`p=exp(-chi2/2)`）；所有非零期望频数 >=5 才输出 `p_value`，`p<alpha` 才 `alert_type="statistical"`。未做多实体/多窗口全局多重比较校正，报告中按探索性结果解释。
-- `data_status`: `ok / insufficient_window / insufficient_baseline / backfill_incomplete / stale_source / mixed_pipeline_versions / sample / no_data`。`provisional=true` 表示回填未完成/样例/陈旧数据，不能当完整窗口结论。
+- `data_status`: `ok / insufficient_window / insufficient_baseline / backfill_incomplete / stale_source / mixed_pipeline_versions / llm_partial / vader_only / sample / no_data`。`llm_coverage` 是 LLM 已标注的 review×entity 行数 / VADER 分析行数；`<1` 时 `provisional=true`。`scorer_counts` 显示实际使用的 LLM/VADER 行数。
 - `analysis` 表逐评论 × 实体保存 `review_id, revision, entity_id, sentiment_label, sentiment_score, evidence, created_at, pipeline_version, algorithm_version, entity_config_version, analyzed_at, reused_from_revision`；`export-reviews` 导出 JSONL。
 - `export-dashboard` 输出按小时对齐的时间序列（`bucket_start`, `bucket_end`, 三标签计数, `mention_count`, `net_metric`, `data_status`），不生成图表。
 - 删除的 Steam 评论在 collector 的 changes 流中没有 tombstone，无法检测；修改/重清洗会回溯影响历史窗口；汇总只代表 `processed_cursor` 时点的数据。
@@ -229,7 +254,8 @@ analysis/games/<app_id>/sentiment/<consumer>/calibration/calibration_report.json
 | 方法 | accuracy | macro-F1 | Cohen's kappa |
 |---|---:|---:|---:|
 | VADER + domain lexicon | 0.492 | 0.475 | 0.237 |
-| CityU `CS5351/DeepSeek-V4-Flash` | **0.700** | **0.621** | **0.474** |
+| LLM 旧单实体校准 prompt | 0.700 | 0.621 | 0.474 |
+| LLM 主检测 prompt（当前） | **0.750** | **0.657** | **0.549** |
 
 VADER 混淆矩阵（行=人工，列=VADER）：
 
@@ -240,21 +266,21 @@ negative            19       30      20
 neutral              3        6      11
 ```
 
-LLM 混淆矩阵（行=人工，列=LLM）：
+LLM 主检测混淆矩阵（行=人工，列=LLM）：
 
 ```text
 human\llm     positive negative neutral
 positive            19        3       9
-negative             5       57       7
-neutral              0       12       8
+negative             2       63       4
+neutral              1       11       8
 ```
 
 解读：
 - VADER 的主要问题是**漏判负面**：69 条人工 negative 中只有 30 条被判 negative，19 条被判 positive、20 条被判 neutral；正面 precision 只有 0.45，neutral 的 F1 只有 0.37。
-- LLM 明显更好，尤其 negative recall 0.826、positive precision 0.792；neutral 仍然难（F1 0.364），12 条 neutral 被判 negative。
-- 分实体：VADER 在 `weapon_balance`（0.667）、`skins_economy`（0.600）较好，`anticheat` 最差（0.267，kappa 为负）；LLM 在 `game`（0.867）、`servers`（0.800）、`performance`/`anticheat`（0.733）较好，但 `anticheat` 只有 1 条 neutral，kappa 受类别不平衡影响，不能只看 kappa。
+- LLM 主检测明显更好：negative recall 0.913、positive precision 0.864；neutral 仍然难（F1 0.390），11 条 neutral 被判 negative。
+- 分实体：VADER 在 `weapon_balance`（0.667）、`skins_economy`（0.600）较好，`anticheat` 最差（0.267，kappa 为负）；LLM 在 `game`（0.800）、`servers`（0.867）、`skins_economy`（0.786）、`anticheat`（0.786）较好；`anticheat` 只有 1 条 neutral，kappa 受类别不平衡影响，不能只看 kappa。
 - 样本是按旧 VADER 标签分层的“压力测试集”（每个 entity×label 5 条），不是随机样本；随机线上样本的 accuracy 可能不同。单标注人、无标注者间 kappa，结论应写成“在这 120 条盲标样本上”。
-- 结果文件：`calibration/evaluation_vader.json`、`calibration/evaluation_llm.json`。原始盲标 CSV 与逐条文本留在本机（已被 `.gitignore` 排除），仓库只提交聚合指标。
+- 结果文件：`calibration/evaluation_vader.json`、`calibration/evaluation_llm_primary.json`。原始盲标 CSV 与逐条文本留在本机（已被 `.gitignore` 排除），仓库只提交聚合指标。
 
 如果目标是报告里更强的情感准确率，**LLM 全量或 LLM 复核 top-change 实体**比继续调 VADER 词典更有效；如果坚持本地无密钥词典方案，应把 VADER 定位为可复现 baseline，并如实报告上述限制。
 
@@ -321,10 +347,14 @@ LLM 抽样校准（VADER vs CityU `CS5351/DeepSeek-V4-Flash`，0 API/解析错�
 ```text
 sentiment_analysis/
 ├─ settings.py, entities.py, sentiment.py, store.py, aggregate.py, client.py, cli.py
+├─ llm.py                       # LLM job 导出、预测导入、effective_analysis 优先级
+├─ evaluate.py                  # 人工金标准评估
 ├─ configs/entities_730.json, entities_570.json, entities_4115450.json
 ├─ domain_lexicon.json
 ├─ requirements-sentiment.txt
+├─ calibration/llm_label_batch.py, run_cityu_llm.sh
 ├─ calibration/llm_calibrate.py, compare_calibration.py, run_cityu_calibration.sh
+├─ calibration/make_annotation_sheet.py, merge_annotation.py
 └─ tests/
 ```
 

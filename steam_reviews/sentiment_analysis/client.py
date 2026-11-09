@@ -11,6 +11,8 @@ from urllib.request import urlopen
 from .aggregate import export_dashboard as build_dashboard
 from .aggregate import summarize_game, write_summary
 from .entities import EntityConfig, load_entity_config
+from .llm import export_jobs as export_llm_jobs_file
+from .llm import import_predictions as import_llm_predictions
 from .sentiment import SentimentAnalyzer
 from .settings import (
     ALGORITHM_VERSION,
@@ -22,6 +24,8 @@ from .settings import (
     DEFAULT_POLL_SECONDS,
     DEFAULT_WINDOW_HOURS,
     GAME_NAMES,
+    LLM_MODEL_DEFAULT,
+    LLM_PROMPT_VERSION,
     SAMPLE_SCHEMA_VERSION,
     SUPPORTED_APP_IDS,
     analysis_db_path,
@@ -490,8 +494,8 @@ def export_reviews(app_id: int, consumer: str, out: Path) -> int:
         """
         SELECT a.review_id,a.revision,a.entity_id,a.sentiment_label,a.sentiment_score,
                a.evidence,a.created_at,a.pipeline_version,a.algorithm_version,
-               a.entity_config_version,a.analyzed_at,a.reused_from_revision
-        FROM analysis a
+               a.entity_config_version,a.analyzed_at,a.reused_from_revision,a.scorer
+        FROM effective_analysis a
         JOIN review_status s ON s.review_id=a.review_id AND s.revision=a.revision
         WHERE s.status='analyzed'
         ORDER BY a.created_at,a.review_id,a.entity_id
@@ -549,6 +553,29 @@ def verify(app_id: int, consumer: str) -> int:
     unexpected = [value for value in algorithms if value != stored_algorithm]
     if unexpected:
         issues.append("analysis contains other algorithm versions: " + ", ".join(map(str, unexpected)))
+    llm_rows = db.execute("SELECT COUNT(*) FROM llm_analysis").fetchone()[0]
+    llm_bad = db.execute(
+        """
+        SELECT COUNT(*) FROM llm_analysis l
+        JOIN review_status s ON s.review_id=l.review_id AND s.revision=l.revision
+        WHERE s.status='analyzed'
+          AND ((l.mentioned=1 AND l.sentiment_label NOT IN ('positive','negative','neutral'))
+            OR (l.mentioned=0 AND l.sentiment_label IS NOT NULL))
+        """
+    ).fetchone()[0]
+    if llm_bad:
+        issues.append(f"{llm_bad} invalid current LLM analysis rows")
+    llm_stale = db.execute(
+        """
+        SELECT COUNT(*) FROM llm_analysis l
+        LEFT JOIN review_status s ON s.review_id=l.review_id AND s.revision=l.revision
+        WHERE s.review_id IS NULL
+        """
+    ).fetchone()[0]
+    analyzed = db.execute("SELECT COUNT(*) FROM review_status WHERE status='analyzed'").fetchone()[0]
+    llm_labeled = db.execute(
+        "SELECT COUNT(DISTINCT l.review_id) FROM llm_analysis l JOIN review_status s ON s.review_id=l.review_id AND s.revision=l.revision WHERE s.status='analyzed'"
+    ).fetchone()[0]
     result = {
         "event": "verify",
         "app_id": app_id,
@@ -556,7 +583,13 @@ def verify(app_id: int, consumer: str) -> int:
         "reviews": reviews,
         "review_status": statuses,
         "analysis_rows": db.execute("SELECT COUNT(*) FROM analysis").fetchone()[0],
+        "llm_analysis_rows": llm_rows,
+        "llm_stale_rows": llm_stale,
+        "llm_labeled_reviews": llm_labeled,
+        "llm_coverage": (llm_labeled / analyzed) if analyzed else None,
         "algorithm_versions": algorithms,
+        "llm_model": state_get(db, "llm_model"),
+        "llm_prompt_version": state_get(db, "llm_prompt_version"),
         "cursor": state_get(db, "cursor"),
         "stream_id": state_get(db, "stream_id"),
         "issues": issues,
@@ -565,6 +598,54 @@ def verify(app_id: int, consumer: str) -> int:
     db.close()
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0 if not issues else 1
+
+
+def export_llm_jobs(
+    app_id: int,
+    consumer: str,
+    out: Path,
+    *,
+    limit: int | None = None,
+    include_labeled: bool = False,
+    model: str = LLM_MODEL_DEFAULT,
+) -> int:
+    validate_app_id(app_id)
+    path = analysis_db_path(app_id, consumer)
+    if not path.exists():
+        raise ApiError(f"Analysis database not found: {path}")
+    db = connect(path)
+    init_schema(db)
+    config = load_entity_config(app_id)
+    count = export_llm_jobs_file(
+        db, config, out, app_id=app_id, model=model,
+        include_labeled=include_labeled, limit=limit,
+    )
+    db.close()
+    print(json.dumps({"event": "export_llm_jobs", "app_id": app_id, "jobs": count, "path": str(out)}, ensure_ascii=False))
+    return count
+
+
+def import_llm_labels(
+    app_id: int,
+    consumer: str,
+    predictions: Path,
+    *,
+    model: str = LLM_MODEL_DEFAULT,
+    prompt_version: str = LLM_PROMPT_VERSION,
+) -> dict:
+    validate_app_id(app_id)
+    path = analysis_db_path(app_id, consumer)
+    if not path.exists():
+        raise ApiError(f"Analysis database not found: {path}")
+    db = connect(path)
+    init_schema(db)
+    config = load_entity_config(app_id)
+    result = import_llm_predictions(
+        db, config, predictions, app_id=app_id, model=model, prompt_version=prompt_version,
+    )
+    db.close()
+    print(json.dumps({"event": "import_llm_labels", "app_id": app_id, **result}, ensure_ascii=False))
+    return result
 
 
 def export_dashboard(app_id: int, consumer: str, days: int, bucket_hours: int, out: Path) -> dict:

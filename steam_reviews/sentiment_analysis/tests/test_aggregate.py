@@ -22,7 +22,7 @@ def test_query_window_uses_start_inclusive_end_exclusive(tmp_path):
     insert_analysis(db, "c", "game", "neutral", "2026-11-09T12:00:00Z")
     db.commit()
     counts, versions = query_window(
-        db, "game", parse_utc("2026-11-09T11:00:00Z"), NOW, ALGORITHM_VERSION
+        db, "game", parse_utc("2026-11-09T11:00:00Z"), NOW
     )
     assert counts["mention_count"] == 2
     assert counts["positive_count"] == 1
