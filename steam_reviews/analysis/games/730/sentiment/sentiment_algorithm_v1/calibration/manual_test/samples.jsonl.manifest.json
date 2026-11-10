@@ -1,0 +1,10 @@
+{
+  "schema_version": "sentiment-samples-1.0",
+  "app_id": 730,
+  "created_at": "2026-11-10T08:09:18Z",
+  "limit": 120,
+  "count": 120,
+  "algorithm_version": "sentiment-v1",
+  "entity_config_version": "entities-v1",
+  "source": "VADER stratified sample; not human ground truth"
+}
