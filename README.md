@@ -75,3 +75,33 @@ a16d5670df9d7b1e1300059767c2f7951d99bb784d6d1129c8e92d6d3e857b88  steam_reviews_
 
 **下游交接：** Person 2 可通过 `get_top_keywords(..., top_n=None)` 获取指定游戏、指定时间窗口的完整 TF/DF 数据，用于最近 1 小时与此前 24 小时的趋势比较。
 
+## 趋势词检测（Person 2）：趋势判断与结果导出
+
+本模块接在 Person 1 的词频接口之后。它比较最近 1 小时和再往前 24 小时的文档频率比例，判断突发趋势词，并导出看板可以直接读取的 JSON。采集、清洗和词频统计都没有改。
+
+**交付文件：**
+- [完整使用说明](person2_trend/README_trend_02.md)
+- [下载交接 ZIP](steam_reviews_person2_trend_handoff.zip?raw=true)
+- Python 源代码：`person2_trend/trend_analysis/`
+- 自动化测试：`person2_trend/tests/`
+- 看板字段样例：`person2_trend/analysis/experiments/dashboard_preview/trends_latest.json`（构造数据，不是 Steam 上的结论）
+
+**已实现功能：**
+- 支持 CS2（730）、Dota 2（570）、影之刃零（4115450），三款游戏分开计算。
+- 最近 1 小时与再往前的 24 小时互不重叠，使用 Person 1 的 `get_top_keywords(..., top_n=None)`。
+- 用文档频率比例计算趋势强度；基线里没有的词标成新词，强度保持有限。
+- 最近评论太少、回填未完成或样例模式只保留分数，不公布趋势名单。
+- 单次或定时导出 `analysis/trends_latest.json`。
+- 构造样例中，突然变多的词会进入名单，一直很多的词不会进入。
+
+**使用方法（Windows PowerShell）：**
+
+先按上面的说明合并上游 ZIP 和 Person 1 的 ZIP，再把本模块 ZIP 的内容合并进同一个 `steam_reviews/` 目录。在该目录执行：
+
+1. 启动上游 API：`.\start.bat`
+2. 计算三款游戏的趋势：`.\.venv\Scripts\python.exe -m trend_analysis.run --once --consumer trend_live`
+3. 运行测试：`.\.venv\Scripts\python.exe -m unittest discover -s tests -p "test_trend_*.py" -v`
+4. 运行构造样例：`.\.venv\Scripts\python.exe -m trend_analysis.run --experiment`
+
+**下游交接：** 看板读取 `analysis/trends_latest.json`。只有某个游戏的 `conclusions_publishable` 为 true 时，才展示该游戏的 `trending_terms`。
+
