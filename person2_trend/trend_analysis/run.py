@@ -14,6 +14,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+from .cloud import resolve_base_url
 from .detector import detect_trends, empty_result
 from .experiment import run_fixture
 from .export import analysis_root, export_results
@@ -131,8 +132,12 @@ def main(argv=None):
     parser.add_argument("--loop", action="store_true", help="Sync and score until interrupted")
     parser.add_argument("--interval-seconds", type=float, default=60)
     parser.add_argument("--skip-sync", action="store_true")
-    parser.add_argument("--consumer", default="trend_live")
-    parser.add_argument("--base-url", default="http://127.0.0.1:8000")
+    parser.add_argument("--consumer", default="trend_cloud")
+    parser.add_argument(
+        "--base-url",
+        default=None,
+        help="Collection API. Defaults to the shared cloud server.",
+    )
     parser.add_argument("--end", help="UTC window end, for a reproducible run. Live runs should omit this.")
     parser.add_argument("--app-id", type=int, choices=GAMES)
     parser.add_argument("--output-root", help="Directory for JSON results. Default is analysis/.")
@@ -153,7 +158,7 @@ def main(argv=None):
         print(f"\nTrend run at {started}")
         results = analyze_all(
             consumer_name=args.consumer,
-            base_url=args.base_url,
+            base_url=resolve_base_url(args.base_url),
             end=args.end,
             skip_sync=args.skip_sync,
             app_id=args.app_id,

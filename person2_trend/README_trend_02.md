@@ -40,11 +40,15 @@ strength = min(20, (最近比例 + 0.05) / (基线比例 + 0.05))
 
 实验读的是构造出来的评论，用来核对公式。结果在 `analysis/experiments/fixture_report.json`。这不是 Steam 上的结论。
 
-真实数据要先在另一个终端运行 `.\start.bat`，等采集服务起来后再执行：
+真实数据读第一个同学已经部署的采集服务 `https://43.161.240.54`。先在当前终端设置组里给的登录信息，不要把用户名和密码写进代码或 Git：
 
 ```powershell
+$env:STEAM_API_USER = "收到的用户名"
+$env:STEAM_API_PASSWORD = "收到的密码"
 .\.venv\Scripts\python.exe -m trend_analysis.run --once
 ```
+
+这一命令使用消费者 `trend_cloud`，避免和本机采集的 `trend_live` 混在同一个数据库里。本机样例服务仍可加 `--base-url http://127.0.0.1:8000`。
 
 持续每分钟同步并重算：
 
@@ -52,7 +56,7 @@ strength = min(20, (最近比例 + 0.05) / (基线比例 + 0.05))
 .\.venv\Scripts\python.exe -m trend_analysis.run --loop --interval-seconds 60
 ```
 
-消费者名字沿用 Person 1 的 `trend_live`。三次游戏分开计算。
+三次游戏分开计算。
 
 ## 给看板的文件
 

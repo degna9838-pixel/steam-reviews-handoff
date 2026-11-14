@@ -96,12 +96,14 @@ a16d5670df9d7b1e1300059767c2f7951d99bb784d6d1129c8e92d6d3e857b88  steam_reviews_
 
 **使用方法（Windows PowerShell）：**
 
-先按上面的说明合并上游 ZIP 和 Person 1 的 ZIP，再把本模块 ZIP 的内容合并进同一个 `steam_reviews/` 目录。在该目录执行：
+先按上面的说明合并上游 ZIP 和 Person 1 的 ZIP，再把本模块 ZIP 的内容合并进同一个 `steam_reviews/` 目录。采集已经在云端 `https://43.161.240.54`，不用再启动本机采集。在该目录执行：
 
-1. 启动上游 API：`.\start.bat`
-2. 计算三款游戏的趋势：`.\.venv\Scripts\python.exe -m trend_analysis.run --once --consumer trend_live`
+1. 设置组内登录信息：`$env:STEAM_API_USER` 和 `$env:STEAM_API_PASSWORD`。不要把密码写进代码。
+2. 计算三款游戏的趋势：`.\.venv\Scripts\python.exe -m trend_analysis.run --once`
 3. 运行测试：`.\.venv\Scripts\python.exe -m unittest discover -s tests -p "test_trend_*.py" -v`
 4. 运行构造样例：`.\.venv\Scripts\python.exe -m trend_analysis.run --experiment`
+
+默认消费者是 `trend_cloud`。本机样例服务可加 `--base-url http://127.0.0.1:8000`。
 
 **下游交接：** 看板读取 `analysis/trends_latest.json`。只有某个游戏的 `conclusions_publishable` 为 true 时，才展示该游戏的 `trending_terms`。
 
