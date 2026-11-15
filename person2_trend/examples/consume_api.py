@@ -194,11 +194,13 @@ def main():
         row = db.execute("SELECT value FROM state WHERE key='cursor'").fetchone()
         cursor = int(row[0]) if row else 0
         print(f"App={args.app_id}; output={output}; cursor={cursor}", flush=True)
+        network_failures = 0
         while True:
             url = args.base_url.rstrip("/") + "/v1/reviews/changes?" + urlencode({"app_id": args.app_id, "cursor": cursor, "limit": 100})
             try:
-                with urlopen(_api_request(url, args.base_url), timeout=30) as response:
+                with urlopen(_api_request(url, args.base_url), timeout=120) as response:
                     batch = json.load(response)
+                network_failures = 0
                 cursor, changed = save_batch(db, batch, cursor, app_id=args.app_id)
                 print(f"events={len(batch['items'])} updated={changed} cursor={cursor}", flush=True)
                 if batch["has_more"]:
@@ -212,9 +214,12 @@ def main():
                     raise
                 print(f"HTTP {exc.code}; retaining cursor", flush=True)
             except (URLError, TimeoutError, OSError) as exc:
-                if args.once:
-                    raise
+                network_failures += 1
                 print(f"Network error; retaining cursor: {exc}", flush=True)
+                if args.once and network_failures >= 5:
+                    raise
+                time.sleep(5)
+                continue
             time.sleep(args.poll_seconds)
 
 
