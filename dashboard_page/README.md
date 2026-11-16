@@ -1,23 +1,59 @@
-# Steam Review Monitor
+# Steam Review Monitor 前端
 
-按 V2 设计图搭建的 Streamlit 演示页面。支持切换 CS2、Dota 2 和 Phantom Blade Zero，查看评论、情绪、关键词和提醒。
+Streamlit 页面，仅从后端 HTTP API 读取数据。支持游戏切换、6小时/24小时/7天筛选、手动刷新、情绪趋势图与悬停提示、饼图、词云、趋势词表格、告警和评论弹窗。
 
-前后端联调约定见 [接口文档](API_SPEC.md)。
+## 文件结构
 
-## 本地运行
+```text
+dashboard_page/
+├── app.py                 # 页面与图表渲染
+├── data_source.py         # HTTP 请求、响应基本校验、接口错误处理
+├── styles.css             # 页面样式
+├── start_api.command      # 启动入口
+├── requirements.txt       # Python 依赖
+├── .streamlit/config.toml # Streamlit 主题
+├── assets/                # 游戏封面
+├── API_SPEC.md            # 后端数据契约
+└── README.md
+```
 
-在 dashboard_page 目录中使用 Python 3.11.9：
+Python 3.11.9；`.venv` 是本地运行环境，`__pycache__` 是 Python 自动生成的缓存，均不提交 Git。
 
-    python3.11 -m venv .venv
-    .venv/bin/python -m pip install -r requirements.txt
-    .venv/bin/python -m streamlit run app.py
+## 启动
 
-已有项目虚拟环境时，直接运行最后一行。终端会打印本地访问地址，默认为 http://localhost:8501。
+先启动采集 API 和统一总览 API，再在此目录执行：
 
-## 演示数据
+```bash
+bash start_api.command
+```
 
-demo_data.py 定义了三个游戏的模拟快照。采集时间、评论和关键词出现率均为示例，页面可离线演示。CS2 和 Dota 2 封面来自 Steam 商店。
+浏览器访问 http://localhost:8501。首次安装环境：
 
-- 总评论量、情绪图和情绪分布按所选游戏及时间范围统计。评论区展示所选游戏最近一小时的示例，和提醒的当前窗口对应。
-- 关键词榜始终比较所选游戏最近一小时与此前 24 小时。
-- 提醒比较所选游戏在上述两个时间窗口的负面占比。演示规则是两个窗口各至少 20 条已分类评论，且负面占比增加至少 15 个百分点。
+```bash
+python3.11 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+bash start_api.command
+```
+
+也可直接运行 `.venv/bin/python -m streamlit run app.py`，使用相同的默认后端地址。
+
+## 后端接口
+
+| 环境变量 | 默认地址 | 请求 |
+| --- | --- | --- |
+| `DASHBOARD_COLLECTOR_URL` | `http://127.0.0.1:8200` | `GET /v1/games` |
+| `DASHBOARD_OVERVIEW_URL` | `http://127.0.0.1:8210` | `GET /v1/dashboard/overview?app_id=…&hours=…` |
+
+更换服务地址：
+
+```bash
+DASHBOARD_COLLECTOR_URL=http://127.0.0.1:8000 \
+DASHBOARD_OVERVIEW_URL=http://127.0.0.1:8100 \
+bash start_api.command
+```
+
+所有评论、统计和趋势词均来自接口。后端通过 `status.mode=demo/live` 区分样例和真实数据，前端不生成模拟数据。当前联调使用 `steam-reviews-dashboard-backend` 中的新总览服务；后端演示库及数据生成命令见其 `steam_reviews/sentiment_analysis/docs/DASHBOARD_OVERVIEW.md`。
+
+“立刻刷新”重新获取当前筛选范围的最新结果，并显示 `Last refresh` 时间。总览请求失败时，若会话中已有同一筛选范围的成功结果，则继续显示并提示错误。按钮不触发采集或 LLM 调用，后端无更新时数值可保持不变。
+
+响应字段及计数口径见 [API_SPEC.md](API_SPEC.md)。
