@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import json
+import base64
+import os
 import random
 import time
 from pathlib import Path
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlencode
-from urllib.request import urlopen
+from urllib.parse import urlencode, urlsplit
+from urllib.request import Request, urlopen
 
 from .aggregate import export_dashboard as build_dashboard
 from .aggregate import summarize_game, write_summary
@@ -65,13 +67,28 @@ class ApiClient:
     def _get(self, path: str, params: dict | None = None) -> dict:
         query = ("?" + urlencode(params)) if params else ""
         url = self.base_url + path + query
+        request = Request(url, headers={"Accept": "application/json"})
+        address = urlsplit(self.base_url)
+        if address.username or address.password:
+            raise ApiError("Configure credentials through STEAM_API_USER and STEAM_API_PASSWORD")
+        if address.hostname not in {"localhost", "127.0.0.1", "::1"}:
+            if address.scheme != "https":
+                raise ApiError("Remote collection requires HTTPS")
+            user = os.environ.get("STEAM_API_USER")
+            password = os.environ.get("STEAM_API_PASSWORD")
+            if not user or not password:
+                raise ApiError("Set STEAM_API_USER and STEAM_API_PASSWORD for cloud collection")
+            token = base64.b64encode(f"{user}:{password}".encode()).decode("ascii")
+            request.add_unredirected_header("Authorization", "Basic " + token)
         try:
-            with urlopen(url, timeout=self.timeout) as response:
+            with urlopen(request, timeout=self.timeout) as response:
                 payload = json.load(response)
         except HTTPError as exc:
             raise ApiError(f"HTTP {exc.code} for {path}") from exc
         except (URLError, TimeoutError, OSError) as exc:
             raise ApiError(f"Network error for {path}: {exc}") from exc
+        except ValueError as exc:
+            raise ApiError(f"Invalid JSON from {path}") from exc
         if not isinstance(payload, dict):
             raise ApiError(f"Invalid JSON object from {path}")
         return payload

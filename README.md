@@ -1,5 +1,7 @@
 # Steam 游戏英文评论采集与清洗交付包
 
+本分支 `feat/dashboard-overview` 已提供整合情感与趋势词的 [Dashboard 总览接口](steam_reviews/sentiment_analysis/docs/DASHBOARD_OVERVIEW.md)，路由为 `GET /v1/dashboard/overview?app_id=730&hours=24`。词频与趋势直接使用同一分析快照，无需独立趋势进程。
+
 版本：1.3.0。供 CS5481 项目后续趋势词检测（原任务 3）和情感检测（原任务 4）使用。
 
 ## 下载对应的 ZIP

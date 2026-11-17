@@ -51,7 +51,7 @@ GET /v1/dashboard/overview?app_id=730&hours=24
 
 响应字段与前端草案一致：`range`、`status`、`summary`、`buckets`、`comparison`、`alert`、`review_samples`。`status.data_state` 为 `ready`、`partial` 或 `pending`；覆盖范围未知的小时桶 `counts=null`，相应的 `summary=null`。提醒比较 `[T-1h,T)` 和 `[T-25h,T-1h)`，每边至少20条已分类评论、负面率上升至少15个百分点才是 `triggered`。数据未就绪时返回 `pending`，样本不足返回 `insufficient_data`，否则返回 `clear`。
 
-**趋势词榜不属于情绪模块。** 目前此接口返回 `trends.status="pending"` 和空 `items`，直到趋势检测模块接入并提供真实结果；这不表示已经检测且没有突增词。总览 GET 只读已消费的分析库，不触发 Steam 采集。`GET /v1/games` 和 `/v1/health` 仍由采集服务8000提供；情绪总览由本结果服务8100提供。
+本分支已整合趋势词榜：总览直接复用同一份评论镜像中的词项，统一截止点计算词频、突增词及情绪结果。`trends.status` 为 `ready`、`insufficient_data` 或 `pending`；无需独立趋势 worker 或 JSON 导出文件。完整约定、样例与状态规则见 [统一总览接口](DASHBOARD_OVERVIEW.md)。总览 GET 只读已消费的分析库，不触发 Steam 采集或 LLM 调用。`GET /v1/games` 和 `/v1/health` 仍由采集服务8000提供；总览由本结果服务8100提供。
 
 ### 游戏目录
 

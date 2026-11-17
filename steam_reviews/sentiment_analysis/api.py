@@ -2,8 +2,6 @@ from __future__ import annotations
 
 import json
 import sqlite3
-import urllib.error
-import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Literal
@@ -12,6 +10,8 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 from .aggregate import export_dashboard, summarize_game
+from .client import ApiClient, ApiError
+from .dashboard_trends import dashboard_keywords, dashboard_trends
 from .entities import load_entity_config
 from .settings import (
     GAME_NAMES,
@@ -80,12 +80,8 @@ def _source_health(app_id: int, collector_url: str | None) -> dict | None:
     if not collector_url:
         return None
     try:
-        with urllib.request.urlopen(
-            f"{collector_url.rstrip('/')}/v1/health?app_id={app_id}", timeout=3
-        ) as response:
-            payload = json.load(response)
-        return payload if isinstance(payload, dict) else None
-    except (urllib.error.URLError, TimeoutError, OSError, ValueError):
+        return ApiClient(collector_url, app_id, timeout=3).health()
+    except ApiError:
         return None
 
 
@@ -178,6 +174,8 @@ def _dashboard_overview(
     bound_app = state_get(db, "app_id")
     if bound_app is not None and bound_app != str(app_id):
         raise HTTPException(status_code=503, detail="Analysis database app_id mismatch")
+    if health.get("app_id") is not None and health["app_id"] != app_id:
+        raise HTTPException(status_code=503, detail="Collector health app_id mismatch")
 
     current_reviews: list[tuple[dict, datetime]] = []
     for row in db.execute("SELECT record_json FROM reviews"):
@@ -196,7 +194,7 @@ def _dashboard_overview(
             created_at = parse_utc(record["created_at"])
         except (ValueError, KeyError, TypeError, json.JSONDecodeError) as exc:
             raise HTTPException(status_code=503, detail=f"Invalid review mirror record: {exc}") from exc
-        if baseline_start <= created_at < as_of:
+        if min(range_start, baseline_start) <= created_at < as_of:
             current_reviews.append((record, created_at))
 
     sentiment_by_review: dict[str, str] = {}
@@ -268,7 +266,9 @@ def _dashboard_overview(
     processed_cursor = state_get(db, "cursor")
     cursor_lag = _cursor_lag(processed_cursor, latest_cursor)
     backfill = health.get("backfill_status")
-    backfill_complete = backfill in {"completed", "complete", "not_applicable"}
+    backfill_complete = mode == "demo" or backfill in {"completed", "complete", "not_applicable"}
+    upstream_stream = health.get("stream_id")
+    stream_mismatch = upstream_stream is not None and upstream_stream != state_get(db, "stream_id")
     last_collection_at = health.get("last_success_at")
     stale = False
     if isinstance(last_collection_at, str):
@@ -297,24 +297,45 @@ def _dashboard_overview(
             raise HTTPException(status_code=503, detail="Invalid collector scope_start_unix") from exc
     range_partially_uncovered = covered_from is not None and covered_from > range_start
     comparison_partially_uncovered = covered_from is not None and covered_from > baseline_start
-    collection_time_unknown = not isinstance(last_collection_at, str)
+    collection_time_unknown = mode != "demo" and not isinstance(last_collection_at, str)
+    comparison_source_ready = (
+        source_has_data and backfill_complete and cursor_lag == 0
+        and not stream_mismatch and not stale and not comparison_partially_uncovered
+        and not collection_time_unknown
+        and (mode == "demo" or covered_from is not None)
+        and health.get("data_ready") is not False
+        and health.get("cleaning_ready") is not False
+    )
+    comparison_eligible = sum(
+        bool(record.get("usable_for_sentiment")) and bool(record.get("text_clean", "").strip())
+        for record, created_at in current_reviews if baseline_start <= created_at < as_of
+    )
+    comparison_classified = recent_counts["classified_count"] + baseline_counts["classified_count"]
 
     if not source_has_data:
         data_state = "pending"
     elif (
         not backfill_complete
-        or (cursor_lag is not None and cursor_lag > 0)
+        or cursor_lag != 0
         or stale
         or classified_count < eligible_count
         or range_partially_uncovered
         or comparison_partially_uncovered
         or collection_time_unknown
+        or stream_mismatch
+        or (mode != "demo" and covered_from is None)
+        or health.get("data_ready") is False
+        or health.get("cleaning_ready") is False
     ):
         data_state = "partial"
     else:
         data_state = "ready"
 
-    if cursor_lag is not None and cursor_lag > 0:
+    # A positive lag means newer events await processing, not that the committed
+    # mirror and its matching analysis have become invalid. Keep those counts
+    # visible as partial data; unknown/rewound cursors and stream changes remain unsafe.
+    invalid_snapshot = cursor_lag is None or cursor_lag < 0 or stream_mismatch
+    if invalid_snapshot or (mode != "demo" and covered_from is None):
         for bucket in bucket_rows:
             bucket["counts"] = None
         summary_payload = None
@@ -328,9 +349,7 @@ def _dashboard_overview(
     else:
         summary_payload = summary
 
-    if data_state == "pending":
-        alert_status = "pending"
-    elif data_state != "ready":
+    if not comparison_source_ready or comparison_classified < comparison_eligible:
         alert_status = "pending"
     elif (
         recent_counts["classified_count"] < ALERT_MIN_CLASSIFIED
@@ -358,6 +377,10 @@ def _dashboard_overview(
             "steam_recommended": record.get("steam_recommended"),
         })
 
+    trends = dashboard_trends(current_reviews, app_id, as_of, source_ready=comparison_source_ready)
+    candidates = trends.pop("candidates", [])
+    keywords = dashboard_keywords(current_reviews, range_start, as_of,
+                                  source_ready=summary_payload is not None and source_has_data)
     return {
         "schema_version": OVERVIEW_SCHEMA_VERSION,
         "app_id": app_id,
@@ -369,6 +392,10 @@ def _dashboard_overview(
             "last_collection_at": last_collection_at,
             "analysis_updated_at": analysis_updated_at,
             "collection_interval_seconds": health.get("poll_seconds"),
+            "processed_cursor": processed_cursor,
+            "source_latest_cursor": latest_cursor,
+            "cursor_lag": cursor_lag,
+            "sync_in_progress": cursor_lag is not None and cursor_lag > 0 and not stream_mismatch,
         },
         "summary": summary_payload,
         "buckets": bucket_rows,
@@ -376,12 +403,9 @@ def _dashboard_overview(
             "recent": {"start_at": recent_text[0], "end_at": recent_text[1]},
             "baseline": {"start_at": baseline_text[0], "end_at": baseline_text[1]},
         },
-        "trends": {
-            "status": "pending",
-            "recent_eligible_count": None,
-            "baseline_eligible_count": None,
-            "items": [],
-        },
+        "trends": trends,
+        "trend_candidates": candidates,
+        "keywords": keywords,
         "alert": {
             "status": alert_status,
             "recent": recent_counts,
@@ -401,6 +425,16 @@ def create_app(consumer: str = LIVE_CONSUMER, collector_url: str | None = "http:
         allow_methods=["GET"],
         allow_headers=["*"],
     )
+
+    @app.get("/v1/games")
+    def collector_games():
+        """Proxy the collector directory so credentials stay in the backend."""
+        if not collector_url:
+            raise HTTPException(status_code=503, detail="Collector is not configured")
+        try:
+            return ApiClient(collector_url, timeout=5).games()
+        except ApiError as exc:
+            raise HTTPException(status_code=503, detail="Could not load the collector game directory") from exc
 
     @app.get("/v1/sentiment/games")
     def games():
@@ -431,6 +465,8 @@ def create_app(consumer: str = LIVE_CONSUMER, collector_url: str | None = "http:
             raise HTTPException(status_code=422, detail="hours must be one of 6, 24, or 168")
         db = _open(app_id, consumer)
         try:
+            # All mirror records, labels, health cache and cursor share one read snapshot.
+            db.execute("BEGIN")
             cached_health, _ = get_health(db)
             source_health = _source_health(app_id, collector_url)
             health = source_health or cached_health or {}
