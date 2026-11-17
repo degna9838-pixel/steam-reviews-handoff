@@ -207,52 +207,62 @@ def render_breakdown(counts):
     ))
 
 
-def render_term_cloud(trends):
-    if trends["status"] != "ready":
-        st.html(f'<p class="panel-note">{TREND_MESSAGES[trends["status"]]}</p>')
+def render_term_cloud(keywords):
+    if keywords["status"] != "ready":
+        st.html('<p class="panel-note">Keyword statistics are pending for this range.</p>')
         return
-    if not trends["recent_eligible_count"]:
-        st.html(f'<p class="panel-note">{TREND_MESSAGES["insufficient_data"]}</p>')
+    if not keywords["eligible_count"]:
+        st.html('<p class="panel-note">No eligible reviews in this range.</p>')
         return
     frequencies = {
-        item["term"]: item["recent_review_count"]
-        for item in trends["items"] if item["recent_review_count"] > 0
+        item["term"]: item["review_count"]
+        for item in keywords["items"] if item["review_count"] > 0
     }
     if not frequencies:
-        st.html('<p class="panel-note">No trending terms in the latest window.</p>')
+        st.html('<p class="panel-note">No usable keywords in this range.</p>')
         return
 
     palette = ("#66c0f4", "#93d8ff", "#79ce83", "#bacadd")
     colors = {word: palette[index % len(palette)] for index, word in enumerate(frequencies)}
     cloud = WordCloud(
         width=1440,
-        height=240,
+        height=340,
         background_color="#23384b",
         prefer_horizontal=1.0,
+        max_words=50,
         max_font_size=100,
-        min_font_size=16,
-        relative_scaling=1.0,
-        margin=12,
+        min_font_size=12,
+        relative_scaling=0.5,
+        margin=5,
         random_state=42,
         color_func=lambda word, **kwargs: colors[word],
     ).generate_from_frequencies(frequencies)
     st.image(cloud.to_array(), width="stretch")
 
 
-def terms_html(trends):
+def terms_html(trends, candidates, keywords, period):
     state = trends["status"]
-    if state != "ready":
-        return f'<p class="panel-note">{TREND_MESSAGES[state]}</p>'
+    items = trends["items"] or candidates
+    message = ""
     if not trends["items"]:
-        return '<p class="panel-note">No trending terms in the latest window.</p>'
-
+        message = TREND_MESSAGES.get(state, "No surging terms detected.")
     recent_total = trends["recent_eligible_count"]
     baseline_total = trends["baseline_eligible_count"]
-    if not recent_total or not baseline_total:
-        return f'<p class="panel-note">{TREND_MESSAGES["insufficient_data"]}</p>'
+    if not items or not recent_total or not baseline_total:
+        if keywords["status"] == "ready" and keywords["eligible_count"] and keywords["items"]:
+            rows = "".join(
+                f'<tr><th scope="row">{escape(item["term"])}</th><td>{item["review_count"]:,}</td>'
+                f'<td>{item["review_count"] / keywords["eligible_count"]:.0%}</td></tr>'
+                for item in keywords["items"][:10]
+            )
+            return f'''<p class="panel-note">{message} Showing frequent keywords · {period}.</p>
+                <div class="table-frame"><table class="term-table">
+                <thead><tr><th>Keyword</th><th>Reviews</th><th>Share</th></tr></thead>
+                <tbody>{rows}</tbody></table></div>'''
+        return f'<p class="panel-note">{message or "No keyword activity in this window."}</p>'
 
     rows = []
-    for item in trends["items"]:
+    for item in items:
         recent = item["recent_review_count"] / recent_total
         baseline = item["baseline_review_count"] / baseline_total
         lift = f"{recent / baseline:.2f}×" if baseline else ("New" if recent else "—")
@@ -261,6 +271,7 @@ def terms_html(trends):
             f'<td class="lift">{lift}</td></tr>'
         )
     return f"""
+        <p class="panel-note">{message + ' Showing frequent terms, not confirmed surges.' if message else 'Detected surging terms.'}</p>
         <p class="panel-note">Last hour vs preceding 24 hours</p>
         <div class="table-frame"><table class="term-table">
             <thead><tr><th>Keyword</th><th>Recent</th><th>Baseline</th><th>Lift</th></tr></thead>
@@ -397,6 +408,12 @@ else:
         st.toast("已获取后端最新数据。", icon=":material/check_circle:")
 
 header.html(header_html(snapshot, fetched_times.get(snapshot_key)))
+if snapshot["status"].get("sync_in_progress"):
+    st.info(
+        f"Syncing new data ({snapshot['status']['cursor_lag']:,} changes pending). "
+        "Charts show processed data; statistics are temporarily incomplete. "
+        "Trending terms and alerts will update once syncing is complete."
+    )
 pending = snapshot["status"]["data_state"] == "pending"
 summary = None if pending else snapshot["summary"]
 counts = tuple(summary[f"{label.lower()}_count"] for label in SENTIMENTS) if summary is not None else None
@@ -405,17 +422,23 @@ negative_rate = f"{counts[0] / classified:.0%}" if classified else "—"
 negative_note = f"{counts[0]:,} of {classified:,} classified" if summary is not None else "Totals unavailable"
 reviews = f"{summary['review_count']:,}" if summary is not None else "—"
 trends = snapshot["trends"]
-term_count = str(len(trends["items"])) if trends["status"] == "ready" else "—"
+keywords = snapshot.get("keywords", {"status": "pending", "eligible_count": None, "items": []})
+term_count = str(len(trends["items"])) if trends["status"] == "ready" else (
+    "Low sample" if trends["status"] == "insufficient_data" else "Pending")
 alert = snapshot["alert"]
 rates = alert_rates(alert)
-alert_count = {"triggered": "1", "clear": "0"}.get(alert["status"], "—")
+alert_count = {"triggered": "1", "clear": "0", "insufficient_data": "Low sample"}.get(alert["status"], "Pending")
+alert_note = "Latest detection window"
+if alert["status"] == "insufficient_data" and alert["recent"] and alert["baseline"]:
+    alert_note = (f'{alert["recent"]["classified_count"]}/{alert["min_classified_per_window"]} recent · '
+                  f'{alert["baseline"]["classified_count"]}/{alert["min_classified_per_window"]} baseline')
 game_name = escape(game["short"])
 
 for column, (label, value, note) in zip(st.columns(4), [
     (f"{game_name} reviews", reviews, f"{period} · all reviews"),
     (f"{game_name} negative", negative_rate, negative_note),
     ("Trending terms", term_count, f"{game_name} · last hour"),
-    (f"{game_name} alerts", alert_count, "Latest detection window"),
+    (f"{game_name} alerts", alert_count, alert_note),
 ]):
     with column:
         st.html(f"""
@@ -441,12 +464,13 @@ with side:
 
 with analysis_panels.container(border=True, key="term_cloud"):
     st.html(f"<h2>{game_name} · Word cloud</h2>")
-    render_term_cloud(trends)
+    st.html(f'<p class="panel-note">Frequent keywords · {period} · Word size reflects review mentions</p>')
+    render_term_cloud(keywords)
 
 main, side = analysis_panels.columns([2, 1], border=True)
 with main:
     st.html(f"<h2>{game_name} · Trending terms</h2>")
-    st.html(terms_html(trends))
+    st.html(terms_html(trends, snapshot.get("trend_candidates", []), keywords, period))
 with side:
     st.html(f"<h2>{game_name} · Sentiment alert</h2>")
     if rates:
@@ -466,6 +490,21 @@ with side:
     else:
         message = ALERT_MESSAGES.get(alert["status"], "Alert counts are unavailable.")
         st.html(f'<p class="empty-alert">{message}</p>')
+        recent, baseline = alert["recent"], alert["baseline"]
+        if recent is not None and baseline is not None:
+            minimum = alert["min_classified_per_window"]
+            for label, values in (("Last hour", recent), ("Preceding 24 hours", baseline)):
+                total, negative = values["classified_count"], values["negative_count"]
+                share = f"{negative / total:.1%}" if total else "—"
+                st.html(f'<p class="panel-note">{label}: <strong>{share} negative</strong><br>'
+                        f'{negative:,} negative / {total:,} classified · Required: {minimum} classified</p>')
+            if recent["classified_count"] and baseline["classified_count"]:
+                change = (recent["negative_count"] / recent["classified_count"]
+                          - baseline["negative_count"] / baseline["classified_count"]) * 100
+                st.html(f'<p class="panel-note">Observed change: {change:+.1f} pp<br>'
+                        f'Alert threshold: +{alert["min_increase_pp"]} pp with enough samples.<br>'
+                        'Fixed comparison: last hour vs preceding 24 hours.</p>')
+            review_button(game, snapshot)
 
 with st.container(border=True, key="related_reviews"):
     st.html(f"<h2>{game_name} · Recent review samples</h2>")

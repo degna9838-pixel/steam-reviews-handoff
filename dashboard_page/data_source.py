@@ -29,7 +29,7 @@ def request_json(base_url, path, **params):
 
 
 def get_games():
-    base_url = environ.get("DASHBOARD_COLLECTOR_URL", "http://127.0.0.1:8200")
+    base_url = environ.get("DASHBOARD_COLLECTOR_URL", "http://127.0.0.1:8220")
     payload = request_json(base_url, "/v1/games")
     games = payload.get("games")
     if not isinstance(games, list) or any(
@@ -44,7 +44,7 @@ def get_games():
 
 
 def get_overview(app_id, hours):
-    base_url = environ.get("DASHBOARD_OVERVIEW_URL", "http://127.0.0.1:8210")
+    base_url = environ.get("DASHBOARD_OVERVIEW_URL", "http://127.0.0.1:8220")
     payload = request_json(base_url, "/v1/dashboard/overview", app_id=app_id, hours=hours)
     fields = {"as_of", "range", "status", "summary", "comparison", "trends", "alert", "review_samples"}
     if (

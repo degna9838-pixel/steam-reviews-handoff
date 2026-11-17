@@ -32,7 +32,8 @@ Accept: application/json
 | 评论总数和负面占比 | `summary` | 所选范围的评论数、已分类数、正面/中立/负面计数；前端据此计算占比。 |
 | 情绪趋势图 | `buckets` | 恰好 `hours` 个连续的一小时桶，每桶包含评论与情绪计数。 |
 | 情绪饼图 | `summary` | 使用同一范围的三类情绪总计，与趋势图分桶之和一致。 |
-| 词云、趋势词表格和数量 | `trends` | 突增词列表、近期及基准有效评论总数、各词在两窗口的提及评论数。 |
+| 词云 | `keywords` | 所选6小时/24小时/7天范围的高频词及提及评论数，不依赖是否检测到突增。 |
+| 趋势词表格和数量 | `trends`、`trend_candidates` | 已确认突增词；没有突增或样本不足时，提供近期词频对照供参考，前端明确标为普通高频词。 |
 | 告警卡片和数量 | `alert`、`comparison` | 告警状态、当前和基准窗口、两窗口已分类数与负面数、触发阈值。 |
 | 评论区与评论弹窗 | `review_samples` | 当前检测窗口内最新最多5条评论，包含原文、发布时间、文本情绪和 Steam 推荐标记。 |
 
@@ -139,6 +140,8 @@ Accept: application/json
 | `buckets` | array[Bucket] | 按时间升序的一小时分桶，用于堆叠趋势图。 |
 | `comparison` | object | 包含 `recent` 和 `baseline` 两个 Window。 |
 | `trends` | Trends | 突增词榜数据和可用状态。 |
+| `keywords` | Keywords | 所选范围的高频词，用于词云。 |
+| `trend_candidates` | array[object] | 最近一小时普通高频词对照，用于趋势表格的参考展示，不计入突增词数量。 |
 | `alert` | Alert | 最新检测结果。当前界面每次展示 0 或 1 条提醒。 |
 | `review_samples` | array[ReviewSample] | 所选游戏当前检测窗口内的评论示例，按发布时间降序，最多 5 条。 |
 
@@ -152,6 +155,9 @@ Accept: application/json
 | Status | `last_collection_at` | datetime 或 null | 最近成功采集时间，可取采集服务 `last_success_at`。即便本轮新增 0 条，成功采集时间仍可更新。 |
 | Status | `analysis_updated_at` | datetime 或 null | 当前分析快照成功发布的时间。 |
 | Status | `collection_interval_seconds` | integer 或 null | 上游采集目标间隔，可取 `poll_seconds`。前端刷新间隔由前端单独配置。 |
+| Status | `sync_in_progress` | boolean | 同一数据流上游有尚未处理的新增变更时为 true。页面提示同步中，已有统计继续显示。 |
+| Status | `processed_cursor`、`source_latest_cursor` | string 或 null | 已处理位置与上游最新位置，不同游戏独立维护。 |
+| Status | `cursor_lag` | integer 或 null | 上游最新位置减已处理位置；未知用 null。正数表示尚待同步的变更位置差，不等于新增评论数。 |
 | Bucket | `start_at`、`end_at` | datetime | 一小时窗口的边界。 |
 | Bucket | `counts` | Counts 或 null | 当前桶的评论及情绪计数。未覆盖的桶传 `null`。 |
 | Counts | `review_count` | integer | 采集到的该游戏英文评论数，含未分类评论。 |
@@ -159,6 +165,8 @@ Accept: application/json
 | Counts | `positive_count`、`neutral_count`、`negative_count` | integer | 三类情绪计数。三者相加等于 `classified_count`，且 `classified_count <= review_count`。 |
 
 `buckets` 应包含恰好 `hours` 个小时桶，覆盖 `range` 且连续无重叠。确认为空的桶五项计数均为 0，前端将该小时情绪比例显示为无数据。只要存在计数未知的桶，`summary` 就传 `null`。其余情况下，`summary` 的每一项等于各桶对应计数之和。总负面占比用总负面计数除以总已分类计数，不能对每小时的百分比简单平均。
+
+同一数据流的已提交评论与对应分析仍一致时，不能仅因正向同步落后就将已有计数清空。此时返回已处理数据的 `summary`、`buckets` 和 `keywords`，标记 `data_state="partial"`、`sync_in_progress=true`，突增词与告警暂为 `pending`。数据流不一致、游标未知或倒退、范围覆盖未知等情况仍不能当作完整统计。
 
 ### Trends
 
@@ -171,6 +179,14 @@ Accept: application/json
 | `items[].recent_review_count`、`items[].baseline_review_count` | integer | 各窗口提到该词的有效评论数。同一评论多次出现只计一次，计数不超过该窗口有效评论总数。 |
 
 两个窗口的出现率分别等于「提到词的有效评论数 ÷ 该窗口有效评论数」。`Lift = 当前出现率 ÷ 基准出现率`。基准出现率为 0、当前出现率大于 0 时，前端显示 `New`。任一窗口有效评论数为 0 或样本量未达到后端规则时，使用 `insufficient_data` 与空列表。状态为 `ready` 且列表为空时，表示本轮没有符合规则的词。指标卡计数为 `items.length`，即展示出的词数。
+
+### Keywords 与普通词频对照
+
+`keywords` 返回 `{status, eligible_count, items}`，`status` 为 `ready` 或 `pending`，`eligible_count` 为所选范围内可用于词频分析的评论数（未知为 null）。`items` 按提及评论数降序返回，最多50项，每项为 `{term: string, review_count: integer}`；一条评论内重复词只计一次。它随 `hours` 改变，词云不再只展示突增词。
+
+`trend_candidates` 为最多10个近期高频词，每项使用与 `trends.items` 相同的 `term`、`recent_review_count`、`baseline_review_count` 字段。它不要求通过突增筛选或最小样本量，但要求来源与比较窗口可用。前端优先展示已确认的 `trends.items`；没有确认结果时，展示候选词并标注“普通高频词，非已确认突增”。若近期没有可展示词项，可改为显示所选范围的高频词计数表。
+
+告警为 `insufficient_data` 或 `clear` 时，前端仍展示已知的两窗口已分类数、负面数、负面占比与百分点差；这些是观察值，不等于触发告警。零分母显示未知比例，不能伪造为0%。告警比较仍固定为最近1小时与此前24小时，并在卡片中说明。
 
 ### Alert
 
