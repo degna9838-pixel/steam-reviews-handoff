@@ -49,7 +49,7 @@ GET /v1/dashboard/overview?app_id=730&hours=24
 
 此接口按一次性 `as_of` 快照返回任务4的情绪统计、分桶、最近小时与此前24小时的对比、负面占比提醒和最近评论样例。`hours` 仅接受 `6`、`24`、`168`，默认 `24`；快照截止时间向下对齐到 UTC 整点，保证桶完整。统计窗口均为左闭右开，评论按 `created_at` 归属，情绪采用 `effective`（优先LLM标签，否则使用VADER）。
 
-响应字段与前端草案一致：`range`、`status`、`summary`、`buckets`、`comparison`、`alert`、`review_samples`。`status.data_state` 为 `ready`、`partial` 或 `pending`；覆盖范围未知的小时桶 `counts=null`，相应的 `summary=null`。提醒比较 `[T-1h,T)` 和 `[T-25h,T-1h)`，每边至少20条已分类评论、负面率上升至少15个百分点才是 `triggered`。数据未就绪时返回 `pending`，样本不足返回 `insufficient_data`，否则返回 `clear`。
+响应字段与前端草案一致：`range`、`status`、`summary`、`buckets`、`comparison`、`alert`、`review_samples`。`status.data_state` 为 `ready`、`partial` 或 `pending`；覆盖范围未知的小时桶 `counts=null`，相应的 `summary=null`。提醒比较 `[T-1h,T)` 和 `[T-25h,T-1h)`，每边至少10条已分类评论、负面率上升至少10个百分点才是 `triggered`。数据未就绪时返回 `pending`，样本不足返回 `insufficient_data`，否则返回 `clear`。
 
 本分支已整合趋势词榜：总览直接复用同一份评论镜像中的词项，统一截止点计算词频、突增词及情绪结果。`trends.status` 为 `ready`、`insufficient_data` 或 `pending`；无需独立趋势 worker 或 JSON 导出文件。完整约定、样例与状态规则见 [统一总览接口](DASHBOARD_OVERVIEW.md)。总览 GET 只读已消费的分析库，不触发 Steam 采集或 LLM 调用。`GET /v1/games` 和 `/v1/health` 仍由采集服务8000提供；总览由本结果服务8100提供。
 

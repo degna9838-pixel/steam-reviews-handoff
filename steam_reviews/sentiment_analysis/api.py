@@ -33,8 +33,8 @@ from .util import iso_utc, parse_utc, utc_now
 
 OVERVIEW_SCHEMA_VERSION = "1.0"
 OVERVIEW_HOURS = {6, 24, 168}
-ALERT_MIN_CLASSIFIED = 20
-ALERT_MIN_INCREASE_PP = 15
+ALERT_MIN_CLASSIFIED = 10
+ALERT_MIN_INCREASE_PP = 10
 LABELS = ("positive", "neutral", "negative")
 
 
